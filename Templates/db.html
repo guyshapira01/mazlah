@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE>
+</HEAD>
+<BODY >
+<div align="center">
+<P><FONT color=red size=6>DB inventory System</FONT>  </P>
+<h3>The order recieved from LinkWare : </h3><br>
+<table border=1>
+	<tr bgcolor="lemonchiffon">
+		<td align=center><STRONG>Quantity</STRONG></td>
+		<td align=center><STRONG>Item Name</STRONG> </td>
+	</tr>
+	<tr>
+		<td align=center><span id="quantity"></span></td>
+		<td align=right><span id="paritName"></span></td>
+	</tr>
+</table>
+</div>
+
+<script language="JavaScript">
+	
+	var strLocation = window.location.search;
+	var countStr = strLocation.split("&");
+	var countStr1 = countStr[0].split("?count=");
+	quantity.innerText = countStr1[1];
+	
+	var nameStr = strLocation.split("itemName=");
+	var nameStr1 = nameStr[1].split("&");
+	var nameItem = nameStr1[0].replace("+"," ");
+	var nameItem = nameItem.replace("+"," ");
+	paritName.innerText = nameItem;
+	
+</script>
+</BODY>
+</HTML>

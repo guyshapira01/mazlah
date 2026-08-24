@@ -1,0 +1,56 @@
+  <html>
+   <head>
+   <title>Color Palette</title>
+   <style> </style>
+<script type="text/javascript">
+function createTable(){
+    var colors = new 
+      Array('00','33','66','99','CC','FF');
+    var tableText = '<table width=""500""cellpadding=""2"">';
+    var ti = 0;
+    for (i=0; i<6; i++) {
+	ti =0;
+      for (j=0; j<6; j++) {
+	if (ti == 0)
+	{
+        tableText += '<tr>';
+	}
+	ti++;
+        for (k=0; k<6; k++){
+          var color = colors[i] + colors[j] + 
+            colors[k];
+          if (i < 4 && j < 4 && k < 4) {
+            tableText += '<td onClick="JavaScript:var ob = window.opener.document.getElementById(\'prefValueBox\');ob.value=\'#'+ color +'\';ob.style.background=\'#'+ color +'\';window.close();" style="color:#'+ color +';background-color:#' + 
+            color + ';" onmouseover="this.style.cursor=\'hand\';">'+'aa'+'</td>';
+          }
+          else {
+            tableText += '<td onClick="JavaScript:var ob = window.opener.document.getElementById(\'prefValueBox\');ob.value=\'#'+ color +'\';ob.style.background=\'#'+ color +'\';window.close();" style="color:#'+ color +';background-color:#' + color + 
+            ';" onmouseover="this.style.cursor=\'hand\';">'+'aa'+'</td>';
+          }
+        }
+	if (ti == 3)
+	{
+        tableText += '</tr>';
+	ti = 0;
+	}
+      }
+    }
+    tableText += '</table>';
+    return tableText;
+  }
+
+</script>
+
+   </head>
+   <body>
+
+<u>
+<div id="colorTable">
+   <script type="text/javascript">
+      document.write(createTable());
+   </script>
+</div>
+</u>
+
+   </body>
+   </html>

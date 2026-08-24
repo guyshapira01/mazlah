@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="left.xsl"?>
+
+<map>
+	<MapName><# IMAGEMAP_NAME ORDINAL=1 #></MapName>
+	<PicName><# PICTURE_NAME ORDINAL=1 #></PicName>
+
+	<Text1><![CDATA[<# TEXT_1 #>]]></Text1>
+	<Text2><![CDATA[<# TEXT_2 #>]]></Text2>
+	<Text3><![CDATA[<# TEXT_3 #>]]></Text3>
+	<Text4><![CDATA[<# TEXT_4 #>]]></Text4>
+	<Text5><![CDATA[<# TEXT_5 #>]]></Text5>
+
+	<mapOrd>
+	 	
+		<imgSrc><# IMAGE #></imgSrc>
+            
+            <# AREA #>
+
+	 	<Area>
+			<Shape><# Shape #></Shape>
+			<ID><# ID #></ID>
+			<ToolTipMultiLine><![CDATA[<# MAP ORDINAL=1 LABLE1="שם" LABLE2="מק"ט" LABLE3="הערה" #>]]></ToolTipMultiLine>
+			<Highlight><# Highlight #></Highlight>
+			<Focus><# Focus #></Focus>
+			<Coords><# Coords #></Coords>
+                		<Href><# Href #></Href>
+                		<Target><# Target #></Target>
+            	 	</Area>
+
+	</mapOrd>
+
+	<Text6><![CDATA[<# TEXT_6 #>]]></Text6>
+	<Text7><![CDATA[<# TEXT_7 #>]]></Text7>
+	<Text8><![CDATA[<# TEXT_8 #>]]></Text8>
+	<Text9><![CDATA[<# TEXT_9 #>]]></Text9>
+
+</map>
+

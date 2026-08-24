@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="header1.xsl"?>
+
+<Header>
+
+	<PageNum><#PAGE_NUM#></PageNum>
+	<PageHebDesc><![CDATA[<#PAGE_HEB_DESC#>]]></PageHebDesc>	
+	<ChapterName><![CDATA[<#CHAPTER_NAME#>]]></ChapterName>
+	<CatalogName><![CDATA[<#CATALOG_NAME#>]]></CatalogName>
+  <UpdateDate>
+    <#PUPDATEDATE#>
+  </UpdateDate>
+	<WindowSourceFile><#FRAME SOURCE_FILE=right1.xml#></WindowSourceFile>
+	<Next><#NEXT#></Next>
+	<Prev><#PREV#></Prev>
+	<Index><#INDEX#></Index>
+	<UserLogon><#UserLogon#></UserLogon>
+	<IsWebEditor><#WEBEDITOR#></IsWebEditor>
+
+</Header>
+

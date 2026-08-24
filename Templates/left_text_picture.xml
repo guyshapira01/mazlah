@@ -1,0 +1,57 @@
+<html>
+
+<base target="_parent" />
+<head>
+<title>Catalog Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1255" />
+</head>
+
+<LINK REL="stylesheet" HREF="LinkWare1.css" TYPE="text/css" />
+<LINK REL="stylesheet" HREF="ontop.css" TYPE="text/css" />
+<SCRIPT LANGUAGE="JavaScript" SRC="tooltip.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="mapzoom.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="specialfx.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="ontop.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="panning.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="events.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="addSearchFocus.js"></SCRIPT>
+
+<input type="hidden" name="pic_name" value=<# PICTURE_NAME ORDINAL=1 ENCAPS=' #>></input>
+<input type="hidden" name="map_name" value=<# IMAGEMAP_NAME ORDINAL=1 ENCAPS=' #>></input>
+
+<body class="BodyCatalog">
+<SPAN id="globalAreaId" style="visibilty:hidden;"></SPAN>
+
+<div align="center">
+<table align="center">
+	<tr>
+		<td><# TEXT_1 #></td>
+		<td><# TEXT_2 #></td>
+		<td><# TEXT_3 #></td>
+	</tr>
+	<tr>
+		<td><# TEXT_4 #></td>
+		<td align="center"><# TEXT_5 #><IMG  name="SearchFocus" src="blankSearchFocus.gif" STYLE="position:absolute; top:0px ; left:0px; z-index : 100 visibilty : :hidden" onclick="javascript:hideSearchImage()" />
+		<# MAP ORDINAL=1 LABLE1="שם" LABLE2="מק"ט" LABLE3="הערה" #></td>
+		<td><# TEXT_6 #></td>
+	</tr>
+	<tr>
+		<td><# TEXT_7 #></td>
+		<td><# TEXT_8 #></td>
+		<td><# TEXT_9 #></td>
+	</tr>
+</table>
+</div>
+
+<DIV ID="tipwindow" CLASS="TipHelp" STYLE="Top:100; Left:200; display=none; Z-INDEX:200;">
+ToolTip text goes in here. Zac (-:</DIV>
+
+<script language="JavaScript">
+	fnZoom(window.map_name.value, window.pic_name.value, getCookie('_zoom_ratio'));
+	fnSetSearchFocus();
+	window.onresize = changeSize ;
+</script>
+
+</body>
+</html>

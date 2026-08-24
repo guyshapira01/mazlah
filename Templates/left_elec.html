@@ -1,0 +1,112 @@
+<html>
+
+<base target="_parent" />
+<head>
+<title>Catalog Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<LINK REL="stylesheet" HREF="LinkWare1.css" TYPE="text/css" />
+<LINK REL="stylesheet" HREF="ontop.css" TYPE="text/css" />
+
+<SCRIPT LANGUAGE="JavaScript" SRC="cvi_map_lib.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="cvi_map_src.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="tooltip.js"></SCRIPT>
+
+
+<SCRIPT LANGUAGE="JavaScript" SRC="specialfx.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="ontop.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="mapzoom.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="panning.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="events.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="addSearchFocus.js"></SCRIPT>
+
+
+<input type="hidden" name="pic_name" value=<# PICTURE_NAME ORDINAL=1 ENCAPS=' #>></input>
+<input type="hidden" name="map_name" value=<# IMAGEMAP_NAME ORDINAL=1 ENCAPS=' #>></input>
+<DIV ID="tipwindow" CLASS="TipHelp" STYLE="Top:100; Left:200; display=none; Z-INDEX:200;">
+ToolTip text goes in here. Zac (-:</DIV>
+<script languahe="javascript">
+	function initPage()
+	{
+		//populateSearchBox();
+		
+		//fnZoom(window.map_name.value, window.pic_name.value, 0.4);
+		//window.onresize = changeSize ;
+		
+		var obj=document.getElementById('myimg');
+		//alert(obj.width);
+		//obj.width='400px';
+		
+		//obj.style.width='200px';
+		//alert(obj.width);
+		cvi_map.add(document.getElementById('myimg'), { opacity: 70, areacolor: '#ffff00' });
+		//top.frames('Parts Table').location.reload();
+		highlightSearch();
+		
+	}
+	//var zoomRatio=1.0;
+	/*
+	function fnZoom(addratio)
+	{
+		
+		if(addratio>=1)
+			zoomRatio+=addratio;
+		else
+		{
+			
+			zoomRatio+=addratio;
+			
+		}
+		document.getElementById('mybody').style.zoom=zoomRatio*100+ '%';
+		document.getElementById('tipwindow').style.zoom='100%';
+		
+	}
+	function fnZoomCurrent(addratio)
+	{
+		
+		zoomRatio=addratio;
+			
+		document.getElementById('mybody').style.zoom=zoomRatio*100+ '%';
+		document.getElementById('tipwindow').style.zoom='100%';
+		
+	}*/
+<!--cvi_map.add(document.getElementById('myimg'), { opacity: 70, areacolor: '#ffff00' });-->
+</script>
+<body id='mybody' class="BodyCatalog" dir="rtl" onload="initPage();javascript:parent.frames['Parts Table'].location.reload();">
+
+
+<SPAN id="globalAreaId" style="visibilty:hidden;"></SPAN>
+
+<div align="center" DIR="RTL">
+<table align="center">
+	<tr>
+		<td><# TEXT_1 #></td>
+		<td><# TEXT_2 #></td>
+		<td><# TEXT_3 #></td>
+	</tr>
+	<tr>
+		<td><# TEXT_4 #></td>
+		<td align="center"><# TEXT_5 #><IMG  name="SearchFocus" src="blankSearchFocus.gif" STYLE="position:absolute; top:0px ; left:0px; z-index : 100 visibilty : :hidden" onclick="javascript:hideSearchImage()" />
+		<# MAP ORDINAL=1 LABLE1="שם" LABLE2="מקט" LABLE3="הערה" #></td>
+		<td><# TEXT_6 #></td>
+	</tr>
+	<tr>
+		<td><# TEXT_7 #></td>
+		<td><# TEXT_8 #></td>
+		<td><# TEXT_9 #></td>
+	</tr>
+</table>
+</div>
+
+
+
+<script language="JavaScript">
+	var zoomRatio=parseFloat('0' + getCookie('_zoom_ratio'));
+	
+	fnZoomNew(zoomRatio);
+</script>
+
+</body>
+</html>

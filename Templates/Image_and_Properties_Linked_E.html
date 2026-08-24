@@ -1,0 +1,516 @@
+<html>
+
+<base target="_parent" />
+<head>
+<title>Catalog Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1255" />
+</head>
+
+<LINK REL="stylesheet" HREF="LinkWare1.css" TYPE="text/css" />
+<LINK REL="stylesheet" HREF="ontop.css" TYPE="text/css" />
+<SCRIPT LANGUAGE="JavaScript" SRC="tooltip_E_Orbotech.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="mapzoom.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="specialfx_blue_orbotech_E.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="ontop.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="panning.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="events.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="catalogicNumber.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="addSearchFocus.js"></SCRIPT>
+<LINK REL="stylesheet" HREF="tabs_orbotech.css" TYPE="text/css" />
+<SCRIPT LANGUAGE="JavaScript" SRC="tabs.js"></SCRIPT>
+
+<a name = "Picture"></a>
+<input type="hidden" name="pic_name" value=<# PICTURE_NAME ORDINAL=1 ENCAPS=' #>></input>
+<input type="hidden" name="map_name" value=<# IMAGEMAP_NAME ORDINAL=1 ENCAPS=' #>></input>
+
+<body  bgcolor="#FFFFCD" dir="ltr">
+<script language="JavaScript">
+	function goToPart(pkey)	{
+		var innerPkey;
+		tmpPkey=pkey;
+		innerPkey='inner_' + tmpPkey;
+		while (innerPkey != '')	{
+			obj = top.frames('Index').document.getElementById(innerPkey).style;
+			//alert('123' + top.frames('Index').document.getElementById(innerPkey).style.display + '123');
+			if (obj.display=='none')	{
+				top.frames('Index').Switch(innerPkey,pkey,'IconTypes/Close.gif','IconTypes/Open.gif');
+			}
+			innerPkey = top.frames('Index').document.all(innerPkey).parentElement.id;
+			pkey = innerPkey.substr(6);
+			//alert(tmpPkey);
+			//alert(pkey);
+		}
+	}
+</script>
+<style>
+BODY {
+{
+	scrollbar-face-color: #A5D0E1;
+	scrollbar-shadow-color: #D1E8F0;
+	scrollbar-highlight-color: #A5D0E1;
+	scrollbar-3dlight-color: #A5D0E1;
+	scrollbar-darkshadow-color: #D1E8F0;
+	scrollbar-track-color: #D1E8F0;
+	scrollbar-arrow-color: black;
+}
+</style>
+<SPAN id="globalAreaId" style="visibilty:hidden;"></SPAN>
+
+<div align="center">
+<table align="center">
+	<tr>
+		<td><span id="Text1"><# TEXT_1 #></span></td>
+		<td><span id="Text2"><# TEXT_2 #></span></td>
+		<td><span id="Text3"><# TEXT_3 #></span></td>
+	</tr>
+	<tr>
+		<td><span id="Text4"><# TEXT_4 #></span></td>
+		<td align="center"><span id="Text5"><# TEXT_5 #></span><IMG  name="SearchFocus" src="blankSearchFocus.gif" STYLE="position:absolute; top:0px ; left:0px; z-index : 100 visibilty : :hidden" onclick="javascript:hideSearchImage()" />
+		<span id="spanImageMap" style="FONT-SIZE:14px; FONT-FAMILY:Arial;" ><# MAP ORDINAL=1 LABLE1="Description" LABLE2="Item&nbsp;Number" LABLE3="Remark" PROP2=1 PROP3=2 LINKSMODE=NEW#> </span></td>
+		<td><span id="Text6"><# TEXT_6 #></span></td>
+	</tr>
+	<tr>
+		<td><span id="Text7"><# TEXT_7 #></span></td>
+		<td><span id="Text8"><# TEXT_8 #></span></td>
+		<td><span id="Text9"><# TEXT_9 #></span></td>
+	</tr>
+</table>
+</div>
+<script language="JavaScript">
+	function hideHotSpot()	{
+		//alert(ShowHideHotSpot.innerText.indexOf("Show"));
+		if (ShowHideHotSpot.innerText.indexOf("Show")>-1)	{
+			ShowHideHotSpot.innerText = 'Hide Graphics';
+			VmlDiv.style.display='';
+		}
+		else	{
+			ShowHideHotSpot.innerText = 'Show Graphics';
+			VmlDiv.style.display='NONE';
+		}
+	}
+</script>
+<div align="center" id="HideHotSpotDiv">
+	<a id="ShowHideHotSpot" href="JavaScript:hideHotSpot();" style="font-family: Arial;font-size:12px;color:blue;" target="_self">Hide Graphics</a>
+</div>
+<script language="JavaScript">
+	if ((top.frames('Parts Map').document.all[window.map_name.value]+"" == "undefined" ) || (typeof(VmlDiv)=='undefined') ){
+		HideHotSpotDiv.style.display='NONE';
+		//get the current coords
+		arrayOfCoords = window.parent.document.all('inr_frmst').getAttribute('cols').split(",");
+
+		newCoords = arrayOfCoords[0] + "," + arrayOfCoords[1] + ",0,";
+		window.parent.document.all('inr_frmst').setAttribute('cols', newCoords);
+	}
+	else
+	{
+
+		if (document.all.VmlDiv.innerHTML.indexOf("ToolTipMultiLine")>-1)
+		{
+			HideHotSpotDiv.style.display='';
+			//get the current coords
+			arrayOfCoords = window.parent.document.all('inr_frmst').getAttribute('cols').split(",");
+			if (arrayOfCoords[2]=="0") { arrayOfCoords[2]="30%"	}
+			newCoords = arrayOfCoords[0] + "," + arrayOfCoords[1] + "," + arrayOfCoords[2] + ",";
+			window.parent.document.all('inr_frmst').setAttribute('cols', newCoords);
+		}
+		else
+		{
+			HideHotSpotDiv.style.display='NONE';
+			//get the current coords
+			arrayOfCoords = window.parent.document.all('inr_frmst').getAttribute('cols').split(",");
+			newCoords = arrayOfCoords[0] + "," + arrayOfCoords[1] + ",0,";
+			window.parent.document.all('inr_frmst').setAttribute('cols', newCoords);
+		}
+
+	}
+</script>
+<a name = "ItemProperties"></a> <!-- do not delete this href it is for up/down arrows -->
+<!-- Item Documents -->
+<div align="center">
+<TABLE border="0" cellPadding="5" cellSpacing="0" align="center" bordercolor="black" dir="ltr"  style="Display:none" id="ItemDocuments">
+<tr>
+	<td align=center colspan=3>
+
+	<font class="TitleText_E" style="font-family: Arial;font-size:12px; color:white">Item Documents</font>
+	</td>
+</tr>
+<tr>
+	<td colspan="3">
+		<TABLE border="1" cellPadding="5" cellSpacing="0" align="center" bordercolor="black" dir="ltr">
+			<tr>
+				<td bgcolor="tan"><b>Icon</b></td>
+				<td bgcolor="tan"><b>Description</b></td>
+				<td bgcolor="tan"><b>DocumentID</b></td>
+				<td bgcolor="tan"><b>Name</b></td>
+			</tr>
+				<#DOCUMENT_LOOP_BEGIN#>
+
+					<!--show item documents div if has items.-->
+					<script language="JavaScript">
+						ItemDocuments.style.display='';
+					</script>
+					<!--end-->
+
+				<tr>
+
+					<td class="notestabs">&nbsp;<B><FONT color=black><img align= absMiddle src= "IconTypes/<#DOCUMENTOBJECTTYPE#>.gif"></img></font></b>&nbsp;</td>
+					<td class="notestabs">&nbsp;<B><FONT color=black> <#DOCUMENTDESCRIPTION#></font></b>&nbsp;</td>
+					<td class="notestabs">&nbsp;<#DOCUMENTID#>&nbsp;</td>
+					<td class="notestabs">&nbsp;<A HREF = "<#DOCUMENTPATH#>" target="_blank"><#DOCUMENTNAME#></A>&nbsp;</td>
+
+				</tr>
+
+
+				<#DOCUMENT_LOOP_END#>
+
+		</table>
+
+	</td>
+</tr>
+</tr>
+</table>
+
+<!-- Properties -->
+
+<table  width="100%">
+<tr align="center">
+<td>
+<br/>
+<table border="0" cellspacing="0" cellpadding="0" width="100%" id="ItemPropertiesUpperHide">
+	<tr>
+	<td align="left" colspan="3" bgcolor="#070E97">
+		<font style="font-family: Arial;font-size:12px; color:white"><b>&#160;&#160;Item Properties </b></font>
+	</td>
+	</tr>
+</table>
+<br/>
+<TABLE border="0" cellPadding="0" cellSpacing="0" height="100%" width="100%" id="ItemPropertiesHide">
+  <TR>
+    <TD align="left" vAlign="top" width="100%">
+      <TABLE  border="0" cellPadding="2" cellSpacing="0" id="idTabs"  width="98%">
+        <TBODY>
+        <TR height="25" vAlign="center">
+ <!--<TD class="clsTab_Blank" width="1%">&#160;&#160;&#160;&#160;&#160;</TD>-->
+ <TD class="clsTab" id="tabs" onclick="TabClick('0');" width="50%"><table><tr><td class="clsTab_Part_Small"><a></a></td><td><A href="javscript:void();"
+   onclick="return TabClick('0');" style="font-family: Arial">Service Properties</A></td></tr></table></TD>
+ <TD class="clsTab" id="tabs" onclick="TabClick('1');" width="50%"><table><tr><td class="clsTab_Part_Small"><a></a></td><td><A href="javscript:void();"
+   onclick="return TabClick('1');" style="font-family: Arial">Logistic Properties</A></td></tr></table></TD>
+<TD class="clsTab_Blank" id="tabs" width="100%">&#160;</TD>
+</TR></TBODY></TABLE>
+
+     <SCRIPT>tabs[2].width="100%"; idTabs.style.display="block";</SCRIPT>
+
+
+<TABLE border="0" cellPadding="0" cellSpacing="0" id="newsContent" width="98%" ><TBODY>
+<TR><TD width="5"></TD><TD align="center" width="100%" class="clstabselected">
+<br></br>
+<!--Start Content of tab 1 -->
+<TABLE class="regular"	border="0" cellPadding="5" cellSpacing="0" align="center" dir="ltr" width="90%">
+	<xsl:for-each select="Items/Item">
+
+		<TR>
+			<TD class="normal" style="font-family: Arial"><b>Item Number:</b></TD>
+			<TD width="20%" align="left" class="notestabs" style="font-family: Arial">
+				<#PART PROP=PPROP1#>
+			&#160;</TD>
+			<TD class="normal" width="20%" style="font-family: Arial"><b>Description:</b></TD>
+			<TD align="left" class="notestabs" width="30%" style="font-family: Arial">
+				<#PART PROP=PHEBDESC#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" style="font-family: Arial"><b>Assembly:</b></TD>
+			<TD width="20%" align="left" class="notestabs" style="font-family: Arial">
+				<#PART PROP=PPROP12#>
+			&#160;</TD>
+			<TD class="normal" style="font-family: Arial"><b>FRU:</b></TD>
+			<TD align="left" class="notestabs" style="font-family: Arial">
+				<#PART PROP=PPROP11#>
+			&#160;</TD>
+		</TR>
+
+		<TR>
+			<TD class="normal" style="font-family: Arial"><b>Repairable:</b></TD>
+			<TD width="20%" align="left" class="notestabs" style="font-family: Arial">
+				<#PART PROP=PPROP14#>
+			&#160;</TD>
+			<TD class="normal" style="font-family: Arial"><b>ECO No.:</b></TD>
+			<TD align="left" class="notestabs" style="font-family: Arial">
+				<#PART PROP=PPROP31#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" style="font-family: Arial"><b>Previous Versions:</b></TD>
+			<TD align="left" class="notestabs" style="font-family: Arial">
+				<#PART PROP=PPROP10#>
+			&#160;</TD>
+			<TD class="normal" width="20%" style="font-family: Arial"><b>Next Version:</b></TD>
+			<TD align="left" class="notestabs" width="30%" style="font-family: Arial">
+				<#PART PROP=PPROP32#>
+			&#160;</TD>
+		</TR>
+
+		<!--<TR>
+			<TD class="normal"><b>Alternale Part:</b></TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP33#>
+			&#160;</TD>
+			<TD class="normal">&#160;</b></TD>
+			<TD align="left" class="notestabs">
+				&#160;
+			&#160;</TD>
+		</TR>-->
+
+
+	</xsl:for-each>
+</TABLE>
+
+<!--End Content of tab 1 -->
+
+<br></br></TD></TR></TBODY></TABLE>
+<SCRIPT>newsContent.style.display="none";</SCRIPT>
+
+<TABLE border="0" cellPadding="0" cellSpacing="0" id="newsContent" width="98%"><TBODY>
+<TR><TD width="5"></TD><TD width="100%" class="clstabselected"><br></br>
+
+<!--Start Content of tab 2 -->
+<TABLE class="regular"	border="0" cellPadding="5" cellSpacing="0" align="center" dir="ltr" width="90%">
+	<xsl:for-each select="Items/Item">
+		<TR>
+			<TD class="normal" width="20%" nowrap="yes" style="font-family: Arial"><b>Item Type:</b></TD>
+			<TD align="left" class="notestabs" width="30%" style="font-family: Arial">
+				<#PART PROP=PPROP13#>
+			&#160;</TD>
+			<TD class="normal" nowrap="yes" style="font-family: Arial"><b>Item Status:</b></TD>
+			<TD align="left" class="notestabs" style="font-family: Arial">
+				<#PART PROP=PPROP15#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes" style="font-family: Arial"><b>Stop Acquring:</b></TD>
+			<TD align="left" class="notestabs" style="font-family: Arial">
+				<#PART PROP=PPROP17#>
+			&#160;</TD>
+			<TD class="normal" width="20%" nowrap="yes" style="font-family: Arial"><b>Asset:</b></TD>
+			<TD align="left" class="notestabs" width="30%" style="font-family: Arial">
+				<#PART PROP=PPROP18#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" width="40%" nowrap="yes" style="font-family: Arial"><b>Manufacturer P/N:</b></TD>
+			<TD align="left" colspan="3" class="notestabs" style="font-family: Arial">
+				<#PART PROP=PPROP27#>
+			&#160;</TD>
+		</TR>
+		<!--<TR>
+			<TD class="normal" nowrap="yes"><b>Lead Time (days):</b></TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP19#>
+			&#160;</TD>
+			<TD class="normal" nowrap="yes"><b>Manufacturer:</b></TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP20#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes"><b>Part Type:</b></TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP16#>
+			&#160;</TD>
+		</TR>-->
+<!--		<TR>
+			<TD class="normal" nowrap="yes">Property 9:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP9#>
+			&#160;</TD>
+			<TD class="normal" width="40%" nowrap="yes">Property 10:</TD>
+			<TD align="left" colspan="3" class="notestabs">
+				<#PART PROP=PPROP10#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" width="20%" nowrap="yes">Property 11:</TD>
+			<TD align="left" class="notestabs" width="30%">
+				<#PART PROP=PPROP11#>
+			&#160;</TD>
+			<TD class="normal" width="20%" nowrap="yes">Property 12:</TD>
+			<TD align="left" class="notestabs" width="30%">
+				<#PART PROP=PPROP12#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">Property 13:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP13#>
+			&#160;</TD>
+			<TD class="normal" nowrap="yes">Property 14:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP14#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">Property 15:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP15#>
+			&#160;</TD>
+			<TD class="normal" nowrap="yes">Property 16:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP16#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">Property 17:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP17#>
+			&#160;</TD>
+			<TD class="normal" width="40%" nowrap="yes">Property 18:</TD>
+			<TD align="left" colspan="3" class="notestabs">
+				<#PART PROP=PPROP18#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">Property 19:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP19#>
+			&#160;</TD>
+			<TD class="normal" width="40%" nowrap="yes">Property 20:</TD>
+			<TD align="left" colspan="3" class="notestabs">
+				<#PART PROP=PPROP20#>
+			&#160;</TD>
+		</TR>-->
+	</xsl:for-each>
+</TABLE>
+
+<!--End Content of tab 2 -->
+
+
+<br></br></TD></TR></TBODY></TABLE>
+<SCRIPT>newsContent[1].style.display="none";</SCRIPT>
+
+
+
+<TABLE border="0" cellPadding="0" cellSpacing="0" id="newsContent" width="100%"><TBODY>
+<TR><TD width="5"></TD><TD width="100%" class="clstabselected"><br></br>
+
+<!--Start Content of tab 7 -->
+
+
+<!--End Content of tab 7-->
+
+
+
+<br></br></TD></TR></TBODY></TABLE>
+<SCRIPT>newsContent[2].style.display="none";</SCRIPT>
+
+
+</TD>
+</TR>
+</TABLE><SCRIPT>newsContent[0].style.display = "block";tabs[0].className = "clsTabSelected_Top";</SCRIPT>
+
+<!-- End Part Toolbar -->
+
+</td>
+</tr>
+</table>
+
+</div>
+
+</td>
+
+</tr>
+</table>
+<!-- fru items - hide the item properties -->
+<script language="javascript">
+	if ('<#PART PROP=ITEM_OBJECT_TYPE#>'=='Phantom Item')	{
+		ItemPropertiesHide.style.display='NONE';
+		ItemPropertiesUpperHide.style.display='NONE';
+	}
+</script>
+<div align="center">
+<!--<HR>
+<a href="mailto:?Subject=Linkware Parts order&Body=Please order the following part%0D%0ANAME: <#PART PROP=PHEBDESC#>%0D%0AItem ID:<#PART PROP=PPROP1#>"><img src=email.gif>Email order</a>
+<HR>-->
+</div>
+
+<DIV ID="tipwindow" CLASS="TipHelp" STYLE="Top:100; Left:200; display=none; Z-INDEX:200;">
+ToolTip text goes in here. Zac (-:</DIV>
+
+<script language="JavaScript">
+if (top.frames('Parts Map').document.all[window.map_name.value]+"" != "undefined" )
+{
+	//if no ratio is available in coookie so there is no need to call the fnZoom function
+	// but only to change visibility
+	if (getCookie('_zoom_ratio')== null)
+	{
+		document.images(window.pic_name.value).style.visibility = '';
+	}
+	else
+	{
+	    fnZoom(window.map_name.value, window.pic_name.value, getCookie('_zoom_ratio'));
+	}
+    fnSetSearchFocus();
+    window.onresize = changeSize
+   }
+   else	{
+   	//alert('no image');
+   	spanImageMap.innerText = 'No Image Available.';
+   }
+
+   function refreshFramesWithUrl(sUrl)	{
+		if (top.frames.length==0)    {
+			top.document.location.href='" & sUrl & ".html'
+		}
+		else {
+   			sLink =  sUrl + '_f2.html'
+   			top.frames('Parts Map').document.location.href=sLink;
+   			sLink =  sUrl + '_f1.xml'
+   			top.frames('Header').document.location.href=sLink;
+   			sLink = sUrl + '_f3.xml'
+   			top.frames('Parts Table').document.location.href=sLink;
+   			top.frames('Index').unlight(top.frames('Index').currentHlighlighPkey);
+   			sUrl = sUrl + 'a';
+   			top.frames('Index').currentHlighlighPkey=sUrl;
+   			top.frames('Index').highlightIndex(sUrl);
+		}
+		void(0);
+   }
+</script>
+
+<script language="VbScript">
+	Function ConvertToNewLinks(sTextContent)
+                            Dim iStart
+                            Dim iEnd
+                            Dim sPkeyObject
+			    Dim bLoop
+		            bLoop = True
+			    iStart = 1
+                            While bLoop
+                                If InStr(iStart, sTextContent, ".html") Then
+                                    iEnd = InStr(1, sTextContent, ".html")
+                                    iStart = InStrRev(sTextContent, """", iEnd)
+                                    'check if its to external site of internal linkware page
+                                    If Not (InStr(Mid(sTextContent, iStart + 1, iEnd - iStart - 1), "http")) Then
+                                    	sPkeyObject=Mid(sTextContent, iStart + 1, iEnd - iStart - 1)
+                                        sTextContent = Mid(sTextContent, 1, iStart) & "JavaScript:refreshFramesWithUrl('" & sPkeyObject & "');" & """ target=""_self"" " & Mid(sTextContent, iEnd + 6)
+                                    End If
+                                Else
+                                    bLoop = false
+                                End If
+                            Wend
+			ConvertToNewLinks = sTextContent
+	End Function
+                            'replace the html links to online links.
+			text1.innerHTML = ConvertToNewLinks(text1.innerHTML)
+			text2.innerHTML = ConvertToNewLinks(text2.innerHTML)
+			text3.innerHTML = ConvertToNewLinks(text3.innerHTML)
+			text4.innerHTML = ConvertToNewLinks(text4.innerHTML)
+			text5.innerHTML = ConvertToNewLinks(text5.innerHTML)
+			text6.innerHTML = ConvertToNewLinks(text6.innerHTML)
+			text7.innerHTML = ConvertToNewLinks(text7.innerHTML)
+			text8.innerHTML = ConvertToNewLinks(text8.innerHTML)
+			text9.innerHTML = ConvertToNewLinks(text9.innerHTML)
+</script>
+<br/><br/>
+</body>
+</html>

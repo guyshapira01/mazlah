@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="rightKleyAvodaMerkava.xsl"?>
+<Items>
+    <#PARTS_LOOP_BEGIN#>
+    <Item>
+		 <ID><#PART_DATA PROP_NUM=25#></ID>
+		 <Amount><#PART_DATA PROP_NUM=4#></Amount>
+		 <PartName><![CDATA[<#PART_DATA PROP_NUM=2#>]]></PartName>
+		 <ManufacturerCode><![CDATA[<#PART PROP=VENDOR_CODE#>]]></ManufacturerCode>
+		 <ManufacturerNum><![CDATA[<#PART PROP=VENDOR_NUMBER#>]]></ManufacturerNum>
+		 <CatalogNum><#PART PROP=ITEM_ID#></CatalogNum>
+		 <PartNum><#PART_DATA PROP_NUM=0#></PartNum>
+<yeud><#PART_DATA PROP_NUM=7#></yeud>
+<merkazTipul><#PART_DATA PROP_NUM=8#></merkazTipul>
+<zivud><#PART_DATA PROP_NUM=9#></zivud>
+<hatap><#PART_DATA PROP_NUM=10#></hatap>
+<mahag><#PART_DATA PROP_NUM=11#></mahag>
+<KitaGashach><#PART_DATA PROP_NUM=12#></KitaGashach>
+<MahlakaGashach><#PART_DATA PROP_NUM=13#></MahlakaGashach>
+<Mahlaka><#PART_DATA PROP_NUM=14#></Mahlaka>
+
+     </Item>
+    <#PARTS_LOOP_END#>
+</Items>

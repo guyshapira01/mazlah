@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rightKleyAvodaAchzaritTkina.xsl"?>
+<Items>
+    <#PARTS_LOOP_BEGIN#>
+    <Item>
+		 <ID><#PART_DATA PROP_NUM=25#></ID>
+		 <Amount><#PART_DATA PROP_NUM=4#></Amount>
+		 <PartName><![CDATA[<#PART_DATA PROP_NUM=2#>]]></PartName>
+		 <ManufacturerCode><![CDATA[<#PART PROP=VENDOR_CODE#>]]></ManufacturerCode>
+		 <ManufacturerNum><![CDATA[<#PART PROP=VENDOR_NUMBER#>]]></ManufacturerNum>
+		 <CatalogNum><![CDATA[<#PART PROP=ITEM_ID#>]]></CatalogNum>
+		 <PartNum><#PART_DATA PROP_NUM=0#></PartNum>
+<yeud><#PART_DATA PROP_NUM=7#></yeud>
+<hatap><#PART_DATA PROP_NUM=8#></hatap>
+<mahag><#PART_DATA PROP_NUM=9#></mahag>
+<Kitagashach><#PART_DATA PROP_NUM=10#></Kitagashach>
+<MahlakaGashah><#PART_DATA PROP_NUM=11#></MahlakaGashah>
+<mahlaka><#PART_DATA PROP_NUM=12#></mahlaka>
+
+     </Item>
+    <#PARTS_LOOP_END#>
+</Items>

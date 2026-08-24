@@ -1,0 +1,105 @@
+A
+{
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+A:link
+{
+    COLOR: navy
+}
+A:active
+{
+    COLOR: navy
+}
+A:visited
+{
+    COLOR: navy
+}
+A:hover
+{
+    COLOR: yellow
+}
+.bigtext
+{
+    FONT-SIZE: 100%;
+    FONT-WEIGHT: bold
+}
+.tabletext
+{
+    FONT-SIZE: 80%
+}
+.text
+{
+    COLOR: red;
+    FONT-FAMILY: Arial Black;
+    FONT-SIZE: 40px;
+    MARGIN-LEFT: 12px;
+    TEXT-DECORATION: underline
+}
+.highlight
+{
+    COLOR: darkred;
+    FONT-FAMILY: Arial Black;
+    FONT-SIZE: 40px;
+    MARGIN-LEFT: 6px;
+    MARGIN-TOP: -48px;
+    TEXT-DECORATION: underline
+}
+.TipHelp
+{
+    BACKGROUND-COLOR: yellow;
+    BORDER-BOTTOM: thin solid;
+    BORDER-LEFT: thin solid;
+    BORDER-RIGHT: thin solid;
+    BORDER-TOP: thin solid;
+    COLOR: black;
+    HEIGHT: 20px;
+    POSITION: absolute;
+    WIDTH: 240px;
+    posTop: 0;
+    posLeft: 0
+}
+H1
+{
+    COLOR: red;
+    FONT-SIZE: large
+}
+H2
+{
+    COLOR: blue;
+    FONT-SIZE: medium
+}
+H3
+{
+    COLOR: green;
+    FONT-SIZE: small
+}
+.mainDivColumn
+{
+    BORDER-BOTTOM: solid;
+    BORDER-LEFT: solid;
+    BORDER-RIGHT: solid;
+    BORDER-TOP: solid;
+    FLOAT: right;
+    POSITION: relative;
+    WIDTH: 25%
+}
+TABLE.mainTable
+{
+    BORDER-BOTTOM: solid
+}
+.mainCatalog
+{
+    BORDER-BOTTOM: red ridge;
+    COLOR: red;
+    FONT-SIZE: 20px
+}
+H4
+{
+    COLOR: black;
+    FONT-SIZE: small
+}
+H5
+{
+    FONT-SIZE: 10px
+}

@@ -1,0 +1,428 @@
+<html>
+
+<base target="_parent" />
+<head>
+<title>Catalog Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1255" />
+</head>
+
+<LINK REL="stylesheet" HREF="LinkWare1.css" TYPE="text/css" />
+<LINK REL="stylesheet" HREF="ontop.css" TYPE="text/css" />
+<SCRIPT LANGUAGE="JavaScript" SRC="tooltip_E.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="mapzoom.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="specialfx_E.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="ontop.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="panning.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="events.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="catalogicNumber.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="addSearchFocus.js"></SCRIPT>
+<LINK REL="stylesheet" HREF="tabs.css" TYPE="text/css" />
+<SCRIPT LANGUAGE="JavaScript" SRC="tabs.js"></SCRIPT>
+<LINK REL="stylesheet" HREF="WebEditor.css" TYPE="text/css" />
+<SCRIPT LANGUAGE="JavaScript" SRC="WebEditor.js"></SCRIPT>
+
+<a name = "Picture"></a>
+<input type="hidden" name="pic_name" value=<# PICTURE_NAME ORDINAL=1 ENCAPS=' #>></input>
+<input type="hidden" name="map_name" value=<# IMAGEMAP_NAME ORDINAL=1 ENCAPS=' #>></input>
+
+<body class="BodyCatalog" dir="ltr">
+<SPAN id="globalAreaId" style="visibilty:hidden;"></SPAN>
+
+<div align="center">
+<table align="center">
+	<tr>
+		<td><# TEXT_1 #></td>
+		<td><# TEXT_2 #></td>
+		<td><# TEXT_3 #></td>
+	</tr>
+	<tr>
+		<td><# TEXT_4 #></td>
+		<td align="center"><# TEXT_5 #><IMG  name="SearchFocus" src="blankSearchFocus.gif" STYLE="position:absolute; top:0px ; left:0px; z-index : 100 visibilty : :hidden" onclick="javascript:hideSearchImage()" />
+		<# MAP ORDINAL=1 LABLE1="Name" LABLE2="Part&nbsp;Number" LABLE3="Remark" #> </td>
+		<td><# TEXT_6 #></td>
+	</tr>
+	<tr>
+		<td><# TEXT_7 #></td>
+		<td><# TEXT_8 #></td>
+		<td><# TEXT_9 #></td>
+	</tr>
+</table>
+</div>
+<a name = "ItemProperties"></a> <!-- do not delete this href it is for up/down arrows -->
+<!-- Item Documents -->
+<div align="center">
+<TABLE border="0" cellPadding="5" cellSpacing="0" align="center" bordercolor="black" dir="ltr"  style="Display:none" id="ItemDocuments">
+<tr>
+	<td align=center colspan=3>
+
+	<font class="TitleText_E">Item Documents</font>
+	<HR>
+	</td>
+</tr>
+<tr>
+	<td colspan="3">
+		<TABLE border="1" cellPadding="5" cellSpacing="0" align="center" bordercolor="black" dir="ltr">
+			<tr>
+				<td bgcolor="tan"><b>Icon</b></td>
+				<td bgcolor="tan"><b>Description</b></td>
+				<td bgcolor="tan"><b>DocumentID</b></td>
+				<td bgcolor="tan"><b>Name</b></td>
+			</tr>
+				<#DOCUMENT_LOOP_BEGIN#>
+
+					<!--show item documents div if has items.-->
+					<script language="JavaScript">
+						ItemDocuments.style.display='';
+					</script>
+					<!--end-->
+
+				<tr>
+
+					<td class="notestabs">&nbsp;<B><FONT color=black><img align= absMiddle src= "IconTypes/<#DOCUMENTOBJECTTYPE#>.gif"></img></font></b>&nbsp;</td>
+					<td class="notestabs">&nbsp;<B><FONT color=black> <#DOCUMENTDESCRIPTION#></font></b>&nbsp;</td>
+					<td class="notestabs">&nbsp;<#DOCUMENTID#>&nbsp;</td>
+					<td class="notestabs">&nbsp;<A HREF = "<#DOCUMENTPATH#>" target="_blank"><#DOCUMENTNAME#></A>&nbsp;</td>
+
+				</tr>
+
+
+				<#DOCUMENT_LOOP_END#>
+
+		</table>
+
+	</td>
+</tr>
+</tr>
+</table>
+
+<!-- Properties -->
+
+<table  width="100%">
+<tr align="center">
+<td>
+<br/>
+<font class="TitleText_E">Item Properties</font>
+<hr/>
+
+<TABLE border="0" cellPadding="0" cellSpacing="0" height="100%" width="100%">
+  <TR>
+    <TD align="left" vAlign="top" width="100%">
+      <TABLE  border="0" cellPadding="2" cellSpacing="0" id="idTabs"  width="98%">
+        <TBODY>
+        <TR height="25" vAlign="center">
+ <!--<TD class="clsTab_Blank" width="1%">&#160;&#160;&#160;&#160;&#160;</TD>-->
+ <TD class="clsTab" id="tabs" onclick="TabClick('0');" width="50%"><table><tr><td class="clsTab_Part_Small"><a></a></td><td><A href="javscript:void();"
+   onclick="return TabClick('0');">General</A></td></tr></table></TD>
+ <TD class="clsTab" id="tabs" onclick="TabClick('1');" width="50%"><table><tr><td class="clsTab_Part_Small"><a></a></td><td><A href="javscript:void();"
+   onclick="return TabClick('1');">Properties</A></td></tr></table></TD>
+<TD class="clsTab_Blank" id="tabs" width="100%">&#160;</TD>
+</TR></TBODY></TABLE>
+
+     <SCRIPT>tabs[2].width="100%"; idTabs.style.display="block";</SCRIPT>
+
+
+<TABLE border="0" cellPadding="0" cellSpacing="0" id="newsContent" width="98%"><TBODY>
+<TR><TD width="5"></TD><TD align="center" width="100%" class="clstabselected">
+<br></br>
+<!--Start Content of tab 1 -->
+<TABLE class="regular"	border="0" cellPadding="5" cellSpacing="0" align="center" dir="ltr" width="90%">
+	<xsl:for-each select="Items/Item">
+
+		<TR>
+			<TD class="normal" width="20%">Name:</TD>
+			<TD align="left" class="notestabs" width="30%">
+				<#PART PROP=PHEBDESC#>
+			&#160;</TD>
+			<TD class="normal" width="20%">Revision:</TD>
+			<TD align="left" class="notestabs" width="30%">
+				<#PART PROP=PREVISION#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal">Manufacturer Number:</TD>
+			<TD width="20%" align="left" class="notestabs">
+				<#PART PROP=VENDOR_NUMBER#>
+			&#160;</TD>
+			<TD class="normal">Manufacturer Code:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=VENDOR_CODE#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal">Item ID:</TD>
+			<TD width="20%" align="left" class="notestabs">
+				<#PART PROP=ITEM_ID#>
+			&#160;</TD>
+			<TD class="normal">Quantity:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PQTY#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal">Status:</TD>
+			<TD width="20%" align="left" class="notestabs">
+				<#PART PROP=ITEM_STATUS#>
+			&#160;</TD>
+			<TD class="normal">ObjectType:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PKEYTYPE#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal">Create Date:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PCREATEDATE#>
+			&#160;</TD>
+			<TD class="normal">Update Date:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PUPDATEDATE#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal">Sequence Number:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PBALOONNUMBER#>
+			&#160;</TD>
+			<TD class="normal">Pkey:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PKEY#>
+			&#160;</TD>
+		</TR>
+	</xsl:for-each>
+</TABLE>
+
+<!--End Content of tab 1 -->
+
+<br></br></TD></TR></TBODY></TABLE>
+<SCRIPT>newsContent.style.display="none";</SCRIPT>
+
+<TABLE border="0" cellPadding="0" cellSpacing="0" id="newsContent" width="98%"><TBODY>
+<TR><TD width="5"></TD><TD width="100%" class="clstabselected"><br></br>
+
+<!--Start Content of tab 2 -->
+<TABLE class="regular"	border="0" cellPadding="5" cellSpacing="0" align="center" dir="ltr" width="90%">
+	<xsl:for-each select="Items/Item">
+		<TR>
+			<TD class="normal" width="20%" nowrap="yes">FRU:</TD>
+			<TD align="left" class="notestabs" width="30%">
+				<#PART PROP=PPROP1#>
+			&#160;</TD>
+			<TD class="normal" width="20%" nowrap="yes">Price:</TD>
+			<TD align="left" class="notestabs" width="30%">
+				<#PART PROP=PPROP2#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">ECO_NUM:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP3#>
+			&#160;</TD>
+			<TD class="normal" nowrap="yes">Property 4:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP4#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">Property 5:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP5#>
+			&#160;</TD>
+			<TD class="normal" nowrap="yes">Property 6:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP6#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">Property 7:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP7#>
+			&#160;</TD>
+			<TD class="normal" width="40%" nowrap="yes">Property 8:</TD>
+			<TD align="left" colspan="3" class="notestabs">
+				<#PART PROP=PPROP8#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">Property 9:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP9#>
+			&#160;</TD>
+			<TD class="normal" width="40%" nowrap="yes">Property 10:</TD>
+			<TD align="left" colspan="3" class="notestabs">
+				<#PART PROP=PPROP10#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" width="20%" nowrap="yes">Property 11:</TD>
+			<TD align="left" class="notestabs" width="30%">
+				<#PART PROP=PPROP11#>
+			&#160;</TD>
+			<TD class="normal" width="20%" nowrap="yes">Property 12:</TD>
+			<TD align="left" class="notestabs" width="30%">
+				<#PART PROP=PPROP12#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">Property 13:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP13#>
+			&#160;</TD>
+			<TD class="normal" nowrap="yes">Property 14:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP14#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">Property 15:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP15#>
+			&#160;</TD>
+			<TD class="normal" nowrap="yes">Property 16:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP16#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">Property 17:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP17#>
+			&#160;</TD>
+			<TD class="normal" width="40%" nowrap="yes">Property 18:</TD>
+			<TD align="left" colspan="3" class="notestabs">
+				<#PART PROP=PPROP18#>
+			&#160;</TD>
+		</TR>
+		<TR>
+			<TD class="normal" nowrap="yes">Property 19:</TD>
+			<TD align="left" class="notestabs">
+				<#PART PROP=PPROP19#>
+			&#160;</TD>
+			<TD class="normal" width="40%" nowrap="yes">Property 20:</TD>
+			<TD align="left" colspan="3" class="notestabs">
+				<#PART PROP=PPROP20#>
+			&#160;</TD>
+		</TR>
+	</xsl:for-each>
+</TABLE>
+
+<!--End Content of tab 2 -->
+
+
+<br></br></TD></TR></TBODY></TABLE>
+<SCRIPT>newsContent[1].style.display="none";</SCRIPT>
+
+
+
+<TABLE border="0" cellPadding="0" cellSpacing="0" id="newsContent" width="100%"><TBODY>
+<TR><TD width="5"></TD><TD width="100%" class="clstabselected"><br></br>
+
+<!--Start Content of tab 7 -->
+
+
+<!--End Content of tab 7-->
+
+
+
+<br></br></TD></TR></TBODY></TABLE>
+<SCRIPT>newsContent[2].style.display="none";</SCRIPT>
+
+
+</TD>
+</TR>
+</TABLE><SCRIPT>newsContent[0].style.display = "block";tabs[0].className = "clsTabSelected_Top";</SCRIPT>
+
+
+<!-- Start Part Toolbar -->
+	<br/>
+	<TABLE class="LW-toolbar" cellpadding="2" cellspacing="0" border="0" align="center" ID="Table1">
+	<TR>
+			<td class="LW-toolbar"> 
+					<table border="0" cellspacing="0" cellpadding="0" ID="Table2">
+						<tr>
+							<td class="LW-toolbar" nowrap="yes">
+								<a class="LW-toolbar" href="JavaScript:AddObj('New_ILS_TAAS_E.xsl');void(0);" target="_self" title="New">
+									<img src="WEImages/newdoc.gif" alt="New" border="0" width="16" height="16"/>
+								</a>
+							</td>
+							<td class="LW-toolbar" nowrap="yes">
+								<a class="LW-font" href="JavaScript:AddObj('New_ILS_TAAS_E.xsl');void(0);" target="_self" title="New"> New </a>
+							</td>
+						</tr>
+					</table>
+			</td>
+			<TD class="LW-separator">|</TD>
+			<td class="LW-toolbar"> <table border="0" cellspacing="0" cellpadding="0" ID="Table3"><tr><td class="LW-toolbar" nowrap="yes"><a class="LW-toolbar" href="javascript:CutObj(true);void(0);" title="Cut" target="_self"><img src="WEImages/tbcut.gif" alt="Cut" border="0" width="16" height="16"/></a></td><td class="LW-toolbar" nowrap="yes"><a class="LW-font" href="javascript:CutObj(true);void(0);" title="Cut" target="_self"> Cut </a></td></tr></table></td>
+			<TD class="LW-separator">|</TD>
+			<td class="LW-toolbar"> <table border="0" cellspacing="0" cellpadding="0" ID="Table4"><tr><td class="LW-toolbar" nowrap="yes"><a class="LW-toolbar" href="javascript:CopyObj(true);void(0);" title="Copy" target="_self"><img src="WEImages/tbcopy.gif" alt="Copy" border="0" width="16" height="16"/></a></td><td class="LW-toolbar" nowrap="yes"><a class="LW-font" href="javascript:CopyObj(true);void(0);" title="Copy" target="_self"> Copy </a></td></tr></table></td>
+			<TD class="LW-separator">|</TD>
+			<td class="LW-toolbar"> <table border="0" cellspacing="0" cellpadding="0" ID="Table5"><tr><td class="LW-toolbar" nowrap="yes"><a class="LW-toolbar" href="javascript:PasteObj('|10|','','');void(0);" title="Paste" target="_self"><img src="WEImages/tbpaste.gif" alt="Paste" border="0" width="16" height="16"/></a></td><td class="LW-toolbar" nowrap="yes"><a class="LW-font" href="javascript:PasteObj('|10|','','');void(0);" title="Paste" target="_self"> Paste </a></td></tr></table></td>
+			<TD class="LW-separator">|</TD>
+			<td class="LW-toolbar"> 
+					<table border="0" cellspacing="0" cellpadding="0" ID="Table6">
+						<tr>
+							<td class="LW-toolbar" nowrap="yes">
+								<a class="LW-toolbar" href="JavaScript:UpdateObj('T_CAT_PART','Update_ILS_TAAS_E.xsl','true');void(0);" target="_self" title="Edit">
+									<img src="WEImages/editgrid.gif" alt="Edit" border="0" width="16" height="16"/>
+								</a>
+							</td>
+							<td class="LW-toolbar" nowrap="yes">
+								<a class="LW-font" href="JavaScript:UpdateObj('T_CAT_PART','Update_ILS_TAAS_E.xsl','true');void(0);" target="_self" title="Edit"> Edit </a>
+							</td>
+						</tr>
+					</table>
+			</td>
+			<TD class="LW-separator">|</TD>
+			<td class="LW-toolbar">
+					<table border="0" cellspacing="0" cellpadding="0" ID="Table7">
+						<tr>
+							<td class="LW-toolbar" nowrap="yes">
+								<a class="LW-toolbar" href="JavaScript:DelObj('true');void(0);" target="_self" title="Delete">
+									<img src="WEImages/delete.gif" alt="Delete" border="0" width="16" height="16"/>
+								</a>
+							</td>
+							<td class="LW-toolbar" nowrap="yes">
+								<a class="LW-font" href="JavaScript:DelObj('true');void(0);" target="_self" title="Delete"> Delete </a>
+							</td>
+						</tr>
+					</table>
+			</td>
+			<TD class="LW-separator">|</TD>
+			<td class="LW-toolbar"> <table border="0" cellspacing="0" cellpadding="0" ID="Table8"><tr><td class="LW-toolbar" nowrap="yes"><a class="LW-toolbar" target="_self" href="JavaScript:PermissionsWin('true');void(0);" title="Permissions"><img src="WEImages/permissions.gif" alt="Permissions" border="0" width="16" height="16"/></a></td><td class="LW-toolbar" nowrap="yes"><a class="LW-font" target="_self" href="JavaScript:PermissionsWin('true');void(0);" title="Permissions"> Permissions </a></td></tr></table></td>
+			<!--<TD width="99%" class="LW-toolbar" align="right" nowrap="yes" id="align01">&#160;</TD>-->
+		</TR>
+	</TABLE>
+	<br/><br/>
+<!-- End Part Toolbar -->
+
+</td>
+</tr>
+</table>
+
+</div>
+
+</td>
+
+</tr>
+</table>
+
+<div align="center">
+<HR>
+<a href="mailto:yoav@mckit.co.il?cc=royi@mckit.co.il&Subject=Linkware Parts order&Body=Please order the following part%0D%0ANAME: <#PART PROP=PHEBDESC#>%0D%0ACATALOG NUMBER: <#PART PROP=ITEM_ID#>"><img src=email.gif>Email order</a>
+<HR>
+</div>
+
+<DIV ID="tipwindow" CLASS="TipHelp" STYLE="Top:100; Left:200; display=none; Z-INDEX:200;">
+ToolTip text goes in here. Zac (-:</DIV>
+
+<script language="JavaScript">
+if (top.frames('Parts Map').document.all[window.map_name.value]+"" != "undefined" )
+{
+    fnZoom(window.map_name.value, window.pic_name.value, getCookie('_zoom_ratio'));
+    fnSetSearchFocus();
+    window.onresize = changeSize
+   }
+</script>
+
+</body>
+</html>

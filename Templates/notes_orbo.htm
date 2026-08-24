@@ -1,0 +1,140 @@
+<HTML>
+<LINK href="Style.css" rel="stylesheet" type="text/css" />
+<HEAD>
+	<TITLE></TITLE>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255" />
+	<LINK REL="stylesheet" HREF="LinkWare1.css" TYPE="text/css" />
+</HEAD>
+<BODY class="BodyCatalog" dir="ltr" onLoad="getpkey()" style="background-color:white" leftmargin="0" topmargin="0">
+
+<script LANGUAGE=VBSCRIPT>
+function getpkey()
+	dim temparrPAR
+	dim temparr
+	Dim MyCon
+	Dim ADC
+
+	temparrPAR = split(location.search,"&")
+	temparr=split(temparrPAR(0),"=")
+	Set MyCon = CreateObject("ADODB.Connection")
+
+	mdbFileName="C:\Program Files\LinkWare\notes.mdb"
+	MyConnectString = "DRIVER={Microsoft Access Driver (*.mdb)};DBQ=" & mdbFileName & ";"
+
+	MyCon.Open MyConnectString
+	Set ADC = CREATEOBJECT("ADODB.RECORDSET")
+	ADC.Open "select note_content from tbl_notes where note_pkey='" & temparr(1) & "'", MyCon, , , adOpenKeyset
+'msgbox "select note_content from tbl_notes where note_pkey='" & temparr(1) & "'"
+	txtnotepkey.innertext=temparr(1)
+	txtsql.innertext="insert"
+
+	temparr=split(temparrPAR(1),"=")
+	mytitle.innerhtml = "My remarks for <br><b>" & replace(temparr(1),"%20"," ") &"<br>"
+
+	if not adc.eof then
+		txtsql.innertext="update"
+		sNote= adc("note_content")
+		document.all.Note.value = sNote
+
+		'sSQL = "CREATE PROC testinsert AS insert into tbl_notes values('aa','bb');"
+		'CreateStoredProc(sSQL)
+		'sSQL = "execute testinsert"
+		'CreateStoredProc(sSQL)
+		'msgbox ssql
+	end if
+
+	adc.close
+	set adc=nothing
+	MyCon.close
+	set MyCon=nothing
+End function
+
+
+
+
+
+
+function DeleteNote()
+	dim temparr
+	Dim MyCon
+	Dim ADC
+
+	Set MyCon = CreateObject("ADODB.Connection")
+
+	mdbFileName="C:\Program Files\LinkWare\notes.mdb"
+	MyConnectString = "DRIVER={Microsoft Access Driver (*.mdb)};DBQ=" & mdbFileName & ";"
+
+	MyCon.Open MyConnectString
+	sql = "delete from tbl_notes where note_pkey='" & document.all.txtnotepkey.value & "'"
+	MyCon.execute sql
+	txtsql.innertext="insert"
+	MyCon.close
+	set MyCon=nothing
+end function
+
+function updatenote()
+	dim temparr
+	Dim MyCon
+	Dim ADC
+
+	Set MyCon = CreateObject("ADODB.Connection")
+
+	mdbFileName="C:\Program Files\LinkWare\notes.mdb"
+	MyConnectString = "DRIVER={Microsoft Access Driver (*.mdb)};DBQ=" & mdbFileName & ";"
+
+	MyCon.Open MyConnectString
+	if document.all.txtsql.value="update" then
+		sql = "update tbl_notes set note_content='" & replace(document.all.Note.InnerHTML & "","'","''") & "' where note_pkey='" & document.all.txtnotepkey.value & "'"
+	else
+		sql = "insert into tbl_notes (Note_Pkey,Note_Content) values ('" & document.all.txtnotepkey.value & "','" & replace(document.all.Note.InnerHTML & "","'","''") & "')"
+	end if
+	MyCon.execute sql
+	txtsql.innertext="update"
+	MyCon.close
+	set MyCon=nothing
+end function
+
+Sub CreateStoredProc(sSQL)
+        Dim con
+        Dim cmd
+        ' Change Data Source to the location of Northwind.mdb on your local
+        ' system.
+        Dim sConStr
+        sConStr = "PROVIDER=Microsoft.Jet.OLEDB.4.0;Data " _
+            & "Source=D:\VB\SearchMDB\notes.mdb"
+        set con = CreateObject("ADODB.Connection")
+		set cmd = CreateObject("ADODB.Command")
+		con.open sconstr
+		Con.execute ssql
+End Sub
+
+
+</script>
+<table border="0" align="center" bgcolor="#6B9CCE" cellspacing="0" cellpadding="0">
+	<tr>
+		<td align=center>
+			<span id="FilePath" style="FONT-FAMILY:arial;"/>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<br>
+			<span align="center" id="mytitle" style="FONT-FAMILY:arial;"></span>
+			<input type=hidden id=txtnotepkey>
+			<input type=hidden id=txtsql>
+				<TABLE border="1" cellPadding="5" cellSpacing="0" align="center" bordercolor="black" dir="ltr">
+					<TR>
+						<TD style="background-color:#D4E9FA;color:black;FONT-FAMILY:arial;" class="bigtext_E" align="right"><b>Personal Note:</b></TD>
+						<TD style="background-color:#D4E9FA;FONT-FAMILY:arial;" class="tabletext" align="left">&nbsp;<textarea cols=50 rows=10 id="Note"></textarea>&nbsp;</TD>
+				   </TR>
+			</TABLE>
+			<br>
+			<input type=submit value="OK" onclick="updatenote();window.close();">
+			<input type=submit value="Delete" onclick="JavaScript:if (confirm('Are you sure you want to delete this remark?'))	{ DeleteNote();window.close();}">
+			<input type=submit value="Close" onclick="window.close();">
+			<br><br>
+		</td>
+	</tr>
+</table>
+</BODY>
+</HTML>

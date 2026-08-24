@@ -1,0 +1,33 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="srcpath.js"></SCRIPT>
+ <SCRIPT LANGUAGE="javascript" SRC="../SearchPath.js"></SCRIPT>
+<script language="JavaScript">
+<!--
+var bFinishedLoading=false;
+document.write("<frameset onLoad='javascript:bFinishedLoading=true;' rows=");
+var r;
+r = getCookie('_row_ratio');
+if (r==null) r="14%,*";
+document.write("'" + r + "'>");
+
+document.write("<frame  style='border:1px solid black' name='Header' src=");
+var pg = <# FRAME SOURCE_FILE=header.xml ENCAPS=' #>;
+document.write(pg);
+document.write(" marginwidth='0' marginheight='0' scrolling='no' >");
+document.write("<frameset id='inr_frmst' frameborder='0' cols=");
+var r;
+r = getCookie('_col_ratio');
+if (r==null) r="65%,*";
+document.write("'" + r + "'>");
+//-->
+</script>
+<!-- frame for the Index.xml mast be called "Index" -->
+        <frame style="border:1px solid black" name="Parts Map" src=<#FRAME SOURCE_FILE=left.html#> marginwidth="0" marginheight="0" scrolling="auto" frameborder="0">
+        <frame style="border:1px solid black" name="Parts Table" src=<#FRAME SOURCE_FILE=right_ltr.xml#> marginwidth="0" marginheight="0" scrolling="auto" frameborder="0">
+    </frameset>
+</frameset>
+</head></html>

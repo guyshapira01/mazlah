@@ -1,0 +1,227 @@
+
+/* Modern Parts Table - Chrome */
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #f4f7fb;
+    font-family: "Segoe UI";
+    color: #13213c;
+}
+
+.BodyCatalog {
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.parts-shell {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #d5dfec;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 14px rgba(20, 48, 85, .10);
+}
+
+.parts-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: auto;
+    direction: ltr;
+}
+
+.parts-table th {
+    background: linear-gradient(#185aa8, #0d4385);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 11px 8px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,.28);
+    border-bottom: 1px solid #0b3971;
+    white-space: nowrap;
+	font-family: "Segoe UI";
+}
+
+.parts-table th:first-child { border-top-left-radius: 9px; }
+.parts-table th:last-child  { border-top-right-radius: 9px; }
+
+.parts-table td {
+    padding: 8px 9px;
+    font-size: 13px;
+	font-family: "Segoe UI";
+    border-right: 1px solid #d8e1ec;
+    border-bottom: 1px solid #d8e1ec;
+    background: #fff;
+    vertical-align: middle;
+    transition: background-color .12s ease;
+}
+
+.parts-table tbody tr:nth-child(even) td {
+    background: #f8fafc;
+}
+
+/* Hover is visual only; it does NOT call the hotspot */
+.parts-table tbody tr:hover td {
+    background: #eef5ff;
+}
+
+.part-name {
+    direction: rtl;
+    text-align: right;
+    font-weight: 700;
+    min-width: 250px;
+}
+
+.code-cell {
+    text-align: center;
+    direction: ltr;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.part-number {
+    text-align: center;
+    direction: ltr;
+    white-space: nowrap;
+}
+
+.qty-cell {
+    text-align: center;
+    width: 64px;
+}
+
+.qty-badge {
+    display: inline-flex;
+    min-width: 30px;
+    height: 27px;
+    padding: 0 7px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 7px;
+    background: #e9f2ff;
+    color: #123e77;
+    font-weight: 700;
+    font-size: 14px;
+	font-family: "Segoe UI";
+}
+
+.cart-cell {
+    width: 48px;
+    text-align: center;
+}
+
+.cart-btn {
+    width: 34px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #c6d7eb;
+    border-radius: 7px;
+    background: #edf5ff;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: transform .12s ease, background-color .12s ease;
+}
+
+.cart-btn:hover {
+    background: #dcecff;
+    transform: translateY(-1px);
+}
+
+.cart-btn img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.parts-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 14px;
+    background: #edf3fa;
+    border-top: 1px solid #c9d6e5;
+    color: #163c70;
+    font-size: 13px;
+	font-family: "Segoe UI";
+    font-weight: 700;
+    direction: rtl;
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.legend-dot.selected { background: #32a852; }
+.legend-dot.hovered  { background: #f2c94c; }
+
+@media (max-width: 850px) {
+    .BodyCatalog { padding: 5px; }
+    .parts-table th, .parts-table td { padding: 6px 5px; font-size: 12px;font-family: "Segoe UI"; }
+    .part-name { min-width: 190px; }
+}
+
+
+/* =========================================================
+   Hotspot indication - refined professional style
+   Hover    : subtle warm highlight
+   Selected : very light green + strong green edge
+   ========================================================= */
+
+.parts-table tbody tr.hotspot-hover > td {
+    background: yellow !important;
+    color: #13213C !important;
+}
+
+/* Persistent selection */
+.parts-table tbody tr.hotspot-selected > td {
+    background: #b6ff00 !important;
+    color: #13213C !important;
+    border-top-color: #B9DFC5 !important;
+    border-bottom-color: #B9DFC5 !important;
+}
+
+/* Because the table itself is LTR, the last cell is the visual right edge. */
+.parts-table tbody tr.hotspot-selected > td:last-child {
+    border-right: 4px solid #2E9B50 !important;
+}
+
+/* Keep selection stable when the mouse passes over it. */
+.parts-table tbody tr.hotspot-selected:hover > td {
+    background: #b6ff00 !important;
+    color: #13213C !important;
+}
+
+/* Selected quantity badge gets a subtle matching treatment. */
+.parts-table tbody tr.hotspot-selected .qty-badge {
+    background: #DDF3E4 !important;
+    color: #176B36 !important;
+}
+
+/* Selected cart button gets only a subtle green cue. */
+.parts-table tbody tr.hotspot-selected .cart-btn {
+    border-color: #9FD0AE !important;
+    background: #EAF7EE !important;
+}

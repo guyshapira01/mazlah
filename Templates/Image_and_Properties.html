@@ -1,0 +1,111 @@
+<html>
+
+<base target="_parent" />
+<head>
+<title>Catalog Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1255" />
+</head>
+
+<LINK REL="stylesheet" HREF="LinkWare1.css" TYPE="text/css" />
+<LINK REL="stylesheet" HREF="ontop.css" TYPE="text/css" />
+<SCRIPT LANGUAGE="JavaScript" SRC="tooltip.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="mapzoom.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="specialfx.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="ontop.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="panning.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="events.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="addSearchFocus.js"></SCRIPT>
+
+<a name = "Picture"></a>
+<input type="hidden" name="pic_name" value=<# PICTURE_NAME ORDINAL=1 ENCAPS=' #></input>
+<input type="hidden" name="map_name" value=<# IMAGEMAP_NAME ORDINAL=1 ENCAPS=' #></input>
+
+<body class="BodyCatalog" dir="rtl">
+<SPAN id="globalAreaId" style="visibilty:hidden;"></SPAN>
+
+<div align="center">
+<table align="center">
+	<tr>
+		<td><# TEXT_1 #></td>
+		<td><# TEXT_2 #></td>
+		<td><# TEXT_3 #></td>
+	</tr>
+	<tr>
+		<td><# TEXT_4 #></td>
+		<td align="center"><# TEXT_5 #><IMG  name="SearchFocus" src="blankSearchFocus.gif" STYLE="position:absolute; top:0px ; left:0px; z-index : 100 visibilty : :hidden" onclick="javascript:hideSearchImage()" />
+		<# MAP ORDINAL=1 LABLE1="שם" LABLE2="מק"ט" LABLE3="הערה" #></td>
+		<td><# TEXT_6 #></td>
+	</tr>
+	<tr>
+		<td><# TEXT_7 #></td>
+		<td><# TEXT_8 #></td>
+		<td><# TEXT_9 #></td>
+	</tr>
+</table>
+</div>
+
+<!-- Properties -->
+<a name = "ItemProperties"></a>
+<DIV  style="display:'';" align="center">
+<table  >
+<tr align="right">
+<td>
+<HR>
+<font class="TitleText">רשימת תכונות פריט </font>
+<TABLE  BORDER bgcolor="White" cellpadding=2 bordercolor="Blue">
+    <TR>
+	<TD bgcolor="Silver" class="bigtext" align="right">שם</TD>
+	<TD class="tabletext" align="center"><#PART PROP=PHEBDESC#></TD>
+   </TR>
+<TR>
+	<TD bgcolor="Silver" class="bigtext" align="right">קוד יצרן</TD>
+	<TD class="tabletext" align="center"><#PART PROP=VENDOR_CODE#></TD>
+    </TR>
+<TR>
+	<TD bgcolor="Silver" class="bigtext" align="right">מספר יצרן</TD>
+	<TD class="tabletext" align="center"><#PART PROP=VENDOR_NUMBER#></TD>
+    </TR>
+<TR>
+	<TD bgcolor="Silver" class="bigtext" align="right">מק"ט</TD>
+	<TD class="tabletext" align="center"><#PART PROP=ITEM_ID#></TD>
+
+</TR>
+<TR>
+	<TD bgcolor="Silver" class="bigtext" align="right">כמות</TD>
+	<TD class="tabletext" align="center"><#PART PROP=PQTY#></TD>
+</TR>
+
+
+</TABLE>
+<HR>
+<font class="TitleText">רשימת מסמכים קשורים לפריט </font>
+
+<#DOCUMENT_LOOP_BEGIN#>
+   <div align="right" dir="rtl">
+   <LI><A HREF = "<#DOCUMENTPATH#>"><#DOCUMENTNAME#></A><BR>
+   </div>
+<#DOCUMENT_LOOP_END#>
+</td>
+<td>&nbsp&nbsp&nbsp&nbsp
+</td>
+
+</tr>
+</table>
+</DIV>
+
+
+<DIV ID="tipwindow" CLASS="TipHelp" STYLE="Top:100; Left:200; display=none; Z-INDEX:200;">
+ToolTip text goes in here. Zac (-:</DIV>
+
+<script language="JavaScript">
+if (top.frames('Parts Map').document.all[window.map_name.value]+"" != "undefined" )
+   {
+    fnZoom(window.map_name.value, window.pic_name.value, getCookie('_zoom_ratio'));
+    fnSetSearchFocus();
+    window.onresize = changeSize
+   }
+</script>
+
+</body>
+</html>

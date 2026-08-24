@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl">
+
+<xsl:template match="/">
+
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript" SRC="tree.js"></SCRIPT>
+  <SCRIPT LANGUAGE="JavaScript" SRC="../SearchPath.js"></SCRIPT>
+  <SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+  <LINK REL="stylesheet" HREF="LinkWare1.css" TYPE="text/css" />
+  <TITLE>Catalog index page</TITLE>
+</HEAD>
+<BODY class="BodyIndex"  dir="rtl" onload="JavaScript:preloadImages()" onunload="JavaScript:addToCookieDiv()">
+<input type="hidden" name="temp" value="0"/>
+<script language="JavaScript">
+	 var ExpandDiv =  new Array();
+ 	 var ExpandDivStyle =  new Array();
+ //alert(ExpndDiv.length);
+</script>
+
+	<xsl:choose>
+		<xsl:when match=".[//IsWebEditor $eq$ 'True']">
+			<script language="JavaScript">
+			<![CDATA[
+				var siteLocation;
+				var catalogNumber;
+				var LinesPerCol;
+
+				temp.value = -1;
+				LinesPerCol = 20;
+				catalogNumber = '<xsl:value-of select="//TreeIndex/CatalogKey"/>';
+	  	    ]]>
+			</script>
+		</xsl:when>
+		<xsl:otherwise>
+			<script type="text/javascript">
+			<![CDATA[
+				var siteLocation;
+				var catalogNumber;
+				var LinesPerCol;
+
+				temp.value = -1;
+				LinesPerCol = 20;
+				siteLocation = document.location.href;
+				siteLocation = siteLocation.toUpperCase()
+				siteLocation = siteLocation.split("CATALOGS/");    //Put here the Directory site of the catalog.
+				siteLocation = siteLocation[1].split("/");
+				catalogNumber = siteLocation[0];
+				//alert(catalogNumber);
+	  	    ]]>
+			</script>
+		</xsl:otherwise>
+	</xsl:choose>
+
+<script LANGUAGE="JavaScript">
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+ if (document.images)
+ 	{
+ 		if (preloadFlag == true)
+ 			{
+   				// Must Be Open And Close Images.
+   				// The Files will be xxxxOpen.jpg and xxxxClose.jpg      xxxxx = Object ObjectClass
+   				
+   				NewPictureName = document[changeImages.arguments[0]].src;
+   				if (NewPictureName.indexOf("Close") == -1)
+   					{
+   						NewPictureName = NewPictureName.replace("Open","Close");
+   						//alert(NewPictureName);
+   					}
+   				else
+   					{
+   						NewPictureName = NewPictureName.replace("Close","Open");
+   						//alert(NewPictureName);
+   					}
+   				document[changeImages.arguments[0]].src = NewPictureName;
+   			}
+ 	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+	
+		//alert("run");
+		chapterOpen = newImage("FolderOpen.gif");
+		chapterClose = newImage("FolderClose.gif");
+		//chapter_Without_Sun = newImage("Folder.jpg"); - not available.
+
+		Page_Collapse = newImage("page_pic_plus.gif");
+		Page_Expand = newImage("page_pic_minus.gif");
+		Page_Without_Sun = newImage("page_pic.gif");
+
+		itemOpen = newImage("itemOpen.gif");
+		itemClose = newImage("itemClose.gif");
+		Item_Without_Sun = newImage("item.gif");
+
+		preloadFlag = true;
+	}
+	
+	getFromCookieDiv()
+
+}	
+</script>
+
+  <div align="right">
+<table width="100%" height="48" bgcolor="#6588CF" dir="rtl" align="right">
+<tr>
+	<td width="100" align="center">
+
+	  <SCRIPT LANGUAGE="JavaScript">
+	  //Add the correct href acording to the url - local or internet "
+	  CheckHomeURL();
+	  </SCRIPT>
+	  <IMG src="home.jpg" border="0" />
+	 
+
+	</td>
+	<td align="center">  <div  class="mainCatalog" align="center" dir = "RTL" style="FONT-FAMILY:Arial;COLOR:WHITE;FONT-SIZE:18px"><b> <xsl:value-of select="TreeIndex/CatalogName" /></b></div>
+    <td width="100" align="center"></td>
+</td>
+
+<!-- <td width="50"><a href="JavaScript:void(0);"><img border="0" src="namaicon.gif" onClick="Javascript:window.open ('Credits.html', 'Credits', 'width=700,height=500,top=40,left=40,resizeable=0,menubar=no,alwaysRaised,dependent');" /></a></td> -->
+</tr></table>
+<div class="underLine"><br/><br/><br/></div>
+
+	
+	<script language ="javascript">insertTable()</script>
+	<script language ="javascript">insertTR ()</script><script language ="javascript">insertTD()</script>
+
+	<xsl:apply-templates select="TreeIndex/Object/Object" />
+	</div>
+	<div class="underLine"></div>
+	<div id="NoneID"></div> <!-- This is id for uncollapse node. its for noneID in tree.js will not return error. -->
+	</BODY>
+	</HTML>
+</xsl:template>
+
+<xsl:template match="Object">
+
+	<xsl:choose>
+		<xsl:when match=".[Level $eq$ 1]">
+			<script language="javascript">
+				temp.value = (temp.value*1) + 1
+				if ( ((temp.value*1)/LinesPerCol) == Math.round((temp.value*1)/LinesPerCol) ) {
+					insertTD();				
+				}
+			</script>
+			<xsl:choose>
+				<xsl:when match=".[Object/Level $gt$ 1]">
+					<div  style="  right=20; cursor:hand;" >
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']">
+							<span class="level1" dir="rtl"><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','FolderClose.gif','FolderOpen.gif');</xsl:attribute><xsl:value-of select="Name" /></span>
+			     			</xsl:when>
+					     	<xsl:otherwise>
+							<span class="level1" dir="rtl"><a target="_top"><xsl:attribute name="href">
+							<xsl:choose>
+								<xsl:when match=".[//IsWebEditor $eq$ 'True']">ShowTemplate.aspx?Template=<xsl:value-of select="Template"/>&amp;Pkey=<xsl:value-of select="ID" />&amp;ParentKey=<xsl:value-of select="ParentKey"/>&amp;Type=2&amp;PkeyCatalog=<xsl:value-of select="//TreeIndex/CatalogKey"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="ID" />.html</xsl:otherwise>
+							</xsl:choose>
+							</xsl:attribute><xsl:value-of select="Name" /></a></span>
+			     			</xsl:otherwise>
+                        		</xsl:choose>
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']"><img src="FolderClose.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="name"><xsl:value-of select="ID" /></xsl:attribute><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','FolderClose.gif','FolderOpen.gif');</xsl:attribute></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Page']"><img src="page_pic.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />');</xsl:attribute></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Item']"><img src="itemClose.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="name"><xsl:value-of select="ID" /></xsl:attribute><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','itemClose.gif','itemOpen.gif');</xsl:attribute></img></xsl:when>
+						</xsl:choose>&#160; &#160; &#160; &#160;  <!-- &nbsp; = &#160; -->
+	     				</div>
+					<DIV  style="display:none;"><xsl:attribute name="id">inner_<xsl:value-of select="ID" /></xsl:attribute>
+					<xsl:apply-templates select="Object" />
+					</DIV>
+				</xsl:when>
+				<xsl:otherwise>
+					<div  style="  right=20;">
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']">
+							<span class="level1" dir="rtl"><xsl:value-of select="Name" /></span>
+			     			</xsl:when>
+					     	<xsl:otherwise>
+							<span class="level1" dir="rtl"><a target="_top"><xsl:attribute name="href">
+							<xsl:choose>
+								<xsl:when match=".[//IsWebEditor $eq$ 'True']">ShowTemplate.aspx?Template=<xsl:value-of select="Template"/>&amp;Pkey=<xsl:value-of select="ID" />&amp;ParentKey=<xsl:value-of select="ParentKey"/>&amp;Type=2&amp;PkeyCatalog=<xsl:value-of select="//TreeIndex/CatalogKey"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="ID" />.html</xsl:otherwise>
+							</xsl:choose>
+							</xsl:attribute>
+							<xsl:value-of select="Name" /></a></span>
+			     			</xsl:otherwise>
+                        		</xsl:choose>0
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']"><img src="FolderClose.gif" onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Page']"><img src="page_pic.gif"  onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Item']"><img src="item.gif"  onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+					</xsl:choose>&#160; &#160; &#160; &#160;  <!-- &nbsp; = &#160; -->
+	     				</div>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:when>
+		<xsl:when match=".[Level $eq$ 2]">
+			<xsl:choose>
+				<xsl:when match=".[Object/Level $gt$ 2]">
+					<div  style="  right=40; cursor:hand;">
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']">
+							<span class="level2" dir="rtl"><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','FolderClose.gif','FolderOpen.gif');</xsl:attribute><xsl:value-of select="Name" /></span>
+			     			</xsl:when>
+					     	<xsl:otherwise>
+							<span class="level2" dir="rtl"><a target="_top"><xsl:attribute name="href">
+							<xsl:choose>
+								<xsl:when match=".[//IsWebEditor $eq$ 'True']">ShowTemplate.aspx?Template=<xsl:value-of select="Template"/>&amp;Pkey=<xsl:value-of select="ID" />&amp;ParentKey=<xsl:value-of select="ParentKey"/>&amp;Type=2&amp;PkeyCatalog=<xsl:value-of select="//TreeIndex/CatalogKey"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="ID" />.html</xsl:otherwise>
+							</xsl:choose>
+							</xsl:attribute><xsl:value-of select="Name" /></a></span>
+			     			</xsl:otherwise>
+                        		</xsl:choose>
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']"><img src="FolderClose.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="name"><xsl:value-of select="ID" /></xsl:attribute><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','FolderClose.gif','FolderOpen.gif');</xsl:attribute></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Page']"><img src="page_pic.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />');</xsl:attribute></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Item']"><img src="itemClose.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="name"><xsl:value-of select="ID" /></xsl:attribute><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','itemClose.gif','itemOpen.gif');</xsl:attribute></img></xsl:when>
+						</xsl:choose>&#160; &#160; &#160; &#160;&#160; &#160; &#160; &#160;  <!-- &nbsp; = &#160; -->
+	     				</div>
+					<DIV  style="display:none;"><xsl:attribute name="id">inner_<xsl:value-of select="ID" /></xsl:attribute>
+					<xsl:apply-templates select="Object" />
+					</DIV>
+				</xsl:when>
+				<xsl:otherwise>
+					<div  style="  right=40;">
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']">
+							<span class="level2" dir="rtl"><xsl:value-of select="Name" /></span>
+			     			</xsl:when>
+					     	<xsl:otherwise>
+							<span class="level2" dir="rtl"><a target="_top"><xsl:attribute name="href"><xsl:choose>
+								<xsl:when match=".[//IsWebEditor $eq$ 'True']">ShowTemplate.aspx?Template=<xsl:value-of select="Template"/>&amp;Pkey=<xsl:value-of select="ID" />&amp;ParentKey=<xsl:value-of select="ParentKey"/>&amp;Type=2&amp;PkeyCatalog=<xsl:value-of select="//TreeIndex/CatalogKey"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="ID" />.html</xsl:otherwise>
+							</xsl:choose></xsl:attribute><xsl:value-of select="Name" /></a></span>
+			     			</xsl:otherwise>
+                        		</xsl:choose>
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']"><img src="FolderClose.gif" onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Page']"><img src="page_pic.gif"  onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Item']"><img src="item.gif"  onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+					</xsl:choose>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;  <!-- &nbsp; = &#160; -->
+	     				</div>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:when>
+		<xsl:when match=".[Level $eq$ 3]">
+			<xsl:choose>
+				<xsl:when match=".[Object/Level $gt$ 3]">
+					<div  style="  right=60; cursor:hand;">
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']">
+							<span class="level3" dir="rtl"><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','FolderClose.gif','FolderOpen.gif');</xsl:attribute><xsl:value-of select="Name" /></span>
+			     			</xsl:when>
+					     	<xsl:otherwise>
+							<span class="level3" dir="rtl"><a target="_top"><xsl:attribute name="href"><xsl:choose>
+								<xsl:when match=".[//IsWebEditor $eq$ 'True']">ShowTemplate.aspx?Template=<xsl:value-of select="Template"/>&amp;Pkey=<xsl:value-of select="ID" />&amp;ParentKey=<xsl:value-of select="ParentKey"/>&amp;Type=2&amp;PkeyCatalog=<xsl:value-of select="//TreeIndex/CatalogKey"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="ID" />.html</xsl:otherwise>
+							</xsl:choose></xsl:attribute><xsl:value-of select="Name" /></a></span>
+			     			</xsl:otherwise>
+                        		</xsl:choose>
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']"><img src="FolderClose.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="name"><xsl:value-of select="ID" /></xsl:attribute><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','FolderClose.gif','FolderOpen.gif');</xsl:attribute></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Page']"><img src="page_pic.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />');</xsl:attribute></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Item']"><img src="itemClose.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="name"><xsl:value-of select="ID" /></xsl:attribute><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','itemClose.gif','itemOpen.gif');</xsl:attribute></img></xsl:when>
+						</xsl:choose>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;    <!-- &nbsp; = &#160; -->
+	     				</div>
+					<DIV  style="display:none;"><xsl:attribute name="id">inner_<xsl:value-of select="ID" /></xsl:attribute>
+					<xsl:apply-templates select="Object" />
+					</DIV>
+				</xsl:when>
+				<xsl:otherwise>
+					<div  style="  right=60;">
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']">
+							<span class="level3" dir="rtl"><xsl:value-of select="Name" /></span>
+			     			</xsl:when>
+					     	<xsl:otherwise>
+							<span class="level3" dir="rtl"><a target="_top"><xsl:attribute name="href"><xsl:choose>
+								<xsl:when match=".[//IsWebEditor $eq$ 'True']">ShowTemplate.aspx?Template=<xsl:value-of select="Template"/>&amp;Pkey=<xsl:value-of select="ID" />&amp;ParentKey=<xsl:value-of select="ParentKey"/>&amp;Type=2&amp;PkeyCatalog=<xsl:value-of select="//TreeIndex/CatalogKey"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="ID" />.html</xsl:otherwise>
+							</xsl:choose></xsl:attribute><xsl:value-of select="Name" /></a></span>
+			     			</xsl:otherwise>
+                        		</xsl:choose>
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']"><img src="FolderClose.gif" onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Page']"><img src="page_pic.gif"  onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Item']"><img src="item.gif"  onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+					</xsl:choose>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;    <!-- &nbsp; = &#160; -->
+	     				</div>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:when>
+		<xsl:when match=".[Level $eq$ 4]">
+			<xsl:choose>
+				<xsl:when match=".[Object/Level $gt$ 4]">
+					<div  style="  right=80; cursor:hand;">
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']">
+							<span class="level4"><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','FolderClose.gif','FolderOpen.gif');</xsl:attribute><xsl:value-of select="Name" /></span>
+			     			</xsl:when>
+					     	<xsl:otherwise>
+							<span class="level4"><a target="_top"><xsl:attribute name="href"><xsl:choose>
+								<xsl:when match=".[//IsWebEditor $eq$ 'True']">ShowTemplate.aspx?Template=<xsl:value-of select="Template"/>&amp;Pkey=<xsl:value-of select="ID" />&amp;ParentKey=<xsl:value-of select="ParentKey"/>&amp;Type=2&amp;PkeyCatalog=<xsl:value-of select="//TreeIndex/CatalogKey"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="ID" />.html</xsl:otherwise>
+							</xsl:choose></xsl:attribute><xsl:value-of select="Name" /></a></span>
+			     			</xsl:otherwise>
+                        		</xsl:choose>
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']"><img src="FolderClose.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="name"><xsl:value-of select="ID" /></xsl:attribute><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','FolderClose.gif','FolderOpen.gif');</xsl:attribute></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Page']"><img src="page_pic.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />');</xsl:attribute></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Item']"><img src="itemClose.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="name"><xsl:value-of select="ID" /></xsl:attribute><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','itemClose.gif','itemOpen.gif');</xsl:attribute></img></xsl:when>
+						</xsl:choose>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;    <!-- &nbsp; = &#160; -->
+	     				</div>
+					<DIV  style="display:none;"><xsl:attribute name="id">inner_<xsl:value-of select="ID" /></xsl:attribute>
+					<xsl:apply-templates select="Object" />
+					</DIV>
+				</xsl:when>
+				<xsl:otherwise>
+					<div  style="  right=80;">
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']">
+							<span class="level4"><xsl:value-of select="Name" /></span>
+			     			</xsl:when>
+					     	<xsl:otherwise>
+							<span class="level4"><a target="_top"><xsl:attribute name="href"><xsl:choose>
+								<xsl:when match=".[//IsWebEditor $eq$ 'True']">ShowTemplate.aspx?Template=<xsl:value-of select="Template"/>&amp;Pkey=<xsl:value-of select="ID" />&amp;ParentKey=<xsl:value-of select="ParentKey"/>&amp;Type=2&amp;PkeyCatalog=<xsl:value-of select="//TreeIndex/CatalogKey"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="ID" />.html</xsl:otherwise>
+							</xsl:choose></xsl:attribute><xsl:value-of select="Name" /></a></span>
+			     			</xsl:otherwise>
+                        		</xsl:choose>
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']"><img src="FolderClose.gif" onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Page']"><img src="page_pic.gif"  onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Item']"><img src="item.gif"  onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+					</xsl:choose>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;   <!-- &nbsp; = &#160; -->
+	     				</div>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:when>
+		<xsl:when match=".[Level $eq$ 5]">
+			<xsl:choose>
+				<xsl:when match=".[Object/Level $gt$ 5]">
+					<div  style="  right=100; cursor:hand;">
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']">
+							<span class="level5"><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','FolderClose.gif','FolderOpen.gif');</xsl:attribute><xsl:value-of select="Name" /></span>
+			     			</xsl:when>
+					     	<xsl:otherwise>
+							<span class="level5"><a target="_top"><xsl:attribute name="href"><xsl:choose>
+								<xsl:when match=".[//IsWebEditor $eq$ 'True']">ShowTemplate.aspx?Template=<xsl:value-of select="Template"/>&amp;Pkey=<xsl:value-of select="ID" />&amp;ParentKey=<xsl:value-of select="ParentKey"/>&amp;Type=2&amp;PkeyCatalog=<xsl:value-of select="//TreeIndex/CatalogKey"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="ID" />.html</xsl:otherwise>
+							</xsl:choose></xsl:attribute><xsl:value-of select="Name" /></a></span>
+			     			</xsl:otherwise>
+                        		</xsl:choose>
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']"><img src="FolderClose.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="name"><xsl:value-of select="ID" /></xsl:attribute><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','FolderClose.gif','FolderOpen.gif');</xsl:attribute></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Page']"><img src="page_pic.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />');</xsl:attribute></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Item']"><img src="itemClose.gif" onmouseover="enter();" onmouseout="leave();"><xsl:attribute name="name"><xsl:value-of select="ID" /></xsl:attribute><xsl:attribute name="onclick">Switch('inner_<xsl:value-of select="ID" />','<xsl:value-of select="ID" />','itemClose.gif','itemOpen.gif');</xsl:attribute></img></xsl:when>
+						</xsl:choose>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; &#160; &#160; &#160;   <!-- &nbsp; = &#160; -->
+	     				</div>
+					<DIV  style="display:none;"><xsl:attribute name="id">inner_<xsl:value-of select="ID" /></xsl:attribute>
+					<xsl:apply-templates select="Object" />
+					</DIV>
+				</xsl:when>
+				<xsl:otherwise>
+					<div  style="  right=100;">
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']">
+							<span class="level5"><xsl:value-of select="Name" /></span>
+			     			</xsl:when>
+					     	<xsl:otherwise>
+							<span class="level5"><a target="_top"><xsl:attribute name="href"><xsl:choose>
+								<xsl:when match=".[//IsWebEditor $eq$ 'True']">ShowTemplate.aspx?Template=<xsl:value-of select="Template"/>&amp;Pkey=<xsl:value-of select="ID" />&amp;ParentKey=<xsl:value-of select="ParentKey"/>&amp;Type=2&amp;PkeyCatalog=<xsl:value-of select="//TreeIndex/CatalogKey"/></xsl:when>
+								<xsl:otherwise><xsl:value-of select="ID" />.html</xsl:otherwise>
+							</xsl:choose></xsl:attribute><xsl:value-of select="Name" /></a></span>
+			     			</xsl:otherwise>
+                        		</xsl:choose>
+					<xsl:choose>
+						<xsl:when match=".[ObjectClass $eq$ 'Folder']"><img src="FolderClose.gif" onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Page']"><img src="page_pic.gif"  onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+						<xsl:when match=".[ObjectClass $eq$ 'Item']"><img src="item.gif"  onmouseover="enter();" onmouseout="leave();"></img></xsl:when>
+					</xsl:choose>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; &#160; &#160; &#160;  <!-- &nbsp; = &#160; -->
+	     				</div>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:when>
+	</xsl:choose>
+</xsl:template>
+</xsl:stylesheet>

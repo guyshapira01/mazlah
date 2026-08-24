@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+
+<meta name="Template" content="cd rom start page">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>רשימת קטלוגים בתקליטור :</title>
+
+
+<style type="text/css">
+
+H1 {font-size: 20pt;color:red}
+
+</style>
+
+</head>
+
+<body
+style="margin: 10px; border-color: yellow; border-style: groove; border-width: 20px;">
+
+<p align="center" dir="rtl">&nbsp;</p>
+<div align="center"><center>
+
+<table border="0">
+<TBODY>    <tr>
+        <td><img src="images\LeftLogo.gif"
+        align="left" hspace="0" ></td>
+        <td align="center"><H1><u>רשימת  קטלוגים  בתקליטור<br>
+        <# CD_NAME #> </u></H1>
+</td>
+        <td><p align="center"><img src="images\RightLogo.gif"
+       ></p>
+        </td>
+    </tr>
+</TBODY></table>
+</center></div>
+
+<p align="right" dir="rtl">&nbsp;</p>
+<div align="center"><center>
+
+<table dir="rtl" border="1" cellpadding="2" cellspacing="1"
+width="487">
+    <tr>
+        <td valign="top" width="30%" bgcolor="#FFFF00"
+        height="22"><p align="right"><font size="4" face="Miriam">שם
+        הקטלוג</font></p>
+        </td>
+
+        <td valign="top" width="19%" bgcolor="#FFFF00"
+        height="22"><p align="right"><font size="4" face="Miriam">מק&quot;ט</font></p>
+        </td>
+    </tr>
+<#CATALOG_LOOP_BEGIN#>
+    <tr>
+        <td align="right" dir="ltr"><#CATALOG_DIRECTORY#>
+        <#CATALOG_NAME#></td>
+        <td align="center" class="tabletext"><#CATALOG_MAKAT#></td>
+    </tr>
+<#CATALOG_LOOP_END#>
+<hr>
+
+</table>
+</center></div>
+
+<hr color="blue" height=6px>
+
+<p align="center">
+<# CD_DATE #> תאריך הפקת התקליטור
+<br>
+מהדורה 2
+</p>
+
+<p align="right"><a href="CatmamEngineSetup.exe">התקנת
+מנוע חיפוש <img src="images/Setup1.gif"
+align="absmiddle" width="32" height="32"></a> </p>
+
+<p align="right"><a href="CatmamEngine%20help6.htm">עזרה
+למנוע חיפוש <img src="images/help3.GIF"
+align="absmiddle" width="32" height="32"></a></p>
+
+<p align="right"><a href="CopyLocal.bat">העתקת
+הקטלוגים מתקליטור לכונן קשיח <img
+src="images/paste.GIF" align="absmiddle" width="32" height="32"> </a></p>
+
+<p align="right"><a href="c:\CatmamEngine\CatmamEngine95.pif">הפעלת
+מנוע החיפוש WIN95 / WIN98 <img
+src="images/TRFFC10A.GIF" align="absmiddle" width="32"
+height="32"></a></p>
+
+<p align="right"><a href="c:\CatmamEngine\CatmamEngineNT.lnk">הפעלת
+מנוע החיפוש WINNT / WIN2000<img
+src="images/TRFFC10A.GIF" align="absmiddle" width="32"
+height="32"></a></p>
+
+<p align="right"><a href="c:\CatmamEngine\kill.bat">עצירת מנוע חיפוש<img
+src="images/stop.GIF" align="absmiddle" width="32"
+height="32"></a></p>
+
+</body>
+</html>

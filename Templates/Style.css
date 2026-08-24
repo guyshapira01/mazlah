@@ -1,0 +1,640 @@
+IMG.SearchResultStyleIMAGE
+{
+    LEFT: 50px;
+    POSITION: absolute;
+    TOP: 20px
+}
+TABLE.SearchResultStyleTable
+{
+    FONT-WEIGHT: bold
+}
+TD.SearchResultStyleTD
+{
+    COLOR: yellow;
+    FONT-SIZE: small;
+    FONT-WEIGHT: bold
+}
+P.SearchResultStyleP
+{
+    BACKGROUND-COLOR: blue
+}
+TR.SearchResultStyleTR
+{
+    BACKGROUND-COLOR: blue;
+    COLOR: yellow;
+    FONT-SIZE: 17px;
+    FONT-STYLE: italic;
+    FONT-WEIGHT: bold
+}
+FONT.lWealth
+{
+    COLOR: #3d3b3b;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px;
+    TEXT-TRANSFORM: capitalize
+}
+.BRSmall
+{
+    FONT-SIZE: 5px
+}
+.BRMedium
+{
+    FONT-SIZE: 10px
+}
+.BRBig
+{
+    FONT-SIZE: 15px
+}
+FONT.General
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px
+}
+A.General
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px
+}
+HR.HR
+{
+}
+FONT.Error
+{
+    COLOR: red;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px;
+    LIST-STYLE: circle
+}
+TD.LoginTitle
+{
+}
+TD.LoginSubTitle
+{
+    BACKGROUND-COLOR: #cccccc
+}
+FONT.LoginTitle
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 16px
+}
+FONT.LoginSubTitle
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px
+}
+A.LoginSubTitle
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 11px
+}
+.General
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 11px
+}
+A.FolderOff
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px;
+    FONT-WEIGHT: bold;
+    TEXT-ALIGN: center;
+    TEXT-DECORATION: none
+}
+A.FolderOn
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px;
+    FONT-WEIGHT: bold;
+    TEXT-ALIGN: center;
+    TEXT-DECORATION: none
+}
+A.SubFolderOff
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+A.SubFolderOn
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+A.Title
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px;
+    FONT-WEIGHT: bold
+}
+A.GridBottom
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 9px
+}
+A.GridHeader
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px;
+    FONT-WEIGHT: bold
+}
+A.GridMain
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+A.GridSecondary
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+A.Tip
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.Footer
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.Header
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.Title
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 25px
+}
+FONT.GridHeader
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 14px;
+    FONT-WEIGHT: bold
+}
+FONT.GridBottom
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 9px
+}
+FONT.GridMain
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px;
+    FONT-WEIGHT: 550
+}
+FONT.GridMainBold
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px;
+    FONT-WEIGHT: 600
+}
+FONT.GridSecondary
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.Tip
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.TipTitle
+{
+    COLOR: #0b3170;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px
+}
+TD.FolderOff
+{
+    BACKGROUND-COLOR: #666699
+}
+TD.FolderOn
+{
+    BACKGROUND-COLOR: #cccccc
+}
+TD.Header
+{
+    BACKGROUND: #ffffff
+}
+TD.SubFolderOff
+{
+    BACKGROUND-COLOR: #cccccc
+}
+TD.SubFolderOn
+{
+    BACKGROUND-COLOR: #cccccc
+}
+TD.Title
+{
+    BACKGROUND-COLOR: #003163
+}
+TD.GridHeader
+{
+    BACKGROUND-COLOR: #6588CF
+}
+TD.GridSecondary
+{
+    BACKGROUND-COLOR: #ccccff
+}
+TD.GridBottom
+{
+    BACKGROUND-COLOR: #666699
+}
+A.Header
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+A.Footer
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+A.SectionTitles
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.SectionTitles
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px;
+    FONT-WEIGHT: bold
+}
+TD.SectionTitles
+{
+    BACKGROUND-COLOR: #cccccc
+}
+TD.ErrorTitle
+{
+    BACKGROUND-COLOR: #ffbfbf
+}
+A.ErrorTitle
+{
+    COLOR: red;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+A.Error
+{
+    COLOR: red;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px;
+    LIST-STYLE: lower-roman
+}
+.ErrorList
+{
+}
+A.WhatsNext
+{
+    COLOR: #000066;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.WhatsNext
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+TD.WhatsNextTitle
+{
+    BACKGROUND-COLOR: #003163
+}
+.Inputs
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px
+}
+A.GridFilters
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.GridFilters
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+TD.GridFilters
+{
+    BACKGROUND-COLOR: #cccccc
+}
+A.GridSpecial
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.GridSpecial
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+TD.GridSpecial
+{
+}
+FONT.FormsTitle
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+TD.FormsTitle
+{
+}
+FONT.FormsLabel
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.FormsCaption
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px
+}
+FONT.FormsInstruction
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 11px
+}
+FONT.FormsData
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+A.Login
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.Login
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.FeedbackTitle
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 15px
+}
+TD.FeedbackTitle
+{
+    BACKGROUND-COLOR: #003163
+}
+A.Feedback
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.Feedback
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 14px
+}
+.OperationButtons
+{
+    BACKGROUND-COLOR: #d3d3b5;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+.InternalButtons
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 11px
+}
+FONT.WhatsNextTitle
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px;
+    FONT-WEIGHT: bold
+}
+FONT.ErrorTitle
+{
+    COLOR: Blue;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 14px;
+    FONT-WEIGHT: bold
+}
+LI.Error
+{
+    COLOR: red;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 12px;
+    LIST-STYLE: square
+}
+.TableLeft
+{
+    MARGIN-LEFT: 50px
+}
+TD.Footer
+{
+    BACKGROUND-COLOR: white
+}
+TD.NotesTitle
+{
+    BACKGROUND-COLOR: #666699
+}
+FONT.NotesTitle
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 10px
+}
+TD.NotesText
+{
+    BACKGROUND-COLOR: #fffff0
+}
+FONT.NotesText
+{
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 11px
+}
+TD.Notes
+{
+    BACKGROUND-COLOR: #e6e6e6
+}
+A.TitlePrevNext
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px
+}
+TABLE.PopUp
+{
+    BACKGROUND-COLOR: #eeffff;
+    BORDER-BOTTOM: medium none;
+    BORDER-LEFT: medium none;
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    MARGIN: 0px;
+    PADDING-BOTTOM: 0px;
+    PADDING-LEFT: 0px;
+    PADDING-RIGHT: 0px;
+    PADDING-TOP: 0px;
+    WIDTH: 480px
+}
+BODY.Interaction
+{
+    BACKGROUND-COLOR: #fffff0
+}
+BODY.MainScreen
+{
+    BACKGROUND-COLOR: #ffffff
+}
+TABLE.Search
+{
+    BORDER-BOTTOM: black 1px solid;
+    BORDER-LEFT: black 1px solid;
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: black 1px solid
+}
+A.FooterFolder
+{
+    COLOR: #003163;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.TitlePrevNext
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+TABLE.General
+{
+    MARGIN: 1px;
+    PADDING-BOTTOM: 1px;
+    PADDING-LEFT: 1px;
+    PADDING-RIGHT: 1px;
+    PADDING-TOP: 1px
+}
+TABLE.WhatsNext
+{
+    BORDER-BOTTOM: #fd1d00 1px solid;
+    BORDER-LEFT: #fd1d00 1px solid;
+    BORDER-RIGHT: #fd1d00 1px solid;
+    BORDER-TOP: #fd1d00 1px solid
+}
+TD.InteractionTitle
+{
+    BACKGROUND-COLOR: #003163
+}
+FONT.InteractionTitle
+{
+    COLOR: white;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 13px
+}
+A.lWealth
+{
+    COLOR: #3d3b3b;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+FONT.Flow
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 17px
+}
+TD.Flow
+{
+    BACKGROUND-COLOR: #e6e6e6;
+    CURSOR: hand
+}
+A.Flow
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+A.FlowOn
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+FONT.FlowOn
+{
+    COLOR: black;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana;
+    FONT-SIZE: 12px
+}
+TD.FlowOn
+{
+    BACKGROUND-COLOR: #fffff0;
+    CURSOR: hand
+}
+TABLE.FlowOn
+{
+    BORDER-BOTTOM: #003163 5px solid;
+    BORDER-LEFT: #003163 5px solid;
+    BORDER-RIGHT: #003163 5px solid;
+    BORDER-TOP: #003163 5px solid;
+    PADDING-BOTTOM: 2px;
+    PADDING-LEFT: 2px;
+    PADDING-RIGHT: 2px;
+    PADDING-TOP: 2px
+}
+FONT.HeaderBar
+{
+    COLOR: #000000;
+    FONT-FAMILY: "Segoe UI", Arial, Verdana
+}
+TR.GridMain
+{
+    BACKGROUND-COLOR: #E2E6F0
+}
+.DocumentName
+{
+	font-size:11px;
+	color: Black;
+}
+.DocumentDescription
+{
+	font-size:11px;
+	color: Black;
+}
+.DocumentRevision
+{
+	font-size:11px;
+	color: Black;
+}
+.DocumentID
+{
+	font-size:11px;
+	color: Black;
+}

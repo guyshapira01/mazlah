@@ -1,0 +1,408 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<table width="800"  height="33" cellspacing="0" ID="Table13" style="margin-top:10;" align="center" dir="ltr">
+		<tr>
+		<td style="color:#587088;font-size:11px;font-family:Tahoma;" align="left" id="welcomuser" name="welcomuser"></td>
+		<script>
+		
+			if ('<#UserLogon#>' != '')
+				welcomuser.innerHTML = 'Welcome ' + '<#UserLogon#><br/>Exparation Date: <#USEREXPDATE#>';
+				
+		</script>
+	<td align="right" >
+	<form method="post" name="searchbox" action="" ID="Form1" > 
+      <a href="ShowTemplate.aspx?Template=index_General_E.xml&Pkey=LWWEa134431&Type=1" title="Site Map" style="border:1px solid #587088;text-decoration:none;background:white;width:60px;height:5px">
+		<span style="color:#587088;font-size:11px;font-family:Tahoma;">&nbsp;מפת אתר&nbsp;</span>
+	 </a> &nbsp;&nbsp;
+	 <a href="Showtemplate.aspx?Template=SiteForm.html&Pkey=135463a18&Type=10&ParentKey=135463a4&PkeyCatalog=LWWEa134431" title="Contact Us" style="border:1px solid #587088;text-decoration:none;background:white;width:60px;height:5px">
+		<span style="color:#587088;font-size:11px;font-family:Tahoma;">&nbsp;צור קשר&nbsp;</span>
+	 </a> &nbsp;&nbsp;
+	 <a href="" title="Find it." style="border:1px solid #587088;text-decoration:none;background:white;width:40px;height:5px">
+			  <span style="color:#587088;font-size:11px;font-family:Tahoma;">&nbsp;חפש&nbsp;</span>
+			</a>&nbsp;
+      <input style="height:20px" type="text" size="13" ID="Text1" NAME="Text1"/> 
+      <span style="color:#587088;font-size:11px;font-family:Tahoma;">:חיפוש</span>
+	</form>
+				
+				</td>
+				<td valign=top align="right" width="70">
+						<img onclick="document.location.href = 'ShowTemplate.aspx?Template=SiteHome.html&Pkey=LWWEa134432&ParentKey=&Type=10&PkeyCatalog=LWWEa134431'" height="33" width="58" src="Images/mckitgrey.jpg" align=top style="cursor:hand;"></img>
+				</td>
+		</tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript" SRC="mapzoom_general_e.js"></SCRIPT>
+<#SITE_HEADER FILENAME=SiteHeader.html#> 
+<body>
+	<table  style="margin-top:40;" align="center" width="800" height="500" ID="Table1">
+		<tr>
+			<td colspan="3">
+				<table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td height="40%" width="50%"  bgcolor="white" valign=top>
+						<table width="100%" cellspacing="10">
+							<tr>
+								<td valign=top>
+									<img  vspace="10"  hspace="10" src="Images/mckitlogo.jpg" align=top></img>
+									</br>
+								</td>
+							</tr>
+							<tr>
+								<td align="right" dir="rtl">
+									<font face="Arial" size="small"><# TEXT_9 #></font>
+								</td>
+							</tr>
+						</table>
+						</td>
+						<td height="40%" width="50%" bgcolor="white" >
+						<img align="right" width="400" height="200" src="Images/homepicright.jpg" align=top></img>
+						</td>
+					</tr>
+				</table>			
+			</td>
+		</tr>
+		<tr>
+			<td height="60%" width="40%" bgcolor="#608099" >
+			<table height="100%" width="100%" ID="Table4" align="center">
+							<tr>
+								<td valign="top" height="50%" width="100%" align="right">
+									<font face="Arial" size="small"><# TEXT_6 #></font>
+								</td>
+							</tr>
+							<tr valign="top" align="center">
+								<td valign=bottom height="50%" width="50%" align="center">
+									<img  src="Images/lifecycle.jpg" align="center"></img>
+								</td>
+							</tr>
+						</table>
+			</td>
+			<td height="100%" width="30%" bgcolor="#d9e1e6" valign="top">
+			<table height="100%" border="0" width="100%" ID="Table2">
+							<tr valign="top">
+								<td valign="top" height="20" width="100%" align="right" style="font:bold;filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#d9e1e6', EndColorStr='#00325c')">
+									<font face="Arial" size="small" color="White">חדשות</font>
+								</td>
+							</tr>
+							<tr>
+								<td align="right" height="100%">
+								<marquee width="100%" height="100%" direction=up scrollamount="1"  dir=rtl style="text-align:center" onmouseover="this.stop()" onmouseout="this.start()">
+									<table align="right" width="100%" height="100%" border="0">
+									
+									
+											<#PARTS_LOOP_BEGIN TYPE=71 ITEMS=5#>
+											<tr><td align="right"><font face="Arial" size="small">
+											<#PART PROP=PHEBDESC#><font face="Arial" size=-3>
+											<br>(<#PART PROP=PUPDATEDATE#>)<br>
+											<a href="ShowTemplate.aspx?Template=<#TEMPLATENAME#>&Pkey=<#PART PROP=PKEY#>&ParentKey=<#PARENTKEY#>&Type=10&PkeyCatalog=<#PKEYCATALOG#>">להמשך...</a>
+											<BR><BR></font></font>
+											</td></tr>
+											<#PARTS_LOOP_END#>
+									
+									</table>
+								</marquee>
+								</td>
+							</tr>
+						</table>
+			</td>
+			<td height="100%" width="30%" bgcolor="#c9d3e0" valign="top">
+				<table height="100%" width="100%" ID="Table3">
+							<tr valign="top">
+								<td valign="top" height="20" width="100%" align="right" style="font:bold;filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#c9d3e0', EndColorStr='#00325c')">
+									<font face="Arial" size="small" color="White">ארועים</font>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top" align="right" height="100%">
+									<table align="right" width="100%" height="100%" border="0" ID="Table5">
+											<#PARTS_LOOP_BEGIN TYPE=68 ITEMS=5#>
+											<tr><td dir="rtl" valign="top" align="right" height="10%"><font face="Arial" size="small">
+											<#PART PROP=PHEBDESC#><br><font face="Arial" size=-3>
+											<a href="ShowTemplate.aspx?Template=<#TEMPLATENAME#>&Pkey=<#PART PROP=PKEY#>&ParentKey=<#PARENTKEY#>&Type=10&PkeyCatalog=<#PKEYCATALOG#>">להמשך...</a>
+											</font></font>
+											</td></tr>
+											<#PARTS_LOOP_END#>
+									</table>
+								</td>
+							</tr>
+						</table>
+			</td>
+		</tr>
+	</table>
+	
+	
+<br>
+<br>
+
+<TABLE border="0" cellPadding="0" cellSpacing="5" ID="EditorToolbar" align="center" bgcolor="#c9d3e0">
+<tr align="center">
+	<td align=center colspan=3 >
+		<b>Page Options:</b>
+	</td>
+</tr>
+<tr>
+	<td colspan="3" align="center">
+		<TABLE  cellpadding="0" cellspacing="0"  border="1" ID="Table6">
+			<TR>
+					<!-- XXXXXXXXXXXXXXXX       Text Obj      XXXXXXXXXXXXXXX -->
+				<td onClick="JavaScript:AddObj('Site_New_Text_E.xsl');void(0);" target="_self"  bgcolor="#C0C0C0" title="Add Text Object" onmouseover="JavaScript:this.style.cursor='hand';">
+					<table width=100% cellspacing="2" cellpadding="2"   ID="Table19">
+						<tr>
+							<td nowrap="yes" width="50%">
+								<a target="_self" title="Add Text Object">
+									<img  src="Images/newtext.ico" alt="Add Text Object"  />
+								</a>
+								<a  target="_self" title="Add Text Object"> &#160; New Text</script></a>
+							</td>
+						</tr>
+					</table>
+				</td>
+				
+			<!-- XXXXXXXXXXXXXXXXXX    Edit Text      XXXXXXXXXXXXXXXXXXXX -->
+		<td  onClick="JavaScript:EditText('Edittext','Site_Edit_Text_E.xsl');void(0);" target="_self" title="Edit Text" bgcolor="#C0C0C0" onmouseover="JavaScript:this.style.cursor='hand'">
+			<table  width=100% cellspacing="2" cellpadding="2" border="0"  ID="Table21">
+				<tr>
+					<td nowrap="yes">
+						<a target="_self" title="EditText">
+							<img src="Images/edittext.gif" width="17" height="16" alt="Edit Text Objects" />
+						</a>
+						<a  target="_self" title="Edit Text">&#160; Edit Text</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+				<!-- XXXXXXXXXXXXXXXXXX    Delete Text      XXXXXXXXXXXXXXXXXXXX -->
+		<td onClick="JavaScript:EditText('Deltext');void(0);" target="_self" title="Delete Text" bgcolor="#C0C0C0" onmouseover="JavaScript:this.style.cursor='hand'">
+			<table  width=100% cellspacing="2" cellpadding="2" border="0"  ID="Table23" >
+				<tr>
+					<td nowrap="yes">
+						<a target="_self" title="EditText">
+							<img src="Images/deltext.gif" width="17" height="16" alt="Delete Text Objects" />
+						</a>
+						<a target="_self" title="Delete Text">&#160; Delete Text</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+		<!-- XXXXXXXXXXXXXXXX       New Doc      XXXXXXXXXXXXXXX -->
+		<td  onClick="JavaScript:AddObj('Site_New_File.xsl');void(0);" target="_self" bgcolor="#C0C0C0" title="New Document" onmouseover="JavaScript:this.style.cursor='hand'">
+			<table width=100% cellspacing="2" cellpadding="2"   ID="ItemNewDoc" >
+				<tr>
+					<td nowrap="yes">
+						<a target="_self">
+							<img src="WEImages/newdoc.gif" />
+						</a>
+						<a target="_self">&#160;New file </a>
+					</td>
+				</tr>
+			</table>
+		</td>
+								<!-- XXXXXXXXXXXXXXXX       Edit      XXXXXXXXXXXXXXX -->
+		<td onClick="JavaScript:UpdateObj('T_CAT_WINOBJECT','Site_Edit_File.xsl');void(0)" target="_self" title="Edit" bgcolor="#C0C0C0" onmouseover="JavaScript:this.style.cursor='hand'">
+			<table  width=100% cellspacing="2" cellpadding="2" border="0"  ID="ItemEdit">
+				<tr>
+					<td nowrap="yes">
+						<a target="_self" >
+							<img src="WEImages/editgrid.gif"/>
+						</a>
+						<a target="_self" >&#160;Edit File </a>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<!-- XXXXXXXXXXXXXXXXXX    Delete      XXXXXXXXXXXXXXXXXXXX -->
+		<td onClick="JavaScript:DelObj();void(0);" target="_self" title="Delete" bgcolor="#C0C0C0" onmouseover="JavaScript:this.style.cursor='hand'">
+			<table  width=100% cellspacing="2" cellpadding="2" border="0"  ID="ItemDelete">
+				<tr>
+					<td nowrap="yes">
+						<a target="_self" >
+							<img src="WEImages/delete.gif"  />
+						</a>
+						<a  target="_self" >&#160;Delete file </a>
+					</td>
+				</tr>
+			</table>
+		</td>
+				</tr>
+				</table>
+				</td>
+				</tr>
+				
+	<tr>
+	<td colspan="3">
+		<TABLE  width=100% border="0" cellPadding="2" cellSpacing="0" bgcolor="white"  ID="Table7">
+			<tr >
+				<td></td>
+				<td></td>
+				<td>Name</td>
+				<td></td>
+				<td><nobr>Modified Date</nobr></td>
+				<td><nobr>Created Date</nobr></td>
+				<td>Language</td>
+				<td>Info</td>
+			</tr>
+				<#DOCUMENT_LOOP_BEGIN#>
+					<tr onmouseover="this.style.backgroundColor='#EFEFEB'" onmouseout="this.style.backgroundColor='white'">
+					<input type="hidden" ID="Hidden1" name="<#DOCUMENTSYSTTEMID#>_PDOCID" value="<#DOCUMENTNUMBER#>"></input>
+					<td class="ToolBarTableSubHeader" width="1">
+						<INPUT type="checkbox" id="Document" NAME="<#DOCUMENTSYSTEMID#>"></INPUT>
+					</td>
+					<td><img src= "IconTypes/<#DOCUMENTOBJECTTYPE#>.gif"></img>
+					</td>
+					<td >&nbsp;<A HREF = "<#DOCUMENTPATH#>" target="_blank"><#DOCUMENTNAME#></A>&nbsp;</td>
+					<td width="1"><img id="statimg_<#PKEY#>" " src="" alt="<#PART PROP=STATUSNAME#>"></img></td>
+					<script>
+						if ('<#PART PROP=STATUSNAME#>' != '')
+							 document.getElementById('statimg_<#PKEY#>').src='IconTypes/<#PART PROP=STATUSNAME#>.gif';
+						 else
+						 {
+							 document.getElementById('statimg_<#PKEY#>').src='IconTypes/na.gif';
+							 document.getElementById('statimg_<#PKEY#>').alt='Not Set';
+						 }
+					</script>
+					<td >&nbsp;<#DOCUMENTMODIFIEDATE#>&nbsp;</td>
+					<td >&nbsp;<#DOCUMENTCREATEDATE#>&nbsp;</td>
+					<td width="1"><img id="langimgd_<#PKEY#>" src="" alt="<#PART PROP=PPROP10#>"/>&#160;</td>
+					<script>
+						if ('<#PART PROP=PPROP10#>' != '')
+							 document.getElementById('langimgd_<#PKEY#>').src='IconTypes/<#PART PROP=PPROP10#>.gif';
+						 else
+							 document.getElementById('langimgd_<#PKEY#>').src='IconTypes/emptyspace.gif';
+					</script>
+					<td width="1"><a href="javascript:InfoObj('<#PART PROP=PKEY#>','Info_WinObject_General_E.xsl');void(0);" target="_self"><img id="InfoImage<#DOCUMENTSYSTTEMID#>" border="0" src="IconTypes/info1.gif"/>&#160;</a></td>
+					</tr>
+				<#DOCUMENT_LOOP_END#>
+		</table>
+	</td>
+</tr>
+<tr align="center" id="itemMenuH">
+	<td align=center colspan=3 >
+		<b>Sub Menu Options:</b>
+	</td>
+</tr>
+<tr id="itemMenu">
+<td colspan="3" align="center">
+		<TABLE  cellpadding="0" cellspacing="0"  border="1" ID="Table12">
+		<tr>
+				<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   New XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   -->
+						<td  onClick="JavaScript:AddObj('Site_New_Item.xsl');void(0);" target="_self" title="New Item" bgcolor="#C0C0C0" onmouseover="JavaScript:this.style.cursor='hand'"> 
+								<table width="100%" cellspacing="2" cellpadding="2" ID="Table8">
+									<tr>
+										<td nowrap="yes">
+											<a >
+												<img src="WEImages/newdoc.gif"  border="0" width="16" height="16"/>
+											</a>
+											<a > &#160;New</a>
+										</td>
+									</tr>
+								</table>
+						</td>
+						
+						<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   Edit XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   -->
+						<td  target="_self" title="Edit" onClick="JavaScript:UpdateObj('T_CAT_PART','Site_Edit_Item.xsl');void(0);" bgcolor="#C0C0C0" onmouseover="JavaScript:this.style.cursor='hand'"> 
+								<table width="100%" cellspacing="2" cellpadding="2"  ID="Table9">
+									<tr>
+										<td nowrap="yes">
+											<a>
+												<img src="WEImages/editgrid.gif" border="0" width="16" height="16"/>
+											</a>
+											<a >&#160; Edit</a>
+										</td>
+									</tr>
+								</table>
+						</td>
+						<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   Delete XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   -->
+						<td  onClick="JavaScript:DelObj();void(0);"  target="_self" title="Delete" bgcolor="#C0C0C0" onmouseover="JavaScript:this.style.cursor='hand'">
+								<table width="100%" cellspacing="2" cellpadding="2" onload="glow(false, this);"  ID="Table11">
+									<tr>
+										<td nowrap="yes">
+											<a>
+												<img src="WEImages/delete.gif" border="0" width="16" height="16"/>
+											</a>
+											<a class="ToolBarFont"> &#160;Delete</a>
+										</td>
+									</tr>
+								</table>
+						</td>
+
+					<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   Reorder XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   -->
+					<td  onClick="JavaScript:ReOrderObj(0);void(0);" target="_self" title="ReOrder" bgcolor="#C0C0C0" onmouseover="JavaScript:this.style.cursor='hand'">
+						<table width="100%" cellspacing="2" cellpadding="2" ID="Table17" >
+							<tr >
+								<td nowrap="yes">
+									<a >
+										<img src="WEImages/reorder.gif" border="0" width="16" height="16"/>
+									</a>
+									<a >&#160;ReOrder</a>
+								</td>
+							</tr>
+						</table>
+					</td>
+</tr>
+</table>
+</td>
+</tr>
+
+	<tr id="itemMenuC">
+	<td colspan="3">
+		<TABLE  width=100% border="0" cellPadding="2" cellSpacing="0" bgcolor="white"  ID="Table10">
+			<tr >
+				<td></td>
+				<td></td>
+				<td>Name</td>
+				<td></td>
+				<td><nobr>Modified Date</nobr></td>
+				<td><nobr>Created Date</nobr></td>
+				<td>Language</td>
+				<td>Info</td>
+			</tr>
+				<#PARTS_LOOP_BEGIN TYPE= ITEMS= #>
+					<tr onmouseover="this.style.backgroundColor='#EFEFEB'" onmouseout="this.style.backgroundColor='white'">
+					<td class="ToolBarTableSubHeader" width="1">
+						<INPUT type="checkbox" id="PDItem" NAME="<#PKEY#>"></INPUT>
+					</td>
+					<td><img src= "IconTypes/<#PART PROP=ITEM_OBJECT_TYPE#>.gif"></img>
+					</td>
+					<td >&nbsp;<A HREF = "" target="_blank"><#PART PROP=PHEBDESC#></A>&nbsp;</td>
+					<td width="1"><img id="statimgi_<#PKEY#>" src="" alt="<#PART PROP=STATUSNAME#>"></img></td>
+					<script>
+						if ('<#PART PROP=STATUSNAME#>' != '')
+							 document.getElementById('statimgi_<#PKEY#>').src='IconTypes/<#PART PROP=STATUSNAME#>.gif';
+						 else
+						 {
+							 document.getElementById('statimgi_<#PKEY#>').src='IconTypes/na.gif';
+							 document.getElementById('statimgi_<#PKEY#>').alt='Not Set';
+						 }
+					</script>
+					<td >&nbsp;<#PART PROP=PUPDATEDATE#>&nbsp;</td>
+					<td >&nbsp;<#PART PROP=PCREATEDATE#>&nbsp;</td>
+					<td width="1"><img id="langimg_<#PKEY#>" src="" alt="<#PART PROP=PPROP10#>"/>&#160;</td>
+					<script>
+						if ('<#PART PROP=PPROP10#>' != '')
+							 document.getElementById('langimg_<#PKEY#>').src='IconTypes/<#PART PROP=PPROP10#>.gif';
+						 else
+							 document.getElementById('langimg_<#PKEY#>').src='IconTypes/emptyspace.gif';
+					</script>
+					<td width="1"><a href="javascript:InfoObj('<#PART PROP=PKEY#>','Info_General_E.xsl');void(0);" target="_self"><img id="Img2" border="0" src="IconTypes/info1.gif"/>&#160;</a></td>
+					</tr>
+				<#PARTS_LOOP_END#>
+		</table>
+	</td>
+</tr>
+
+</table>
+
+<script language="javascript">
+	//hide buttons
+	if ('<#ACLPermissionsName#>'=='Administrator')	{
+		EditorToolbar.style.display='';
+		}
+	else
+	{
+	EditorToolbar.style.display='none';
+	}
+</script>
+
+	
+</body>
+</html>

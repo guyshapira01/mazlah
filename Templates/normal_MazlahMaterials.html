@@ -1,0 +1,32 @@
+<html>
+
+<head>
+<title><#CATALOG_NAME#> - <#CHAPTER_NAME#> - <#PAGE_HEB_DESC#> - תמונה מספר <#PAGE_NUM#></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="srcpath.js"></SCRIPT>
+<script language="JavaScript">
+<!--
+var bFinishedLoading=false;
+document.write("<frameset onLoad='javascript:bFinishedLoading=true;' rows=");
+var r;
+r = getCookie('_row_ratio');
+if (r==null) r="70,*";
+document.write("'" + r + "'>");
+
+document.write("<frame style='border:1px solid black' name='Header' src=");
+var pg = <# FRAME SOURCE_FILE=header_MazlahMaterials.xml ENCAPS=' #>;
+document.write(pg);
+document.write(" marginwidth='0' marginheight='0' SCROLLING='NO' frameborder='0'>");
+document.write("<frameset id='inr_frmst' cols='100%'>");
+//var r=null;
+//r = getCookie('_col_ratio');
+//if (r==null) r="100%,*";
+//document.write("'" + r + "'>");
+//-->
+</script>
+        <frame name="Parts Map" src=<#FRAME SOURCE_FILE=left_MazlahMaterials.html#> marginwidth="0" marginheight="0" scrolling="auto" frameborder="0">
+        <!--<frame name="Parts Table" src=<#FRAME SOURCE_FILE=right.xml#> marginwidth="0" marginheight="0" scrolling="auto" frameborder="10">-->
+    </frameset>
+</frameset>
+</head></html>

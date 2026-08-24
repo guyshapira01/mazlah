@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>Publish</title>
+<meta name=vs_defaultClientScript content="JavaScript">
+<meta name=vs_targetSchema content="http://schemas.microsoft.com/intellisense/ie5">
+<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+<meta name=ProgId content=VisualStudio.HTML>
+<meta name=Originator content="Microsoft Visual Studio .NET 7.1">
+<script language="javascript" src="Publish.js"></script>
+<script language="javascript" src="Templates/Toolbar.js"></script>
+
+<!--<script language="javascript" src="Templates/xp_progress.js"/>-->
+<LINK REL="stylesheet" HREF="Templates/Styles/Styles-SteelBlue.css" TYPE="text/css" />		
+</head>
+<body  onload="JavaScript:PublishLoad()">
+
+<script language=javascript>
+<!--
+	function PublishLoad()	{
+		if (getParamFromUrl("Mode") == "Gen")	{
+			ProgressBar.style.display = '';
+			Publish();
+		}
+		else	{
+			window.resizeTo(450,400);
+			window.moveTo((screen.width-400)/2, (screen.height-350)/2);
+			PackageDetails.style.display = '';
+			PCDNAME.value = getParamFromUrl("CatalogName").replace(/%20/g," ");
+			var mydate=new Date();
+			var year=mydate.getYear();
+			if (year < 1000)
+				year+=1900;
+			var day=mydate.getDay();
+			var month=mydate.getMonth()+1;
+			if (month<10)
+				month="0"+month;
+			var daym=mydate.getDate();
+			if (daym<10)
+				daym="0"+daym;
+			FullDate = daym + "/" + month + "/" + year;
+			PDATE.value = FullDate;
+		}
+	}	
+//-->
+</script>
+<table border="0" id="PackageDetails" style="DISPLAY:NONE;">
+	<tr>
+		<td colspan="2" align="left"><font style="FONT-SIZE:18px;"><img src="Images/Briefcase.gif" align="absmiddle"/>&nbsp;Briefcase Properties:</font><br/><br/></td>
+	</tr>
+	<tr>
+		<td>Name:</td>
+		<td><input type="text" name="PCDNAME" style="font-family:Tahoma;width:320px"/></td>
+	</tr>
+	<tr>
+		<td>Number:</td>
+		<td><input type="text" name="PCDNUMBER"  style="font-family:Tahoma;width:320px"/></td>
+	</tr>
+	<tr>
+		<td>Date:</td>
+		<td><input type="text" name="PDATE" style="font-family:Tahoma;width:320px"/></td>
+	</tr>
+	<tr>
+		<td>Status:</td>
+		<td>
+			<select name="PImportStatus" style="font-family:Tahoma;width:320px">
+				<option value="1">In Work</option>
+				<option value="2">Published</option>
+				<option value="3">Obsolete</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Remark:</td>
+		<td><textarea name="PCOMMENT" cols="50" rows="5" style="font-family:Tahoma;"></textarea></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td align="center">
+			<TABLE class="ToolBar" cellpadding="0" cellspacing="0" border="0" align="left" ID="Table1">
+			<TR height="30">
+			<td class="ToolBarGlow" id=glower onmouseover="glow(true,this);" onmouseout="glow(false,this);" nowrap="yes">
+			<a class="ToolBarFont" href="JavaScript:window.resizeTo(380,160);PackageDetails.style.display='NONE';ProgressBar.style.display='';Publish();" target="_self" title="Publish">
+			<img src="Images/publish.ico" alt="Publish" border="0" align="absmiddle" width="16" height="16" /> Publish </a>
+			</td>
+			</TR>
+			</TABLE>
+		</td>
+	</tr>
+</table>
+<div id="ProgressBar" style="DISPLAY:NONE;"><iframe width="100%" height="100%" frameborder="0" src="Templates/waitJunk.html" id="PBar"/></div>
+<!--   -->
+<!--<script language="javascript" src="Scripts\ProgressBar\percent_bar.js"></script>-->
+
+</body>
+</html>

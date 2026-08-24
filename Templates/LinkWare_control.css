@@ -1,0 +1,177 @@
+A
+{
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+A:link
+{
+    COLOR: darkgreen
+}
+A:active
+{
+    COLOR: darkgreen
+}
+A:visited
+{
+    COLOR: MediumSeaGreen
+}
+A:hover
+{
+    COLOR: blue
+}
+.bigtext
+{
+    FONT-SIZE: 100%;
+    TEXT-ALIGN: right
+}
+.bigtext_E
+{
+    FONT-SIZE: 100%;
+    TEXT-ALIGN: left
+}
+.TitleText
+{
+    COLOR: black;
+    FONT-SIZE: 100%;
+    FONT-WEIGHT: bolder;
+    TEXT-ALIGN: left
+}
+.TitleText_E
+{
+    COLOR: black;
+    FONT-SIZE: 100%;
+    FONT-WEIGHT: bolder;
+    TEXT-ALIGN: right
+}
+.tabletext
+{
+    FONT-SIZE: 80%
+}
+.text
+{
+    COLOR: red;
+    FONT-FAMILY: Arial Black;
+    FONT-SIZE: 40px;
+    MARGIN-LEFT: 12px;
+    TEXT-DECORATION: underline
+}
+.highlight
+{
+    COLOR: darkred;
+    FONT-FAMILY: Arial Black;
+    FONT-SIZE: 40px;
+    MARGIN-LEFT: 6px;
+    MARGIN-TOP: -48px;
+    TEXT-DECORATION: underline
+}
+.TipHelp
+{
+    BACKGROUND-COLOR: yellow;
+    BORDER-BOTTOM: thin solid;
+    BORDER-LEFT: thin solid;
+    BORDER-RIGHT: thin solid;
+    BORDER-TOP: thin solid;
+    COLOR: black;
+    HEIGHT: 20px;
+    POSITION: absolute;
+    WIDTH: 240px;
+    posTop: 0;
+    posLeft: 0
+}
+H1
+{
+    COLOR: red
+}
+H2
+{
+    COLOR: blue
+}
+H3
+{
+    COLOR: green
+}
+.mainDivColumn
+{
+    BORDER-BOTTOM: solid;
+    BORDER-LEFT: solid;
+    BORDER-RIGHT: solid;
+    BORDER-TOP: solid;
+    FLOAT: right;
+    POSITION: relative;
+    WIDTH: 25%
+}
+TABLE.mainTable
+{
+    BORDER-BOTTOM: solid
+}
+.mainCatalog
+{
+    COLOR: black;
+    FONT-SIZE: 20px
+}
+H4
+{
+    COLOR: black;
+    FONT-SIZE: small
+}
+H5
+{
+    FONT-SIZE: 10px
+}
+.level1
+{
+    FONT-SIZE: 20px;
+    //Root
+}
+.level2
+{
+    FONT-SIZE: 20px;
+    //Assemblies
+}
+.level3
+{
+    FONT-SIZE: 20px;
+    //End item
+}
+.level4
+{
+    FONT-SIZE: 20px
+}
+TABLE.TableMainBarDOC
+{
+    BACKGROUND-COLOR: Tan;
+    FONT-SIZE: 80%;
+    TEXT-ALIGN: center;
+    WIDTH: 100%
+}
+TABLE.TableMainBar
+{
+    BACKGROUND-COLOR: #99cccc;
+    FONT-SIZE: 80%;
+    TEXT-ALIGN: center;
+    WIDTH: 100%
+}
+BODY.BodyCatalog
+{
+    BACKGROUND-COLOR: #fdffdd
+}
+BODY.BodyIndex
+{
+    BACKGROUND-COLOR: #fdffdd
+}
+.Credits
+{
+    COLOR: blue;
+    FONT-SIZE: 24px
+}
+.underLine
+{
+    BORDER-BOTTOM: black ridge
+}
+.close
+{
+    COLOR: darkblue;
+    FONT-SIZE: 18px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: underline
+}

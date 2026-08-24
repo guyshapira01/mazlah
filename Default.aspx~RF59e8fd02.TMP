@@ -1,0 +1,900 @@
+<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Default.aspx.vb" Inherits="_Default" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html dir="rtl"   >
+<head id="Head1" runat="server">
+
+<script type ="text/javascript"  language="javascript">
+
+//Global variable : flag show/hidde UpdateDate
+var glShowUpdateDateFlag = 0;
+        function ShowHideUpdateDate(obj){
+        //debugger;
+            var oAllCUpdateDateHead = document.getElementById("AllCUpdateDateHead");
+            //var oCatalogSearchDataGrid = document.getElementById("TabContainer1_TabPanel2_CatalogSearchDataGrid");
+            
+            var parent = document.getElementById("offTblBdy");
+
+  /*  if(parent.nodeName != "TBODY")
+      parent = parent.getElementsByTagName("TBODY")[0];
+    if(parent.nodeName != "TBODY")
+      return false;
+*/
+var strDisplayStatus ;
+if(glShowUpdateDateFlag == 0){
+    glShowUpdateDateFlag = 1;
+    strDisplayStatus = "";
+}else{
+    glShowUpdateDateFlag = 0;
+    strDisplayStatus = "none";
+}
+    items = parent.getElementsByTagName("TR");
+    N = items.length;
+    oAllCUpdateDateHead.style.display = strDisplayStatus;
+    for(i=1;i<N;i++){
+              parent.rows[i].childNodes[4].style.display=strDisplayStatus;
+    }
+        }
+
+		function SearchValidator(){
+		//alert("Test");
+		//debugger;
+		    var objrdbAllCatalogs = document.getElementById("TabContainer1_TabPanel2_rdbAllCatalogs");
+		    var objFamylyDDL = document.getElementById ("TabContainer1_TabPanel2_ddlFamily");
+		    if(objrdbAllCatalogs.checked)return true;
+		  //  alert("objrdbAllCatalogs.checked")
+		    if(objFamylyDDL.value != "-1")return true
+		    alert("נא לבחור משפחה או כל הקטלוגים");
+		    return false;
+		}
+		
+  	function openNews()	{
+		window.open("News.aspx","news");
+	}
+	
+	function openLatestCatalogs()	{
+		window.open("LatestCatalogs.aspx","LatestCatalogs", "toolbar,scrollbars,width=360,height=300");
+	}
+
+	function openNewWin(url,name,width,height)	{
+		window.open(url,name, "toolbar,scrollbars,width=" + width + ",height=" + height);
+	}
+function OpenSearchFunc(){
+//debugger;
+    var tabBehavior = document.getElementById("TabContainer1").control;
+    tabBehavior.set_activeTabIndex(1);
+}
+function OpenFamilyTV(){
+//debugger;
+    var tabBehavior = document.getElementById("TabContainer1").control;
+    tabBehavior.set_activeTabIndex(0);
+}
+
+function OpenDoc(sFileUrl)
+{
+//debugger;
+
+var w = window.open ('PrintedCatalog/'+sFileUrl,'myDoc');
+//w.document.location.href='PrintedCatalog/'+sFileUrl ;
+//'http://localhost:2694/Mazlah1/Catalog/MM2a517703.gif';
+}
+
+//AllCatalogInput
+function ShowAllCatalogTable(){
+//debugger;
+       var oDG = document.getElementById ("TabContainer1_TabPanel1_CatalogsDataGrid");
+       var strOutPut = "<table cellspacing='0' cellpadding='2' border='0' id='AllCatalogsDataGrid' style='color:Black;background-color:LightGoldenrodYellow;border-color:Tan;border-width:1px;border-style:solid;font-family:Arial;font-size:10pt;width:100%;border-collapse:collapse;'>";
+          strOutPut = strOutPut + "<thead><tr style='background-color:Tan;font-weight:bold;'>";
+          strOutPut = strOutPut + "<th align='right' style='width:150px;'><a  href='javascript:sortTable(0);'>מקייט</a></th>";
+          strOutPut = strOutPut + "<th align='right' style='width:200px;'><a href='javascript:sortTable(1);'>שם קטלוג</a></th>";
+          strOutPut = strOutPut + "<th align='right' style='width:100px;'><a href='javascript:sortTable(2);'>סיווג</a></th>";
+          strOutPut = strOutPut + "<th align='right' style='width:200px;'><a href='javascript:sortTable(3);'>משפחה</a></th>";
+          strOutPut = strOutPut + "<th align='right' style='width:100px; display: none' id='AllCUpdateDateHead'><a href='javascript:sortTable(4);'>עודכן בתאריך</a></th>";
+          strOutPut = strOutPut + "</tr>";
+          strOutPut = strOutPut + "</thead>";
+          strOutPut = strOutPut + "<tbody id='offTblBdy'>";
+       /*<tr align="right" style="background-color:Tan;font-weight:bold;">
+						<td>
+                                                         <a  href="javascript:sortTable('TabContainer1_TabPanel4_AllCatalogsDataGrid',0);">מקייט</a>
+                                                </td><td>
+                                                         <a  href="javascript:sortTable('TabContainer1_TabPanel4_AllCatalogsDataGrid',1);">שם קטלוג</a>
+                                                </td><td>
+                                                         <a  href="javascript:sortTable('TabContainer1_TabPanel4_AllCatalogsDataGrid',2);">סיווג</a>
+                                                </td><td>
+                                                         <a  href="javascript:sortTable('TabContainer1_TabPanel4_AllCatalogsDataGrid',3);">משפחה</a>
+                                                </td><td>
+                                                         <a  href="javascript:sortTable('TabContainer1_TabPanel4_AllCatalogsDataGrid',4);">עודכן בתאריך</a>
+                                                </td>
+					</tr>*/
+					var items = oDG.getElementsByTagName("TR");
+                    var N = items.length;
+                    var alternateFlag = 1;
+					for(i=1;i<N;i++){
+					    if(alternateFlag){
+					          strOutPut = strOutPut + "<tr>";
+                              strOutPut = strOutPut + "<td align='right' style='width:150px;'>" + oDG.rows[i].cells[0].outerText + "</td>";
+                              strOutPut = strOutPut + "<td>" + oDG.rows[i].cells[1].innerHTML + "</td>";
+                              strOutPut = strOutPut + "<td>" + oDG.rows[i].cells[2].outerText + "</td>";
+                              strOutPut = strOutPut + "<td>" + oDG.rows[i].getAttribute("FAMILY_NAME") + "</td>";
+                              strOutPut = strOutPut + "<td style='display: none'>" + oDG.rows[i].getAttribute("UPDATE_DATE") + "</td>";
+                              strOutPut = strOutPut + "</tr>";
+                              alternateFlag = 0;
+                         }else{
+                              strOutPut = strOutPut + "<tr style='background-color: PaleGoldenrod;'>";
+                              strOutPut = strOutPut + "<td align='right' style='width:150px;'>" + oDG.rows[i].cells[0].outerText + "</td>";
+                              strOutPut = strOutPut + "<td>" + oDG.rows[i].cells[1].innerHTML + "</td>";
+                              strOutPut = strOutPut + "<td>" + oDG.rows[i].cells[2].outerText + "</td>";
+                              strOutPut = strOutPut + "<td>" + oDG.rows[i].getAttribute("FAMILY_NAME") + "</td>";
+                              strOutPut = strOutPut + "<td  style='display: none'>" + oDG.rows[i].getAttribute("UPDATE_DATE") + "</td>";
+                              strOutPut = strOutPut + "</tr>";
+                              alternateFlag = 1;
+ 
+                         }
+					    
+					}
+					strOutPut = strOutPut + "</tbody>";
+                    strOutPut = strOutPut + "</table>";
+                    var oAllCatalogInput = document.getElementById("AllCatalogDIV");
+                    oAllCatalogInput.innerHTML = strOutPut;
+}
+
+var strOldFamilyName = "-1";
+
+function OnNodeClick (i,strFamilyName){
+//debugger;
+    var oDG = document.getElementById ("TabContainer1_TabPanel1_CatalogsDataGrid");
+    var oOpenMsg = document.getElementById ("TabContainer1_TabPanel1_lblOpenMsg");
+    var oTreeViewt = document.getElementById ("TabContainer1_TabPanel1_FamilyTreeViewt" + i);
+    var oTreeViewn = document.getElementById ("TabContainer1_TabPanel1_FamilyTreeViewn" + i);
+    var oFamilyTreeViewnNodes = document.getElementById ("TabContainer1_TabPanel1_FamilyTreeViewn" + i + "Nodes");
+    //document.writeln("<script>" + oTreeViewn.href + "<//script>")
+    //var strParameters = oTreeViewn.href;
+    try{
+        TreeView_ToggleNode(TabContainer1_TabPanel1_FamilyTreeView_Data,i,oTreeViewn,' ',oFamilyTreeViewnNodes);
+    }catch(err){}
+    //TreeView_ToggleNode(TabContainer1_TabPanel1_FamilyTreeView_Data,5,TabContainer1_TabPanel1_FamilyTreeViewn5,' ',TabContainer1_TabPanel1_FamilyTreeViewn5Nodes)"
+    //oTreeViewn.onclick();
+    //TabContainer1_TabPanel1_FamilyTreeViewn1Nodes
+    /*if(oFamilyTreeViewnNodes.style.display=="none"){
+        oFamilyTreeViewnNodes.style.display="";
+    }else{
+        oFamilyTreeViewnNodes.style.display="none";
+    }
+    var oImg = oTreeViewt.parentElement.parentElement.getElementbyTag("img");
+    */
+    oDG.style.display="";
+    oOpenMsg.style.display="none";
+     var i = document.getElementById ("lblCount").outerText ;
+     //var i ;
+     i--;
+    for(;i>=0;){
+        var oTR = document.getElementById ("TRCatalogsDataGrid_"+i);
+        if(oTR.getAttribute("FAMILY_PKEY") != ""){
+            if((oTR.getAttribute("FAMILY_PKEY") !=  strFamilyName)&& (oTR.getAttribute("FAMILY_PKEY") !=  strOldFamilyName)){
+                //oTR.style.display="none";
+                 var oTRPrev = document.getElementById ("TRCatalogsDataGrid_"+(i+1));
+                 try{
+                     if(oTRPrev.getAttribute("EndInd") != null){
+                        i = i - oTRPrev.getAttribute("EndInd")
+                     }else{
+                        i--;
+                     }
+                     }catch(err){
+                        i--;
+                     }
+                
+              }
+              else{
+                if(oTR.getAttribute("FAMILY_PKEY") ==  strFamilyName){
+                    oTR.style.display="";
+                    i--;
+                 }else{
+                    oTR.style.display="none";
+                    i--;
+                 }
+              }
+        }else{
+            oTR.style.display="none";
+            i--;
+        }
+    }
+    
+    strOldFamilyName = strFamilyName;
+}
+
+
+  // global variables
+  var oldCol=-1;
+  var col = 0;
+  var parent = null;
+  var items = new Array();
+  var N = 0;
+
+  function get(i)
+  {
+    var node = items[i].getElementsByTagName("TD")[col];    
+    if(node.childNodes.length == 0) return "";
+    var retval = node.outerText;//firstChild.nodeValue;
+    if(parseInt(retval) == retval) return parseInt(retval);
+    return retval;
+  }
+
+  function compare(val1, val2, desc)
+  {
+   var f1, f2;
+
+  // If the values are numeric, convert them to floats.
+
+  f1 = parseFloat(val1);
+  f2 = parseFloat(val2);
+  if (!isNaN(f1) && !isNaN(f2)) {
+    val1 = f1;
+    val2 = f2;
+  }
+    return (desc) ? val1 > val2 : val1 < val2;
+  }
+
+  function exchange(i, j)
+  {
+    if(i == j+1) {
+      parent.insertBefore(items[i], items[j]);
+    } else if(j == i+1) {
+      parent.insertBefore(items[j], items[i]);
+    } else {
+      var tmpNode = parent.replaceChild(items[i], items[j]);
+      if(typeof(items[i]) == "undefined") {
+        parent.appendChild(tmpNode);
+      } else {
+        parent.insertBefore(tmpNode, items[i]);
+      }
+    }
+  }
+
+  function quicksort(m, n, desc)
+  {
+  
+    if(n <= m+1) return;
+
+    if((n - m) == 2) {
+      if(compare(get(n-1), get(m), desc)) exchange(n-1, m);
+      return;
+    }
+
+    i = m + 1;
+    j = n - 1;
+
+    if(compare(get(m), get(i), desc)) exchange(i, m);
+    if(compare(get(j), get(m), desc)) exchange(m, j);
+    if(compare(get(m), get(i), desc)) exchange(i, m);
+
+    pivot = get(m);
+    //var oCount=document.getElementById ("Text1")
+//oCount.value = j;
+
+    while(true) {
+      j--;
+      while(compare(pivot, get(j), desc)) j--;
+      i++;
+      while(compare(get(i), pivot, desc)) i++;
+      if(j <= i) break;
+      exchange(i, j);
+    }
+
+    exchange(m, j);
+
+    if((j-m) < (n-j)) {
+      quicksort(m, j, desc);
+      quicksort(j+1, n, desc);
+    } else {
+      quicksort(j+1, n, desc);
+      quicksort(m, j, desc);
+    }
+  }
+
+  function sortTable(n)
+  
+  {
+  
+  document.body.style.cursor = 'wait';
+
+  //debugger;
+  //, desc
+  //var bar1= createBar(300,15,'white',1,'black','blue',85,7,3,"");
+  //check order (ASC or DESC)
+if(oldCol==n){
+    desc=1;
+}else{
+    desc=0;
+}
+//remember old column
+oldCol=n;
+    parent = document.getElementById("offTblBdy");
+    col = n;
+
+  /*  if(parent.nodeName != "TBODY")
+      parent = parent.getElementsByTagName("TBODY")[0];
+    if(parent.nodeName != "TBODY")
+      return false;
+*/
+    items = parent.getElementsByTagName("TR");
+    N = items.length;
+//setInterval("quicksort(0," + N + "," + desc + ")",1000);
+    // quick sort
+    quicksort(0, N, desc);
+     var alternateFlag = 1;
+					for(i=1;i<N;i++){
+					    if(alternateFlag){
+                              parent.rows[i].style.background="";
+                              alternateFlag = 0;
+                         }else{
+                              parent.rows[i].style.background="PaleGoldenrod";
+                              alternateFlag = 1;
+ 
+                         }
+                       }
+   document.body.style.cursor = 'default';
+                      
+  }
+
+
+</script>
+
+    <title>CATMAM</title>
+
+</head>
+<body onload="ShowAllCatalogTable()" topmargin="0" leftmargin="0" rightmargin="0">
+    <form id="form1" runat="server" >    
+  
+       <table width ="100%" style="vertical-align :top" dir="rtl" >
+    <tr>
+        <td width="100%" style="vertical-align:top"  >
+            
+                <table width ="100%" cellpadding="0" cellspacing="0" bgcolor="#5c4c40" style="background-image:url(Images/repeat.gif);">
+                    
+                    <tr>
+                        
+                        <td  align="right" >
+                            <img src="Images/blueLOGO_TRANSPERT.gif" /></td>
+                       
+                       
+                    </tr>
+                </table>
+             
+            </td>
+            </tr>
+            <tr style="vertical-align :top" align="center" >
+                <td height="15" align="left"><nobr>
+                    
+                    <asp:Label ID="lblCount" style="display:none" runat="server"  Width="1%">0</asp:Label>
+                    <asp:Button  ID="hlnkAdminEdit" Text="עריכת חדשות" runat="server" Font-Underline="True" Font-Names="Arial" ForeColor="Blue" OnClientClick="window.open('Admin/AdminNews.aspx')" ToolTip="עריכת חדשות והודעת פתיחה" Visible="False"  Font-Bold="True" />
+                    <asp:Button ID="hlnkPrintedCatalogs" Text="קטלוגים להדפסה" runat="server" Font-Underline="True" Font-Names="Arial" ForeColor="Blue" OnClientClick="window.open('Admin/PrintedCatalogs.aspx')" ToolTip="עריכת קטלוגים להדפסה  " Visible="False"  Font-Bold="True" />
+                    <asp:Label ID="lblError" runat="server"  Font-Size="11px" Font-Names="Arial"  Width="59%"></asp:Label>
+                    </nobr>
+                </td>
+            </tr> 
+    </tr>
+ </table>
+ <asp:ScriptManager ID="ScriptManager1" runat="server" />
+ <table width="100%" >
+    <tr>
+        <td valign="top"  width="100%" >
+        
+        <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0"  >
+             <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="משפחות"  >
+                    <ContentTemplate>
+               
+                             <!-- Tree view begin -->
+                                 <table width="100%" >
+                       
+                                                
+                                           <tr >
+                                                <td colspan="2" valign ="top" align="right"   >
+                                               </td>
+                                               
+                                               
+                                               <!--================= Start News ====================================-->
+                                               
+                                               <td rowspan="3" valign="top">
+                                                   <table width="180" >
+                                                       <tr>
+                                                           <td width="100%"  style="border:solid 1px #76aff4;border-bottom-width:0px;">
+                                                               <table border="0" width="100%" height="200" align="right" cellpadding="0" cellspacing="0">
+                                                                   <tr valign="top">
+                                                                       <td width="100%" align="right">
+                                                                           <table width="100%" border="0" align="center" cellspacing="0" cellpadding="2">
+                                                                               <tr bgcolor="#b1cff3" >
+                                                                                   <td align="center">
+                                                                                       <a href="JavaScript:openNews()" wrap><font size="2" color="white" style="font-family: arial">
+                                                                                           <b>מה חדש ?</b></font></a>
+                                                                                   </td>
+                                                                               </tr>
+                                                                           </table>
+                                                                           <marquee id="marq2" direction="up" height="130" scrolldelay="300" onmouseover="marq2.stop();"
+                                                                               onmouseout="marq2.start();">
+					                                                                         <asp:Label id="lblNews" runat="server"  />
+					                                                            </marquee>
+                                                                       </td>
+                                                                   </tr>
+                                                               </table>
+                                                           </td>
+                                                       </tr>
+                                                       <tr>
+                                                           <td width="100%" style="border:solid 1px #76aff4;">
+                                                               <table border="0" width="100%" height="200" align="right" cellpadding="0" cellspacing="0">
+                                                                   <tr valign="top" >
+                                                                       <td width="100%" align="center">
+                                                                           <table width="100%" border="0" align="center" cellspacing="0" cellpadding="2">
+                                                                               <tr bgcolor="#b1cff3" >
+                                                                                   <td align="center" >
+                                                                                       <a href="JavaScript:openLatestCatalogs()" wrap><font size="2" color="white" style="font-family: arial">
+                                                                                           <b>קטלוגים חדשים באתר </b></font></a>
+                                                                                   </td>
+                                                                               </tr>
+                                                                           </table>
+                                                                           <marquee id="marq1" direction="up" height="130" scrolldelay="300" onmouseover="marq1.stop();"
+                                                                               onmouseout="marq1.start();">
+					                                                                    <asp:Label id="lblNewCatalogs" runat="server"  />
+					                                                            </marquee>
+                                                                       </td>
+                                                                   </tr>
+                                                               </table>
+                                                           </td>
+                                                       </tr>
+                                                   </table>
+                                               </td>
+                                               
+                                               <!--================= END News ====================================-->
+                                               
+                                           </tr>
+                        
+                                            <tr  >
+                                                <td width="35%" valign ="top"   style="background-image:url(Images/tank.gif);background-repeat:no-repeat;background-position:bottom" >
+
+                                                   <asp:TreeView  Font-Bold="true" ID="FamilyTreeView" runat="server" Width="100%" ImageSet="Simple" AutoGenerateDataBindings="False" autoPostBack="False"  >
+                                                         <ParentNodeStyle Font-Bold="true" />
+                                                         <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                                                         <SelectedNodeStyle Font-Underline="True" HorizontalPadding="0px"
+                                                             VerticalPadding="0px" ForeColor="#5555DD" />
+                                                         <NodeStyle Font-Names="verdana" Font-Size="10pt" ForeColor="Black" HorizontalPadding="0px"
+                                                             NodeSpacing="0px" VerticalPadding="0px" Font-Bold="true" />
+                                                     </asp:TreeView>
+                                                 
+                                                 </td>
+                                                <td width="70%" valign ="top" >
+                          
+                                                <asp:Label ID="lblOpenMsg" runat="server" Width="100%"></asp:Label>
+                           
+                                                     <asp:DataGrid ID="CatalogsDataGrid" runat="server" AllowPaging="False" AllowSorting="False" 
+                                        AutoGenerateColumns="False" BackColor="#f2f2f2"  Font-name="Arial"
+                                        Font-Size="10pt" PageSize="20" Width="100%" BorderColor="#76aff4" BorderWidth="1px" 
+                                        CellPadding="2" Font-Names="Arial" ForeColor="Black" GridLines="None" style="display:none" >
+                                        <SelectedItemStyle BackColor="PaleTurquoise" ForeColor="DarkSlateGray"    />
+                                        <AlternatingItemStyle BackColor="White" />
+                                        <HeaderStyle BackColor="#b1cff3" Font-Bold="True" HorizontalAlign="Right" ForeColor="White"  />
+                                        <Columns>
+                                        <asp:TemplateColumn HeaderText="מקייט" >
+                                                <ItemStyle HorizontalAlign="right" Width="120px" />
+                                                <ItemTemplate>
+                                                        <%# Container.DataItem("PCATALOGMAKAT")%>
+                                                </ItemTemplate>
+                                            </asp:TemplateColumn>
+                                            <asp:TemplateColumn HeaderText="שם קטלוג" >
+                                            <ItemStyle HorizontalAlign="right" />
+							                    <ItemTemplate>
+								                    <a target="_blank" href="Templates/ShowTemplate.aspx?Template=<%# Container.DataItem("PINDEXTEMPLATE")%>&amp;Pkey=<%# Container.DataItem("PKEY") %>&amp;ParentKey=r&amp;Type=1&amp;PkeyCatalog=<%# Container.DataItem("PKEY") %>"><%# Container.DataItem("PHEBDESC") %></a>
+							                    </ItemTemplate>
+						                    </asp:TemplateColumn>
+                                   <asp:TemplateColumn HeaderText="סיווג" >
+                                                <ItemStyle HorizontalAlign="Right"  Width="100px" />
+                                                <ItemTemplate>
+                                                        <%# GetClassification(Container.DataItem("PCATALOGSIVUG"))%>
+                                                </ItemTemplate>
+                                            </asp:TemplateColumn>         
+                                            
+                                           
+                                            
+                                            <asp:TemplateColumn HeaderText="עודכן בתאריך" >
+                                                <ItemStyle HorizontalAlign="Right"  Width="100px" />
+                                                <ItemTemplate>
+                                                    <%# Container.DataItem("PLASTUPDATEDATEFORMAT")%>
+                                                </ItemTemplate>
+                                            </asp:TemplateColumn>
+                                           
+                                        </Columns>
+                                        <PagerStyle BackColor="PaleGoldenrod" HorizontalAlign="Center" ForeColor="DarkSlateBlue" Mode ="NumericPages"  />
+                                                         <FooterStyle BackColor="Tan" />
+                                    </asp:DataGrid>
+                     
+                                                </td>
+                                                 
+                              </tr>
+                                      
+                            <tr>
+                            <td width="20%" style="height: 21px" ></td>
+                            <td width="80%" valign ="top"   align="center" style="height: 21px" >
+                                 <asp:LinkButton ID="lnbShowUpdateDate"  runat="server" OnClick="lnbShowUpdateDate_Click" Visible="false">הצג תאריכי עדכון</asp:LinkButton></td>
+                                 
+                            </tr>            
+        
+                </table>
+                
+                    </ContentTemplate>
+             </ajaxToolkit:TabPanel>
+            <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="חיפוש פריט">
+             <ContentTemplate>
+            <asp:UpdatePanel ID="UpdatePanel4" runat="server"  UpdateMode ="Conditional">
+            <ContentTemplate> 
+               <asp:Panel ID="Panel1" runat="server" BackColor="Khaki" BorderColor="DarkKhaki"
+                                Height="100%" Width="100%">  
+
+<table width="100%">
+        <tr>
+            <td width="100%" align="right" >
+                <table  width="40%" style="font-family:Arial; font-weight:bold; font-size: 9pt;">
+            <tr>
+                <td width="50%">
+                    מה תרצה למצוא :
+                </td>
+                <td style="width: 462px">
+                    איפה :
+                </td>
+                
+            </tr>
+            <tr>
+                <td valign="top" >
+                    <table width="100%" >
+                        <tr>
+                            <td>
+                                &nbsp;<asp:RadioButton ID="rdbDetail" runat="server" Checked="True" GroupName="GrRdbPart"
+                                        Text="פריט" OnCheckedChanged="rdbDetail_CheckedChanged" AutoPostBack="True"  /></td>
+                            <td>
+                                <asp:RadioButton ID="rdbPicture" runat="server" GroupName="GrRdbPart" Text="תמונה" OnCheckedChanged="rdbPicture_CheckedChanged" AutoPostBack="True" /></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 77px" align="left">
+                                שם :
+                            </td>
+                            <td >
+                                    <asp:TextBox ID="txbName" runat="server"></asp:TextBox></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 77px"  align="left">
+                                מק"ט :
+                             </td>
+                            <td>
+                                <asp:TextBox ID="txbMakat" runat="server"></asp:TextBox></td>
+                        </tr><tr>
+                            <td style="width: 77px" nowrap  align="left">
+                                מספר יצרן :</td>
+                            <td>
+                                <asp:TextBox ID="txbProduce" runat="server"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                </td>
+                <td valign=top style="width: 462px" >
+                    <table style="width: 224px">
+                        <tr>
+                            <td style="width: 40px">
+                            </td>
+                            <td>
+                              <asp:RadioButton ID="rdbAllCatalogs"  Text="כל הקטלוגים" runat="server" GroupName="grAllCatalogs" OnCheckedChanged="rdbAllCatalogs_CheckedChanged" AutoPostBack="True" /></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 40px">
+                            </td>
+                            <td>
+                               <asp:DropDownList ID="ddlFamily" runat="server" Width="150px" AutoPostBack="True" /></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 40px">
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlCatalogList" runat="server" AutoPostBack="True" Width="150px" /></td>
+                        </tr>
+                    </table>
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td align="center"  >
+                <asp:UpdateProgress ID="UpdateProgress1" runat="server">
+                        <ProgressTemplate>
+                        
+                <img src="images/ajax-loader.gif" />
+                            <asp:Label ID="lblLoad" runat="server">מחפש ...</asp:Label></td>
+                </ProgressTemplate>
+              </asp:UpdateProgress>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td nowrap><asp:Button ID="btnSearch" OnClientClick="return SearchValidator" runat="server" Text="חפש" Width="80px" />
+                    <asp:Button ID="btnClear" runat="server" Text="בטל" Width="80px" OnClick="btnClear_Click"  />
+                    <asp:Label ID="lblLoadWait" runat="server" Visible="False"  Width="100" /></td>
+                
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                </td>
+                
+            </tr>
+        </table>
+            
+            </td>
+        </tr>
+          
+                    
+                           
+                             <tr>
+                                 <td colspan ="3">
+                                         <asp:DataGrid ID="PartSearchDataGrid" runat="server" AllowPaging="True" AllowSorting="True"
+                                        AutoGenerateColumns="False" BackColor="LightGoldenrodYellow"  Font-name="Arial"
+                                        Font-Size="10pt" Width="100%"  Visible ="False" BorderColor="Tan" BorderWidth="1px" CellPadding="2" Font-Names="Arial" ForeColor="Black" GridLines="None"  >
+                                                    <SelectedItemStyle BackColor="PaleTurquoise" ForeColor="DarkSlateGray"    />
+                                                    <AlternatingItemStyle BackColor="PaleGoldenrod" />
+                                                    <HeaderStyle BackColor="Tan" Font-Bold="True" HorizontalAlign="Right"  />
+                                                    <Columns>
+                                                     <asp:TemplateColumn  HeaderText="שם חלק" SortExpression="PHEBDESC">
+                                                        <ItemStyle HorizontalAlign ="Right" />
+                                                            <ItemTemplate>
+                                                            <a target="_blank" href="onlinesearchredirect.aspx?ppart=<%# Container.DataItem("PPARTKEY") %>&Pkey=<%# Container.DataItem("PPARENTKEY") %>&amp;ParentKey=<%# Container.DataItem("PPARENTKEY") %>&amp;PkeyCatalog=<%# Container.DataItem("CATALOGKEY") %>&amp;Type=10"><%#Container.DataItem("PHEBDESC")%></a>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                    
+                                                        <asp:TemplateColumn HeaderText="מקייט" SortExpression="PMAKAT">
+                                                            <ItemStyle HorizontalAlign="Right" Width="100px" />
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="MakatLbl" runat="server" Text='<%# Container.DataItem("PMAKAT")%>'>
+										                    </asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                       
+                                                        <asp:TemplateColumn HeaderText="מספר יצרן" SortExpression="PVENDOR_NUMBER" >
+                                                            <ItemStyle HorizontalAlign="Right"  Width="150px" />
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="lblClassification" runat="server" Text='<%# Container.DataItem("PVENDOR_NUMBER")%>'>
+										                    </asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        <asp:TemplateColumn HeaderText="שם תמונה" SortExpression="PAGEDESC" >
+                                                            <ItemStyle HorizontalAlign="Right" Width="100px" />
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="lblClassification" runat="server" Text='<%# Container.DataItem("PAGEDESC")%>'>
+										                    </asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                        <asp:TemplateColumn HeaderText="מספר תמונה"  SortExpression="PPAGENUMBER" >
+                                                            <ItemStyle HorizontalAlign="Center"  Width="100px" />
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="lblUpdateDate" runat="server" Text='<%# Container.DataItem("PPAGENUMBER")%>'>
+										                    </asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                         <asp:TemplateColumn HeaderText="קטלוג"  SortExpression="CATALOGDESC" >
+                                                            <ItemStyle HorizontalAlign="Right"  Width="200px" />
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="lblUpdateDate" runat="server" Text='<%# Container.DataItem("CATALOGDESC")%>'>
+										                    </asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateColumn>
+                                                    </Columns>
+                                                    <PagerStyle BackColor="PaleGoldenrod" HorizontalAlign="Center" ForeColor="DarkSlateBlue" Mode ="NumericPages"/>
+                                                    <FooterStyle BackColor="Tan" />
+                                                </asp:DataGrid>
+                                                
+                                             </td>
+                                 </tr>
+                        </table>
+                   
+                
+              
+              </asp:Panel>
+                  
+             </ContentTemplate>
+        </asp:UpdatePanel> 
+            </ContentTemplate>
+             </ajaxToolkit:TabPanel>
+            <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="חיפוש קטלוג">
+             <ContentTemplate>
+                  <asp:UpdatePanel ID="UpdatePanel3" runat="server"  UpdateMode ="Conditional">
+                                <ContentTemplate>
+                                    <table style="font-weight: bold; font-size: 9pt; font-family: Arial" width="100%">
+                                        <tr>
+                                            <td style="width: 963px">
+                                                <asp:Panel ID="Panel2" runat="server" BackColor="Khaki" BorderColor="DarkKhaki" Height="100%"
+                                                    Width="100%">
+                                                    <table id="TABLE1" width="100%">
+                                                        <tr>
+                                                            <td align="right" colspan="2" style="width: 20%; height: 20px">
+                                                                קריטריון חיפוש :
+                                                            </td>
+                                                            <td align="right" style="width: 80%; height: 20px">
+                                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" width="10%">
+                                                                לפי :</td>
+                                                            <td align="left" style="height: 22px" width="10%">
+                                                                שם קטלוג :
+                                                            </td>
+                                                            <td align="right" width="80%">
+                                                                <asp:TextBox ID="txbCatalogName" runat="server"></asp:TextBox></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="10%">
+                                                            </td>
+                                                            <td align="left" style="height: 22px" width="10%">
+                                                                מק"ט :
+                                                            </td>
+                                                            <td align="right" width="80%">
+                                                                <asp:TextBox ID="txbCatalgogMakat" runat="server"></asp:TextBox></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" width="10%">
+                                                                &nbsp;</td>
+                                                            <td align="left" valign="top" width="10%">
+                                                                &nbsp;&nbsp;
+                                                            </td>
+                                                            <td align="right" width="80%">
+                                                                &nbsp;<asp:DropDownList ID="ddlFamilySelect" runat="server">
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="center" colspan="3">
+                                                                <asp:UpdateProgress ID="UpdateProgressCatalog" runat="server">
+                                                                    <ProgressTemplate>
+                                                                        &nbsp;<img src="images/ajax-loader.gif" />
+                                                                        <asp:Label ID="lblLoad" runat="server">מחפש ...</asp:Label>&nbsp;
+                                                                    </ProgressTemplate>
+                                                                </asp:UpdateProgress>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="center" colspan="3">
+                                                                &nbsp; &nbsp;&nbsp; &nbsp;<asp:Button ID="btnSearchCatalog" runat="server" Text="חפש קטלוג"
+                                                                    Width="111px" OnClick="btnSearchCatalog_Click" />
+                                                                &nbsp;&nbsp;
+                                                                <asp:Label ID="lblLoadWaitCat" runat="server" Visible="False"></asp:Label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="right" colspan="3">
+                                                                <asp:DataGrid ID="CatalogSearchDataGrid" runat="server" AllowPaging="False" AllowSorting="True"
+                                                                    AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan"
+                                                                    BorderWidth="1px" CellPadding="2" Font-name="Arial" Font-Names="Arial" Font-Size="10pt"
+                                                                    ForeColor="Black" GridLines="None" PageSize="20"  Width="100%">
+                                                                   <SelectedItemStyle BackColor="PaleTurquoise" ForeColor="DarkSlateGray"    />
+                                                                    <AlternatingItemStyle BackColor="PaleGoldenrod" HorizontalAlign="Right" />
+                                                                    <ItemStyle HorizontalAlign="Right" />
+                                                                    <HeaderStyle BackColor="Tan" Font-Bold="True" HorizontalAlign="Right" />
+                                                                    <Columns>
+                                                                        <asp:TemplateColumn HeaderText="מקייט" SortExpression="PCATALOGMAKAT">
+                                                                            <ItemStyle HorizontalAlign="Right" Width="150px" />
+                                                                            <ItemTemplate>
+                                                                                <asp:Label ID="MakatLbl" runat="server" Text='<%# Container.DataItem("PCATALOGMAKAT")%>'>
+										                    </asp:Label>
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateColumn>
+                                                                        <asp:TemplateColumn HeaderText="שם קטלוג" SortExpression="PHEBDESC">
+                                                                            <ItemTemplate>
+                                                                                <a href='Templates/ShowTemplate.aspx?Template=<%# Container.DataItem("PINDEXTEMPLATE")%>&amp;Pkey=<%# Container.DataItem("PKEY") %>&amp;ParentKey=r&amp;Type=1&amp;PkeyCatalog=<%# Container.DataItem("PKEY") %>'
+                                                                                    target="_blank">
+                                                                                    <%# Container.DataItem("PHEBDESC") %>
+                                                                                </a>
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateColumn>
+                                                                        <asp:TemplateColumn HeaderText="סיווג" SortExpression="PCATALOGSIVUG">
+                                                                            <ItemStyle HorizontalAlign="Right" Width="100px" />
+                                                                            <ItemTemplate>
+                                                                                <asp:Label ID="lblClassification" runat="server" Text='<%# GetClassification(Container.DataItem("PCATALOGSIVUG"))%>'>
+										                    </asp:Label>
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateColumn>
+                                                                        <asp:TemplateColumn HeaderText="משפחה" SortExpression="PFAMILY">
+                                                                            <ItemStyle HorizontalAlign="Right" Width="150px" />
+                                                                            <ItemTemplate>
+                                                                                <asp:Label ID="lblClassification" runat="server" Text='<%# Container.DataItem("PFAMILY")%>'>
+										                    </asp:Label>
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateColumn>
+                                                                        <asp:TemplateColumn HeaderText="עודכן בתאריך" SortExpression="PLASTUPDATEDATEFORMAT">
+                                                                            <ItemStyle HorizontalAlign="Right" Width="100px" />
+                                                                            <ItemTemplate>
+                                                                                <asp:Label ID="lblUpdateDate" runat="server" Text='<%# Container.DataItem("PLASTUPDATEDATEFORMAT")%>'>
+										                    </asp:Label>
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateColumn>
+                                                                    </Columns>
+                                                                    <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center"
+                                                                        Mode="NumericPages" />
+                                                                    <FooterStyle BackColor="Tan" />
+                                                                </asp:DataGrid>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </asp:Panel>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+            </ContentTemplate>
+             </ajaxToolkit:TabPanel>
+             <ajaxToolkit:TabPanel ID="TabPanel4" runat="server" HeaderText="כל הקטלוגים" >
+                 <ContentTemplate>
+                    <div id="AllCatalogDIV" ></div>
+                    <a id="ShowUpdateDate" href="javascript:ShowHideUpdateDate(this);">הצג תאריכי עדכון</a> 
+                 </ContentTemplate>
+             </ajaxToolkit:TabPanel>
+             <ajaxToolkit:TabPanel ID="TabPanel5" runat="server" HeaderText="קטלוגים להדפסה">
+             <ContentTemplate>
+               <asp:UpdatePanel ID="UpdatePanel1" runat="server"  UpdateMode ="Conditional">
+                            <ContentTemplate>
+                                                <asp:Label ID="Label1" runat="server" Width="100%"  ></asp:Label>
+                                                    <asp:UpdateProgress id="UpdateProgress3" runat="server"><ProgressTemplate>
+                                                    &nbsp;<IMG src="images/ajax-loader.gif" /> <asp:Label id="lblLoad" runat="server">מחפש ...</asp:Label>&nbsp; 
+                                                    </ProgressTemplate>
+                                                    </asp:UpdateProgress> 
+                         
+                            
+                                                     <asp:DataGrid ID="PrintCatalogDataGrid" runat="server" AllowPaging="True" AllowSorting="True"
+                                        AutoGenerateColumns="False" BackColor="LightGoldenrodYellow"  Font-name="Arial"
+                                        Font-Size="10pt" PageSize="20" Width="100%" BorderColor="Tan" BorderWidth="1px" CellPadding="2" Font-Names="Arial" ForeColor="Black" GridLines="None" >
+                                        <SelectedItemStyle BackColor="PaleTurquoise" ForeColor="DarkSlateGray"  />
+                                        <AlternatingItemStyle BackColor="PaleGoldenrod" />
+                                        <HeaderStyle BackColor="Tan" Font-Bold="True" HorizontalAlign="Right"  />
+                                        <Columns>
+                                        
+                                        <asp:TemplateColumn HeaderText="מקייט" SortExpression="CATALOGMAKAT">
+                                                <ItemStyle HorizontalAlign="right" Width="120px" />
+                                                <ItemTemplate>
+                                                    <asp:Label ID="MakatLbl" runat="server" Text='<%# Container.DataItem("CATALOGMAKAT")%>'>
+										                    </asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateColumn>
+                                             <asp:TemplateColumn HeaderText="" >
+                                                <ItemStyle HorizontalAlign="center" Width="10px" />
+                                                <ItemTemplate>
+                                                    <img src="<%# GetImage(Container.DataItem("PFILEEXTENSION"))%>" />
+                                                </ItemTemplate>
+                                        </asp:TemplateColumn>
+                                            <asp:TemplateColumn HeaderText="שם הקטלוג" SortExpression="CATALOGNAME">
+                                            <ItemStyle HorizontalAlign="right" />
+							                    <ItemTemplate>
+								                    <a href="javascript:OpenDoc('<%# Container.DataItem("FILENAME") %>')"><%# Container.DataItem("CATALOGNAME") %></a>
+							                    </ItemTemplate>
+						                    </asp:TemplateColumn>
+                                            <asp:TemplateColumn HeaderText="תאריך יצירת קובץ"  SortExpression="PFILECREATEDDATE" >
+                                                <ItemStyle HorizontalAlign="Right"  Width="100px" />
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblUpdateDate" runat="server" Text='<%# Container.DataItem("PFILECREATEDDATE")%>'>
+										                    </asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateColumn>
+                                           
+                                        </Columns>
+                                        <PagerStyle BackColor="PaleGoldenrod" HorizontalAlign="Center" ForeColor="DarkSlateBlue" Mode ="NumericPages"  />
+                                                         <FooterStyle BackColor="Tan" />
+                                    </asp:DataGrid>
+                 </ContentTemplate>
+                          </asp:UpdatePanel>       
+
+            </ContentTemplate>
+             </ajaxToolkit:TabPanel>
+        </ajaxToolkit:TabContainer>
+        
+            </td>
+ 
+    </tr>
+ </table>          
+    
+    </form>
+</body>
+</html>

@@ -1,0 +1,120 @@
+﻿<html>
+
+<base target="_parent" />
+<head>
+<title>Catalog Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<LINK REL="stylesheet" HREF="LinkWare1.css" TYPE="text/css" />
+<LINK REL="stylesheet" HREF="ontop.css" TYPE="text/css" />
+
+<SCRIPT LANGUAGE="JavaScript" SRC="cvi_map_lib.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="cvi_map_src.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="tooltip.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="mapzoom.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript" SRC="specialfx.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="ontop.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript" SRC="panning.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="events.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="addSearchFocus.js"></SCRIPT>
+
+
+
+<input type="hidden" id="pic_name" name="pic_name" value=<# PICTURE_NAME ORDINAL=1 ENCAPS=' #> />
+<input type="hidden" id="map_name" name="map_name" value=<# IMAGEMAP_NAME ORDINAL=1 ENCAPS=' #> />
+<script language="javascript">
+	function initPage()
+	{
+		//populateSearchBox();
+		
+		//fnZoom(document.getElementById('map_name').value, document.getElementById('pic_name').value, 0.4);
+		//window.onresize = changeSize ;
+		
+		var obj=document.getElementById('myimg');
+		//alert(obj.width);
+		//obj.width='400px';
+		
+		//obj.style.width='200px';
+		//alert(obj.width);
+		cvi_map.add(document.getElementById('myimg'), { opacity: 70, areacolor: '#ffff00' });
+		
+		//top.frames('Parts Table').location.reload();
+		highlightSearch();
+	}
+	
+	
+	
+<!--cvi_map.add(document.getElementById('myimg'), { opacity: 70, areacolor: '#ffff00' });-->
+</script>
+<body id='mybody' class="BodyCatalog" dir="rtl" onload="initPage();">
+<!--<br/>-->
+
+<!--<br/>-->
+<SPAN id="globalAreaId" style="visibility:hidden;display:none;"></SPAN>
+
+<div align="center" DIR=RTL>
+<table align="center">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td align="center"><IMG  name="SearchFocus" src="blankSearchFocus.gif" STYLE="position:absolute; top:0px; left:0px; z-index:100; visibility:hidden;" onclick="javascript:hideSearchImage()" />
+		<# MAP ORDINAL=1 LABLE1="שם" LABLE2="מקט" LABLE3="הערה" #></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+</div>
+
+<div id="tipwindow"></div>
+<div align="center">
+
+</div>
+<script language="JavaScript">
+	
+var lastWidth = 0;
+function checkFrameWidth()
+{
+
+    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+	//console.log("New width: " + w);
+    if (lastWidth == 0)
+    {
+        lastWidth = w;
+		parent.saveColRatio(w);
+        return;
+    }
+	
+	
+    if (w != lastWidth)
+    {
+		lastWidth = w;
+        try
+        {
+            parent.saveColRatio(w);
+        }
+        catch(e)
+        {
+		
+        }
+    }
+	
+}
+
+setInterval(checkFrameWidth, 300);
+
+</script>
+
+</body>
+</html>

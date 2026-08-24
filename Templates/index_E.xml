@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="index_E.xsl"?>
+
+
+<TreeIndex>
+<#IndexDMC#>
+
+<CatalogName><![CDATA[<# CATALOG_NAME #>]]></CatalogName>
+<CatalogKey><#PKEY#></CatalogKey>
+<CatalogRevision><# REVISION #></CatalogRevision>
+<IsRootIndex>True</IsRootIndex>
+<IsWebEditor><#WEBEDITOR#></IsWebEditor>
+<OpenLevel>1</OpenLevel>
+
+
+</TreeIndex>

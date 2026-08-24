@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1255"?>
+<?xml-stylesheet type="text/xsl" href="header_Linked_Item_E.xsl"?>
+
+<Header>
+
+	<pkey><#PART PROP=PKEY#></pkey>
+	<PageNum><#PAGE_NUM#></PageNum>
+	<PageHebDesc><![CDATA[<#PAGE_HEB_DESC#>]]></PageHebDesc>	
+	<ChapterName><![CDATA[<#CHAPTER_NAME#>]]></ChapterName>
+	<CatalogName><![CDATA[<#CATALOG_NAME#>]]></CatalogName>
+	<WindowSourceFile>'<#FRAME SOURCE_FILE=right_Item_E.xml#>'</WindowSourceFile>
+	<Next><#NEXT#></Next>
+	<Prev><#PREV#></Prev>
+	<Index><#INDEX#></Index>
+	<PPROP1><#PART PROP=PPROP1#></PPROP1>
+	<PublishDate><#TodayDate#></PublishDate>
+	<HomeUrl><#REFERENCEURL#></HomeUrl>
+	<IsWebEditor><#WEBEDITOR#></IsWebEditor>
+
+</Header>

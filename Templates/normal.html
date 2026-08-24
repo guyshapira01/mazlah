@@ -1,0 +1,137 @@
+<html>
+
+<head>
+<title><#CATALOG_NAME#> - <#CHAPTER_NAME#> - <#PAGE_HEB_DESC#> - תמונה מספר <#PAGE_NUM#></title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="srcpath.js"></SCRIPT>
+ <SCRIPT LANGUAGE="javascript" SRC="../SearchPath.js"></SCRIPT>
+<script language="JavaScript">
+<!--
+
+var bFinishedLoading=false;
+
+function saveColRatio()
+{
+
+    if (!bFinishedLoading)
+        return;
+
+    try
+    {
+        var leftFrame = window.frames["Parts Map"];
+
+        if (leftFrame && leftFrame.document)
+        {
+            var w = leftFrame.document.documentElement.clientWidth;
+
+            if (!w || w == 0)
+                w = leftFrame.document.body.clientWidth;
+
+            if (w > 0)
+            {
+                document.cookie =
+                    "_col_ratio=" + w + ",*" +
+                    "; path=/" +
+                    "; expires=Fri, 31 Dec 2099 23:59:59 GMT";
+            }
+        }
+    }
+    catch(e)
+    {
+    }
+}
+
+
+document.write(
+    "<frameset " +
+    "frameborder='0' " +
+    "border='0' " +
+    "framespacing='0' " +
+    "onLoad='javascript:bFinishedLoading=true;' " +
+    "rows="
+);
+
+var r;
+r = getCookie('_row_ratio');
+
+if (r==null)
+    r="100,*";
+
+document.write("'" + r + "'>");
+
+
+document.write("<frame style='border:1px solid lightgrey' name='Header' src=");
+
+var pg = <# FRAME SOURCE_FILE=header1.xml ENCAPS=' #>;
+
+document.write(pg);
+
+document.write(
+    " marginwidth='0' " +
+    "marginheight='0' " +
+    "scrolling='no'>"
+);
+
+
+/* ==========================================
+   LEFT / RIGHT FRAMESET
+   ========================================== */
+
+document.write(
+    "<frameset " +
+    "id='inr_frmst' " +
+    "frameborder='1' " +
+    "border='2' " +
+    "framespacing='2' " +
+    "onResize='saveColRatio();' " +
+    "cols="
+);
+
+var r;
+r = getCookie('_col_ratio');
+
+if (r==null)
+    r="65%,*";
+
+document.write("'" + r + "'>");
+
+//-->
+</script>
+<!-- frame for the Index.xml mast be called "Index" -->
+<frameset id="inr_frmst1"
+          frameborder="1"
+          border="1"
+          rows="32,*">
+
+    <frame
+        name="statusbar"
+        src=<#FRAME SOURCE_FILE=status.htm#>
+        marginwidth="0"
+        marginheight="0"
+        scrolling="no"
+        frameborder="0">
+
+    <frame
+        name="Parts Map"
+        src=<#FRAME SOURCE_FILE=left1.html#>
+        marginwidth="0"
+        marginheight="0"
+        scrolling="auto"
+        frameborder="1">
+
+</frameset>
+
+<frame
+    name="Parts Table"
+    src=<#FRAME SOURCE_FILE=right1.xml#>
+    marginwidth="0"
+    marginheight="0"
+    scrolling="auto"
+    frameborder="1">
+
+</frameset>
+
+</frameset>
+</head>
+</html>

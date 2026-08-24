@@ -1,0 +1,31 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="srcpath.js"></SCRIPT>
+<script language="JavaScript">
+<!--
+var bFinishedLoading=false;
+document.write("<frameset onLoad='javascript:bFinishedLoading=true;' rows=");
+var r;
+r = getCookie('_row_ratio');
+if (r==null) r="14%,*";
+document.write("'" + r + "'>");
+
+document.write("<frame name='Header' src=");
+var pg = <# FRAME SOURCE_FILE=header.xml ENCAPS=' #>;
+document.write(pg);
+document.write(" marginwidth='0' marginheight='0' scrolling='no' frameborder='10'>");
+document.write("<frameset id='inr_frmst' cols=");
+var r;
+r = getCookie('_col_ratio');
+if (r==null) r="65%,*";
+document.write("'" + r + "'>");
+//-->
+</script>
+        <frame name="Parts Map" src=<#FRAME SOURCE_FILE=left.html#> marginwidth="0" marginheight="0" scrolling="auto" frameborder="10">
+        <frame name="Parts Table" src=<#FRAME SOURCE_FILE=right.xml#> marginwidth="0" marginheight="0" scrolling="auto" frameborder="10">
+    </frameset>
+</frameset>
+</head></html>

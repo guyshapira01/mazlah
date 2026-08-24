@@ -1,0 +1,510 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>Material Management</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+		<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+		<META content=FrontPage.Editor.Document name=ProgId>
+		<SCRIPT LANGUAGE="javascript" SRC="../Reports/ReportFunctions.js"></SCRIPT>
+		<SCRIPT language="JavaScript" src="Calendar.js"></SCRIPT>
+		<SCRIPT language="JavaScript" src="WebEditor.js"></SCRIPT>
+		<SCRIPT language="JavaScript" src="taas.js"></SCRIPT>
+
+
+	</HEAD>
+	<script LANGUAGE="JavaScript">
+		//change the window size and position
+		window.moveTo(50,100)
+		window.resizeTo(500,500)
+		var AutoValue1='';
+		var AutoValue2='';
+		var AutoField1='ShipmentID';
+		var AutoField2='ShipmentDate';
+		var ContainerList;
+		var RangeShipment2='';
+//		buildUrlWithBackInNewWindow('../generatereport.aspx?Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=AutoReturnPROP.xsl&amp;SQL=select%20PPROP7%20as%20ReturnPROP1,PPROP8%20as%20ReturnPROP2%20from%20t_cat_part%20where%20pkeycatalog=\'102885a1\'%20and%20PKEYTYPE=\'42\'%20and%20PPROP7=(select%20PPROP7%20from%20t_cat_part%20where%20pkeycatalog=\'102885a1\'%20and%20PKEYTYPE=\'42\'%20and%20TO_DATE(PPROP8,\'DD/MM/YYYY\')%20in%20(select%20max(TO_DATE(PPROP8,\'DD/MM/YYYY\'))%20from%20T_CAT_PART%20where%20pkeycatalog=\'102885a1\'%20and%20pkeytype=\'42\'))','NewFailureExist','resizable=no,fullscreen=no,width=1,height=1.top=2000,left=2000,toolbar=no,scrollbars=yes');
+
+	//	FillSelectBasedOnMultiLOV(document.getElementById('ShipmentID'),GetArrayOfLov(GetMultiLOV('concat(concat(t_cat_part.pprop7,'-'),t_cat_part.pprop8)%20Desc,t_cat_part.pprop7,t_cat_part.pprop8','t_cat_part.pkeycatalog=\'102885a1\'%20and%20PKEYTYPE=\'42\'')),'');
+var ShipmentList=GetArrayOfLov(GetMultiLOV('concat(concat(t_cat_part.pprop7,\'-\'),t_cat_part.pprop8)%20as%20Desc1,t_cat_part.pprop7,t_cat_part.pprop8','t_cat_part.pkeycatalog=\'102885a1\'%20and%20PKEYTYPE=\'42\'%20order%20by%20TO_DATE(PPROP8,\'DD/MM/YYYY\')%20DESC'));
+var LastShipment=ShipmentList.toString().split(",")[0];
+</script>
+	<SCRIPT LANGUAGE="JavaScript">
+		var LOVField;
+		var LOVLink;
+	</SCRIPT>
+	<BODY style="background-color:#7F97B9" onkeypress="JavaScript:CheckEnter();" onload="JavaScript:
+										FillSelectBasedOnMultiLOV(document.getElementById('ShipmentID11'),ShipmentList,LastShipment);
+										if(LastShipment !='')	{
+											ShipmentID.value=LastShipment.split('|')[1];
+											ShipmentDate.value=LastShipment.split('|')[2];
+											if (ShipmentID.value !='')
+												RangeShipment2='%20and%20PPROP7=\'' + ShipmentID.value + '\'%20';
+											else
+												RangeShipment2='';
+											ContainerList=GetArrayOfLov(GetMultiLOV('t_cat_part.pprop2,t_cat_part.pprop2','t_cat_part.pkeycatalog=\'102885a1\'%20and%20PKEYTYPE=\'54\'' + RangeShipment2 + '%20order%20by%20t_cat_part.pprop2'));
+											FillSelectBasedOnMultiLOV(document.getElementById('Container'),ContainerList,'');
+										}
+										else	{
+											ShipmentID.value='';
+											ShipmentDate.value='';
+
+										}
+					">
+		<TABLE cellSpacing=0 cellPadding=0 width="99%" border=1>
+		  <TBODY>
+				<TR>
+					<TD width="100%" align="center" colspan="3">
+
+						<input type="Button" id="MaterialManagementTree" name="MaterialManagementTree" value="Material Management Tree" style="text-align:center;width:190px;height:26px;font-weight:bold;color:black;background-color:#F3F3F3;"
+								onClick="javascript:
+										Link1='../Onlinesearchredirect.aspx?Pkey=102885a1&pkeycatalog=102885a1';
+									//	Link1='./ShowTemplate.aspx?Template=index_E.xml&Pkey=102885a1&Type=1&pkeycatalog=102885a1';
+										w=window.open(Link1,'MaterialManagementTree','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+							"/>
+
+						<input type="Button" id="ShipmentConfigurationTree" name="ShipmentConfigurationTree" value="Shipment Configuration Tree" style="text-align:center;width:190px;height:26px;font-weight:bold;color:black;background-color:#F3F3F3;"
+								onClick="javascript:
+										Link1='../Onlinesearchredirect.aspx?Pkey=163534a1&pkeycatalog=163534a1';
+									//	Link1='./ShowTemplate.aspx?Template=index_E.xml&Pkey=163534a1&Type=1&pkeycatalog=163534a1';
+									w=window.open(Link1,'ShipmentConfigurationTree','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+							"/>
+					</TD>
+				</TR>
+
+
+			<TR>
+				<TD  align="center" width="24%"><font style="FONT-SIZE:16px;FONT-WEIGHT:BOLD;color:black"> Configuration Reports</font></TD>
+				<TD colspan="2">
+					<TABLE>
+						<TR>
+							<TD width="38%" nowrap="yes">
+								<input type="radio" name="Report" id="Report" value="1" />&#160;Shipment Prepration&#160;<br/>
+								<input type="radio" name="Report" id="Report" value="2" />&#160;Shipment content&#160;<br/>
+							</TD>
+							<TD width="38%" nowrap="yes">
+								<input title="Scope:Package" type="radio" name="Report" id="Report" value="11" /><span title="Scope:Package">&#160;Packages List&#160;</span><br/>
+								<input type="radio" name="Report" id="Report" value="12" />&#160;Pallets List&#160;<br/>
+							</TD>
+						</TR>
+					</TABLE>
+				</TD>
+			<TR>
+
+					<TD width="20%" nowrap="yes"><font style="FONT-SIZE:16px;FONT-WEIGHT:BOLD;color:black">Shipment&#160;</font></TD>
+					<TD nowrap="yes" colspan="2">
+
+						<input type="hidden" name="ShipmentID" id="ShipmentID" style="width:120px;color:gray" readonly="true"
+								onpropertychange="JavaScript:
+																													Container.value='';
+																												//	if (ShipmentID.value!='')
+																												//			Shipment111[0].checked=true;
+																												//	else
+																												//			Shipment111[1].checked=true;
+							"/>
+
+
+							<SELECT id="ShipmentID11" name="ShipmentID11" onchange="Javascript:
+											if(this.value !='')	{
+												ShipmentID.value=this.value.split('|')[0];
+												ShipmentDate.value=this.value.split('|')[1];
+											}
+											else	{
+												ShipmentID.value='';
+												ShipmentDate.value='';
+											}
+											Container.value='';
+											if (ShipmentID.value !='')
+												RangeShipment2='%20and%20PPROP7=\'' + ShipmentID.value + '\'%20';
+											else
+												RangeShipment2=''
+											ContainerList=GetArrayOfLov(GetMultiLOV('t_cat_part.pprop2,t_cat_part.pprop2','t_cat_part.pkeycatalog=\'102885a1\'%20and%20PKEYTYPE=\'54\'' + RangeShipment2 + '%20order%20by%20t_cat_part.pprop2'));
+
+											EmptyLOV(document.getElementById('Container'));
+											FillSelectBasedOnMultiLOV(document.getElementById('Container'),ContainerList,'');
+
+									">
+								<OPTION value=""></OPTION>
+							</SELECT>
+						<input type="hidden" name="ShipmentDate" id="ShipmentDate" style="width:100px" disabled="true" />
+
+						<!--
+								&#160;<IMG height="16" src="LOV.jpg" width="16" onMouseOver="this.style.cursor='hand';" onMouseOut="JavaScript:this.style.cursor='auto';"
+								onclick="javascript:
+																//		var RangeDate=''
+																//		if(FromDate1.value != '' & ToDate1.value != '')	{
+																//				RangeDate = '%20and%20(TO_DATE(PPROP8,\'DD/MM/YYYY\')%20BETWEEN%20TO_DATE(\'' + FromDate1.value + '\',\'DD/MM/YYYY\')%20AND%20TO_DATE(\'' + ToDate1.value + '\',\'DD/MM/YYYY\'))';
+																//		}
+																//		else	{
+																//		RangeDate='%20and%20TO_DATE(PPROP8,\'DD/MM/YYYY\')%20in%20(select%20max(TO_DATE(PPROP8,\'DD/MM/YYYY\'))%20from%20T_CAT_PART%20where%20pkeycatalog=\'102885a1\'%20and%20pkeytype=\'42\')'
+																//		}
+																		LOVField='';
+																		LOVLink='';
+																		LOVLink='ShipmentID';
+																		LOVField='ShipmentDate';
+																		var Link1='../generatereport.aspx?View2=Yes&Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=LOV.xsl&amp;SQL=select%20PPROP7%20as%20PPROP10,PPROP8%20as%20PHEBDESC%20from%20T_CAT_PART%20where%20pkeycatalog=\'102885a1\'%20and%20pkeytype=\'42\'';
+																		buildUrlWithBackInNewWindow(Link1,'selectItem','resizable=no,fullscreen=no,width=400,height=500,toolbar=no,scrollbars=yes');
+
+																		"
+								/>
+
+								&#160;<IMG height="16" src="Last.jpg" width="32" onMouseOver="this.style.cursor='hand';" onMouseOut="JavaScript:this.style.cursor='auto';"
+								onclick="javascript:
+															ShipmentID.value=AutoValue1;
+															ShipmentDate.value=AutoValue2;
+														//	Container.value='';
+										"
+								/>
+								&#160;<IMG height="16" src="Clear.jpg" width="32" onMouseOver="this.style.cursor='hand';" onMouseOut="JavaScript:this.style.cursor='auto';"
+								onclick="javascript:
+															ShipmentID.value='';
+															ShipmentDate.value='';
+										"
+								/>
+				-->
+
+
+
+<!--
+
+								<input type="radio" name="Shipment111" id="Shipment111" value="2" checked="true"
+															onclick="javascript:ShipmentID.value='';ShipmentDate.value='';Container.value='';"
+								/>Last
+-->
+					</TD>
+
+				</TR>
+
+			<TR>
+					<TD width="20%" nowrap="yes"><font style="FONT-SIZE:16px;FONT-WEIGHT:BOLD;color:black">Container&#160;</font></TD>
+					<TD nowrap="yes" colspan="2">
+							<SELECT id="Container" name="Container" onchange="Javascript:
+																													if(this.value !='')	{
+																													//	ShipmentID.value=this.value.split('|')[0];
+																													//	ShipmentDate.value=this.value.split('|')[1];
+																													}
+																													else	{
+																													//	ShipmentID.value='';
+																													//	ShipmentDate.value='';
+
+																													}
+																												">
+								<OPTION value=""></OPTION>
+							</SELECT>
+
+
+<!--
+
+						<input type="text" name="Container" id="Container" style="width:80px"  />
+								&#160;<IMG height="16" src="LOV.jpg" width="16" onMouseOver="this.style.cursor='hand';" onMouseOut="JavaScript:this.style.cursor='auto';"
+								onclick="javascript:
+																			var RangeShipment2='';
+																			if (ShipmentID.value!='')	{
+																			// specific shipment
+																				RangeShipment2='%20and%20PPROP7=\'' + ShipmentID.value + '\'';
+																			}
+																			else	{
+																			// last shipment
+																	//			RangeShipment2='%20and%20PPROP7=\'' + AutoValue1 + '\'';
+																				RangeShipment2='';
+																			}
+
+																		LOVField='';
+																		LOVLink='';
+																		LOVLink='';
+																		LOVField='Container';
+																		var Link1='../generatereport.aspx?Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=LOV.xsl&amp;SQL=select%20PPROP2%20as%20PHEBDESC%20from%20T_CAT_PART%20where%20pkeycatalog=\'102885a1\'%20and%20pkeytype=\'54\'' + RangeShipment2 + '%20group%20by%20PPROP2';
+																		buildUrlWithBackInNewWindow(Link1,'selectItem','resizable=no,fullscreen=no,width=400,height=500,toolbar=no,scrollbars=yes');
+
+																		"
+								/>
+-->
+					</TD>
+				</TR>
+			<TR>
+					<TD width="20%" nowrap="yes"><font style="FONT-SIZE:16px;FONT-WEIGHT:BOLD;color:black">Pallet&#160;</font></TD>
+					<TD nowrap="yes" colspan="2">
+						<input type="text" name="Pallet" id="Pallet" style="width:80px" />
+					</TD>
+				</TR>
+			<TR>
+					<TD width="20%" nowrap="yes"><font style="FONT-SIZE:16px;FONT-WEIGHT:BOLD;color:black">Package&#160;</font></TD>
+					<TD nowrap="yes" colspan="2">
+						<input type="text" name="Package" id="Package" style="width:80px" />
+					</TD>
+				</TR>
+
+				<TR>
+					<TD align="center"><font style="FONT-SIZE:16px;FONT-WEIGHT:BOLD;color:black"> Material Management Reports</font></TD>
+
+					<TD colspan="2" nowrap="yes">
+						<input type="radio" name="Report" id="Report" value="4" title="Scope:Shipment,Container,Pallet" /><span title="Scope:Shipment,Container,Pallet">&#160; RIR Generator&#160;</span><br/>
+						<input type="radio" name="Report" id="Report" value="5" title="Scope:Shipment,Container,Pallet"/><span title="Scope:Shipment,Container,Pallet">&#160; Pallets&#160;</span><br/>
+						<input type="radio" name="Report" id="Report" value="6" title="Scope:Shipment,Container,Pallet,Package"/><span title="Scope:Shipment,Container,Pallet,Package">&#160; Packages&#160;</span><br/>
+						<input type="radio" name="Report" id="Report" value="7" title="Scope:Shipment,Container,Pallet,Package"/><span title="Scope:Shipment,Container,Pallet,Package">&#160; Packages Stage&#160;</span><br/>
+						<input type="radio" name="Report" id="Report" value="8" title="Scope:Package"/><span title="Scope:Package">&#160; Line Request&#160;</span><br/>
+						<input type="radio" name="Report" id="Report" value="9" title="Scope:Package"/><span title="Scope:Package">&#160; Stock&#160;</span><br/>
+						<input type="radio" name="Report" id="Report" value="14" title="Scope:Package"/><span title="Scope:Package">&#160; KIT Stock&#160;</span><br/>
+						<input type="radio" name="Report" id="Report" value="15" title="Scope:WS Number"/><span title="Scope:WS Number">&#160; WS KIT Stock&#160;&#160;&#160;</span>
+							WS:&#160;&#160;<input type="text" name="WS" id="WS" style="width:80px" />
+						<br/>
+						<input type="radio" name="Report" id="Report" value="10" title="Update Completed tank number"/><span title="Update Completed tank number">&#160; Completed Tanks&#160;</span><br/>
+					</TD>
+				</TR>
+				<TR>
+					<TD align="center"><font style="FONT-SIZE:16px;FONT-WEIGHT:BOLD;color:black"> Export Data</font></TD>
+					<TD>
+						<input type="radio" name="Report" id="Report" value="13" title="Export kit status"/><span title="Export kit status">&#160; Export Material Status &#160;</span>
+							From:&#160;&#160;<input type="text" name="Date2" id="Date2" style="width:80px" />
+
+						<br/>
+						<input type="radio" name="Report" id="Report" value="16" title="Export Line Status"/><span title="Export Line Status">&#160; Export Line Status &#160;</span><br/>
+					</TD>
+				</TR>
+
+
+			</TBODY>
+		</TABLE>
+		<br/>
+		<TABLE cellSpacing=0 cellPadding=0 width="99%" border=0>
+				<TR>
+					<TD width="100%" align="center">
+						<input type="Button" id="FlightButton" name="FlightButton" value="Generate Report" style="text-align:center;width:160px;height:26px;font-weight:bold;color:black;background-color:#F3F3F3;"
+						onClick="javascript:
+							var RangeShipment='';
+							var RangeContainer='';
+							var RangeShipmentREG='';
+							var RangeContainerREG='';
+							var title111=' ';
+							var titlePackOnly=' ';
+							var scopeProp7='';
+							var scopeProp2='';
+							if (ShipmentID.value!='')	{
+								RangeShipment='%20and%20PPROP7=\'' + ShipmentID.value + '\'';
+								RangeShipmentREG='&amp;PPROP7=' + ShipmentID.value;
+								title111= ' for Shipment- '	+ ShipmentID.value;
+								scopeProp7='&amp;ScopePPROP7=Yes';
+							}
+							else	{
+								RangeShipment='';
+								RangeShipmentREG='';
+								title111= ' ';
+								scopeProp7='';
+
+
+								//  Last shipment
+						//		RangeShipment='%20and%20PPROP7=\'' + AutoValue1 +'\'';
+						//		RangeShipmentREG='&amp;PPROP7=' + AutoValue1
+						//		title111= ' for Shipment- '	+ AutoValue1;
+						//		scopeProp7='&amp;ScopePPROP7=Yes';
+							}
+
+							if (Container.value!='')	{
+								RangeContainer='%20and%20PPROP2=\'' + Container.value + '\'';
+								RangeContainerREG='&amp;PPROP2=' + Container.value;
+								title111= title111 + ' Container - ' + Container.value;
+								scopeProp2='&amp;ScopePPROP2=Yes';
+							}
+							else	{
+								RangeContainer='';
+								RangeContainerREG='';
+								scopeProp2='';
+							}
+
+							if (Pallet.value!='')	{
+							//	RangePallet='%20and%20PPROP22=\'' + Pallet.value + '\'';
+								RangePallet='%20and%20PPROP22%20like\'%25' + Pallet.value + '%25\'';
+							//	RangePalletREG='&amp;PPROP22=' + Pallet.value;
+								RangePalletREG='&amp;PPROP22=(like)%25' + Pallet.value + '%25';
+								title111= title111 + ' Pallet - ' + Pallet.value;
+								scopeProp22='&amp;ScopePPROP2=Yes';
+							}
+							else	{
+								RangePallet='';
+								RangePalletREG='';
+								scopeProp22='';
+							}
+							if (Package.value!='')	{
+							//	RangePackage='%20and%20PPROP3=\'' + Package.value + '\'';
+								RangePackage='%20and%20t_cat_part.PPROP3%20like\'%25' + Package.value + '%25\'';
+							//	RangePackageREG='&amp;PPROP3=' + Package.value;
+								RangePackageREG='&amp;PPROP3=(like)%25' + Package.value + '%25';
+								title111= title111 + ' Package - ' + Package.value;
+								scopeProp3='&amp;ScopePPROP3=Yes';
+								titlePackOnly='(Package ' + Package.value + ')';
+							}
+							else	{
+								RangePackage='';
+								RangePackageREG='';
+								scopeProp3='';
+								titlePackOnly=' '
+							}
+
+
+							//  *****************  Shipment Prepration Report *****************
+							if (CheckRadio(Report)=='1')	{
+										Link1='../generatereport.aspx?Catalog=163534a1&amp;Table=T_CAT_PART&amp;XSL=Update_QTY_Pallet_to_Shipment_SC.xsl&amp;PSTATUS=163534a2&amp;OrderByFields=t_cat_part.PPROP22';
+									w=window.open(Link1,'QTYForShipment','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+
+							//  *****************  Next Shipment Content *****************
+							if (CheckRadio(Report)=='2')	{
+									Link1='../generatereport.aspx?Catalog=163534a1&amp;Table=T_CAT_PART&amp;COUNTER=true&amp;XSL=DataForShipmentImport.xsl&amp;OrderByFields=t_cat_part.PPROP22,t_cat_part_father.PPROP22,t_cat_part.PPROP3';
+									w=window.open(Link1,'NextShipmentContent','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+							//  *****************  RIR Report *****************
+							if (CheckRadio(Report)=='4')	{
+									Link1='../generatereport.aspx?Catalog=102885a1&amp;Table=T_CAT_PART&amp;COUNTER=true&amp;XSL=RIRpallet333.xsl' + RangeShipmentREG + RangeContainerREG + RangePalletREG + '&amp;OrderByFields=t_cat_part.PPROP7,t_cat_part.PPROP2,t_cat_part.PPROP22,t_cat_part.PPROP33,t_cat_part.PPROP3,t_cat_part.PPROP34';
+									w=window.open(Link1,'RIR','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+
+
+
+
+
+							//  *****************  Pallets Report *****************
+							if (CheckRadio(Report)=='5')	{
+									Link1='../generatereport.aspx?Title=' + title111 + scopeProp7 + scopeProp2  + scopeProp22 + '&amp;Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=PalletList.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20pkeycatalog=\'102885a1\'%20and%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=54%20' + RangeShipment + RangeContainer + RangePallet + '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP7,PPROP2,PPROP22'
+
+								//		Link1='../generatereport.aspx?Catalog=102885a1&amp;Table=T_CAT_PART&amp;XSL=PalletList.xsl&amp;pkeytype=54' + RangeShipment +'&amp;OrderByFields=t_cat_part.PPROP7,t_cat_part.PPROP2,t_cat_part.PPROP22';
+									w=window.open(Link1,'Pallets','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+							//  *****************  Packages Report *****************
+							if (CheckRadio(Report)=='6')	{
+										Link1='../generatereport.aspx?Title=' + title111 + scopeProp7 + scopeProp2 + scopeProp22 + scopeProp3 + '&amp;Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=PackageList.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20pkeycatalog=\'102885a1\'%20and%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=41%20' + RangeShipment + RangeContainer + RangePallet + RangePackage + '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP7,PPROP2,PPROP22,PPROP33,PPROP3,PPROP34'
+								//		Link1='../generatereport.aspx?Catalog=102885a1&amp;Table=T_CAT_PART&amp;XSL=PackageList.xsl&amp;pkeytype=41' + RangeShipment +'&amp;OrderByFields=t_cat_part.PPROP7,t_cat_part.PPROP2,t_cat_part.PPROP22,t_cat_part.PPROP3';
+									w=window.open(Link1,'Packages','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+							//  *****************  Packages Stage *****************
+							if (CheckRadio(Report)=='7')	{
+								//		Link1='../generatereport.aspx?Title=' + title111 + scopeProp7 + scopeProp2 + '&amp;Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=PackageList.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20pkeycatalog=\'102885a1\'%20and%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=41%20' + RangeShipment + RangeContainer + '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP7,PPROP2,PPROP22,PPROP33,PPROP3,PPROP34'
+										Link1='../generatereport.aspx?Catalog=102885a1&amp;Table=T_CAT_PART&amp;XSL=UpdatePackage_Material_Man.xsl&amp;pkeytype=41' + RangeShipmentREG + RangeContainerREG + RangePalletREG + RangePackageREG + '&amp;OrderByFields=t_cat_part.PPROP7,t_cat_part.PPROP2,t_cat_part.PPROP22,t_cat_part.PPROP33,t_cat_part.PPROP3,t_cat_part.PPROP34';
+									w=window.open(Link1,'Updatestage','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+							//  *****************  Line Request *****************
+							if (CheckRadio(Report)=='8')	{
+								//		Link1='../generatereport.aspx?Title=' + title111 + '&amp;Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=Line_Request_Material_Man.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20pkeycatalog=\'102885a1\'%20and%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=\'41\'%20and%20PPROP20=\'Received\'%20and%20PPROP13=\'Yes\'%20' + RangePackage +  '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP3';
+										Link1='../generatereport.aspx?Catalog=102885a1&amp;Table=T_CAT_PART&amp;XSL=Line_Request_Material_Man.xsl&amp;PKEYTYPE=41&amp;PPROP20=Received&amp;PPROP13=Yes&amp;OrderByFields=t_cat_part.PPROP3'  + RangePackageREG;
+									w=window.open(Link1,'LineRequest','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+
+							//  *****************  Stock *****************
+							if (CheckRadio(Report)=='9')	{
+										Link1='../generatereport.aspx?Catalog=102885a1&amp;Table=T_CAT_PART&amp;XSL=Stock_Material_Man.xsl&amp;pkeytype=41&amp;OrderByFields=t_cat_part.PPROP3'  + RangePackageREG;
+									w=window.open(Link1,'Stock','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+
+							//  *****************  Kit Stock *****************
+							if (CheckRadio(Report)=='14')	{
+										Link1='../generatereport.aspx?Title=' + titlePackOnly + '&amp;Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=Stock KIT_Material_Man.xsl&amp;SQL=select%20t_cat_part.*,ws.phebdesc,ws.pprop3%20from%20t_cat_part,t_cat_part%20ws,t_cat_nodes,t_cat_nodes%20nodeWS%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20ws.pkey=nodeWS.pkey%20and%20t_cat_part.pkeycatalog=\'102885a1\'%20and%20ws.pkeycatalog=\'129729a1\'%20and%20t_cat_part.pprop55=ws.pprop3%20and%20ws.PKEYTYPE=\'21\'and%20t_cat_part.PKEYTYPE=\'41\'%20' + RangePackage + '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20and%20ws.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20t_cat_part.pprop3';
+
+							//			Link1='../generatereport.aspx?Title=' + titlePackOnly + '&amp;Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=Stock KIT_Material_Man.xsl&amp;SQL=select%20t_cat_part.*%20from%20t_cat_part,t_cat_nodes%20where%20pkeycatalog=\'102885a1\'%20and%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=41%20' + RangePackage + '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP3'
+
+									//	Link1='../generatereport.aspx?Catalog=102885a1&amp;Table=T_CAT_PART&amp;XSL=Stock_Material_Man.xsl&amp;pkeytype=41&amp;OrderByFields=t_cat_part.PPROP3'  + RangePackageREG;
+									w=window.open(Link1,'KitStock','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+
+							//  *****************  WS Kit Stock *****************
+							if (WS.value!='')	{
+								rangeWS1='%20and%20ws.pprop3%20like%20\'%25' + WS.value + '%25\'';
+								rangeWS2='%20and%20pprop55%20like%20\'%25' + WS.value + '%25\'';
+								titleWS='for WS ' + WS.value;
+							}
+							else	{
+								rangeWS1='';
+								rangeWS2='';
+								titleWS=' ';
+							}
+
+							if (CheckRadio(Report)=='15')	{
+										Link1='../generatereport.aspx?Title=' + titleWS + '&amp;Checkpermissions=false&Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=WSStock KIT_Material_Man.xsl&amp;SQL=select%20distinct%20ws.phebdesc,ws.pprop3%20P3_1,ws.pprop40,ws.pprop41,t_cat_part.pprop55%20P55,t_cat_part.pprop3%20P3%20,t_cat_part.*%20from%20t_cat_part,t_cat_part%20ws,t_cat_nodes,t_cat_nodes%20nodeWS%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20ws.pkey=nodeWS.pkey%20and%20t_cat_part.%20pkeycatalog=\'163534a1\'%20and%20ws.pkeycatalog=\'129729a1\'%20and%20t_cat_part.pprop55=ws.pprop3%20and%20ws.PKEYTYPE=\'21\'and%20t_cat_part.PKEYTYPE=\'41\'' + rangeWS1 + 'and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20and%20ws.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20union%20select%20\'aa\',\'zz\',\'zz1\',\'zz2\'%20,t_cat_part.pprop55%20P55,t_cat_part.pprop3%20P3,t_cat_part.*%20from%20t_cat_part%20where%20pkeycatalog=\'102885a1\'%20and%20pkeytype=\'41\'%20' + rangeWS2 + 'and%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20P55,P3,P3_1';
+								//		Link1='../generatereport.aspx?Title=' + titleWS + '&amp;Checkpermissions=false&Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=WSStock KIT_Material_Man.xsl&amp;SQL=select%20distinct%20ws.phebdesc,ws.pprop3%20P3_1,t_cat_part.pprop55%20P55,t_cat_part.pprop3%20P3%20,t_cat_part.*%20from%20t_cat_part,t_cat_part%20ws,t_cat_nodes,t_cat_nodes%20nodeWS%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20ws.pkey=nodeWS.pkey%20and%20t_cat_part.%20pkeycatalog=\'163534a1\'%20and%20ws.pkeycatalog=\'129729a1\'%20and%20t_cat_part.pprop55=ws.pprop3%20and%20ws.PKEYTYPE=\'21\'and%20t_cat_part.PKEYTYPE=\'41\'' + rangeWS1 + 'and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20and%20ws.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20union%20select%20\'aa\',\'zz\'%20,t_cat_part.pprop55%20P55,t_cat_part.pprop3%20P3,t_cat_part.*%20from%20t_cat_part%20where%20pkeycatalog=\'102885a1\'%20and%20pkeytype=\'41\'%20' + rangeWS2 + 'and%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20P55,P3,P3_1';
+
+									w=window.open(Link1,'WSKitStock','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+
+						//  *****************  ComCompleted Tanks *****************
+							if (CheckRadio(Report)=='10')	{
+										Link1='../generatereport.aspx?Catalog=122979a1&amp;Table=T_CAT_PART&amp;XSL=Update_Completed_Tank_Man.xsl&amp;PPROP4=Completed Tanks';
+									w=window.open(Link1,'FinishedTanks','location=no,menubar=no,toolbar=no,status=no,scrollbars=no,resizable=no');
+									//window.close();
+								}
+
+
+							//  *****************  Packages List *****************
+							if (CheckRadio(Report)=='11')	{
+										Link1='../generatereport.aspx?Title=' + titlePackOnly + '&amp;Catalog=163534a1&amp;Mode=FullSQL&amp;XSL=All_Package_SC.xsl&amp;SQL=select%20distinct%20t_cat_part.*%20from%20t_cat_part,t_cat_nodes%20where%20pkeycatalog=\'163534a1\'%20and%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=41%20' + RangePackage + '%20and%20PSTATUS=\'163534a2\'%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP3'
+									//	Link1='../generatereport.aspx?Catalog=163534a1&amp;Table=T_CAT_PART&amp;XSL=All_Package_SC.xsl&amp;pkeytype=41&amp;PSTATUS=163534a2&amp;OrderByFields=t_cat_part.PPROP3';
+									w=window.open(Link1,'PackagesList','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+
+							//  *****************  Pallet List *****************
+							if (CheckRadio(Report)=='12')	{
+										Link1='../generatereport.aspx?Catalog=163534a1&amp;Table=T_CAT_PART&amp;XSL=Export_Configuration_SC.xsl&amp;pkeytype=41&amp;OrderByFields=to_number(t_cat_part_father.PPROP41),to_number(t_cat_part.PPROP40)';
+									w=window.open(Link1,'ExportConfiguration','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+
+							//  *****************  Export Material Data *****************
+							var RangeUpateDate='';
+							if(Date2.value != '' )
+								RangeUpateDate='%20and%20PUPDATEDATE%20is%20not%20NULL%20and%20PUPDATEDATE%20>=%20TO_DATE(\'' + Date2.value + '\',\'DD/MM/YYYY\')';
+							else
+							 	RangeUpateDate='';
+
+							if (CheckRadio(Report)=='13')	{
+								//		Link1='../generatereport.aspx?Catalog=102885a1&amp;Table=T_CAT_PART&amp;XSL=Export_Packages_From_Kayseri.xsl&amp;pkeytype=41&amp;OrderByFields=t_cat_part.PPROP22';
+										Link1='../generatereport.aspx?Catalog=102885a1&amp;Mode=FullSQL&amp;XSL=Export_Packages_From_Kayseri.xsl&amp;SQL=select%20t_cat_part.*%20from%20t_cat_part,t_cat_nodes%20where%20pkeycatalog=\'102885a1\'%20and%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=\'41\'%20' + RangeUpateDate + '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP22'
+									w=window.open(Link1,'ExportData','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+
+							//  *****************  Export Line Progress *****************
+
+							if (CheckRadio(Report)=='16')	{
+										Link1='../generatereport.aspx?Catalog=129729a1&amp;Table=T_CAT_PART&amp;XSL=LineProgressReport.xsl&amp;pkeytype=21&amp;OrderByFields=t_cat_part.PPROP3';
+									w=window.open(Link1,'ExportData','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+								}
+
+							"
+
+
+
+
+
+
+										onmouseover="JavaScript:this.style.backgroundColor='red'"
+										onmouseout="JavaScript:this.style.backgroundColor='#F3F3F3'"/>
+
+					</TD>
+				</TR>
+		</TABLE>
+
+		<script language="JavaScript">
+			function CheckEnter()	{
+				if (window.event.keyCode==13)	{
+					FlightButton.click();
+				}
+			}
+		function CheckRadio(RadioName)	{
+			for ( i=0; i<RadioName.length; i++)	{
+				if (RadioName[i].checked)
+					return (RadioName[i].value);
+			}
+			return (-1)
+			}
+
+		</script>
+	</BODY>
+</HTML>

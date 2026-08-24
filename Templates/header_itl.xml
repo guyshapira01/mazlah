@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="header_itl.xsl"?>
+
+<Header>
+
+	<PageNum><#PAGE_NUM#></PageNum>
+	<PageHebDesc><![CDATA[<#PAGE_HEB_DESC#>]]></PageHebDesc>	
+	<ChapterName><![CDATA[<#CHAPTER_NAME#>]]></ChapterName>
+	<CatalogName><![CDATA[<#CATALOG_NAME#>]]></CatalogName>
+	<Next><#NEXT#></Next>
+	<Prev><#PREV#></Prev>
+	<Index><#INDEX#></Index>
+	<IsWebEditor><#WEBEDITOR#></IsWebEditor>
+	<UserLogon><#UserLogon#></UserLogon>
+	<UpdateDate><#PART PROP=PUPDATEDATE#></UpdateDate>
+	<ReferenceURL><#REFERENCEURL#></ReferenceURL>
+	<PREFS><#PREF_RET#></PREFS>
+</Header>

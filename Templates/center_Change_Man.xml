@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="center_Change_Man.xsl"?>
+<Items>
+	<IsWebEditor><#WEBEDITOR#></IsWebEditor>
+	<UserLogon><#UserLogon#></UserLogon>
+	<#LWE-AccessLevel#>
+ 	<PKEYCATALOG><#PKEYCATALOG#></PKEYCATALOG>
+
+
+	<#PARENT_PART_BEGIN#>
+    	<CCB>
+			<PAR_ParentKey><![CDATA[<#PARENTKEY#>]]></PAR_ParentKey>
+			<ParCCBNumber><![CDATA[<#PART PROP=PPROP41#>]]></ParCCBNumber>
+			<ParCCBDate><![CDATA[<#PART PROP=PPROP42#>]]></ParCCBDate>
+			<ParCCBTitle><![CDATA[<#PART PROP=PHEBDESC#>]]></ParCCBTitle>
+			<ParCCBRemark><![CDATA[<#PART PROP=PPROP43#>]]></ParCCBRemark>
+    	</CCB>
+	<#PARENT_PART_END#>
+
+
+
+
+    <Item>
+		<ParentKey><![CDATA[<#PARENTKEY#>]]></ParentKey>
+
+		 <tagPartID><![CDATA[<#PART PROP=PKEY#>]]></tagPartID>
+
+		 <Change_Title><![CDATA[<#PART PROP=PHEBDESC#>]]></Change_Title>
+		 <PENGDESC><![CDATA[<#PART PROP=PENGDESC#>]]></PENGDESC>
+
+		 <ECO_P_NO><![CDATA[<#PART PROP=PPROP1#>]]></ECO_P_NO>
+		 <Change_Level><![CDATA[<#PART PROP=PPROP2#>]]></Change_Level>
+		 <Change_Status><![CDATA[<#PART PROP=PPROP4#>]]></Change_Status>
+		 <Subsystem><![CDATA[<#PART PROP=PPROP5#>]]></Subsystem>
+		 <Part_Name><![CDATA[<#PART PROP=PPROP6#>]]></Part_Name>
+		 <LRU><![CDATA[<#PART PROP=PPROP7#>]]></LRU>
+		 <Request_By><![CDATA[<#PART PROP=PPROP8#>]]></Request_By>
+		 <P_N><![CDATA[<#PART PROP=PPROP10#>]]></P_N>
+		 <Date><![CDATA[<#PART PROP=PPROP11#>]]></Date>
+ 	  	<Recommended_Change_Level><![CDATA[<#PART PROP=PPROP12#>]]></Recommended_Change_Level>
+ 		<Change_Details><![CDATA[<#PART PROP=PPROP13#>]]></Change_Details>
+	 	<CCB_Conclusion><![CDATA[<#PART PROP=PPROP14#>]]></CCB_Conclusion>
+	 	<Remark><![CDATA[<#PART PROP=PPROP15#>]]></Remark>
+ 
+		 <Activity1><![CDATA[<#PART PROP=PPROP21#>]]></Activity1>
+		 <Date_Activity1><![CDATA[<#PART PROP=PPROP22#>]]></Date_Activity1>
+		 <Remark_Activity1><![CDATA[<#PART PROP=PPROP23#>]]></Remark_Activity1>
+		 <Activity2><![CDATA[<#PART PROP=PPROP24#>]]></Activity2>
+		 <Date_Activity2><![CDATA[<#PART PROP=PPROP25#>]]></Date_Activity2>
+		 <Remark_Activity2><![CDATA[<#PART PROP=PPROP26#>]]></Remark_Activity2>
+		 <Activity3><![CDATA[<#PART PROP=PPROP27#>]]></Activity3>
+		 <Date_Activity3><![CDATA[<#PART PROP=PPROP28#>]]></Date_Activity3>
+		 <Remark_Activity3><![CDATA[<#PART PROP=PPROP29#>]]></Remark_Activity3>
+		 <Activity4><![CDATA[<#PART PROP=PPROP30#>]]></Activity4>
+		 <Date_Activity4><![CDATA[<#PART PROP=PPROP31#>]]></Date_Activity4>
+		 <Remark_Activity4><![CDATA[<#PART PROP=PPROP32#>]]></Remark_Activity4>
+		 <Activity5><![CDATA[<#PART PROP=PPROP33#>]]></Activity5>
+		 <Date_Activity5><![CDATA[<#PART PROP=PPROP34#>]]></Date_Activity5>
+		 <Remark_Activity5><![CDATA[<#PART PROP=PPROP35#>]]></Remark_Activity5>
+		 <Activity6><![CDATA[<#PART PROP=PPROP36#>]]></Activity6>
+		 <Date_Activity6><![CDATA[<#PART PROP=PPROP37#>]]></Date_Activity6>
+		 <Remark_Activity6><![CDATA[<#PART PROP=PPROP38#>]]></Remark_Activity6>
+		 <Activity7><![CDATA[<#PART PROP=PPROP39#>]]></Activity7>
+		 <Date_Activity7><![CDATA[<#PART PROP=PPROP40#>]]></Date_Activity7>
+		 <Remark_Activity7><![CDATA[<#PART PROP=PPROP51#>]]></Remark_Activity7>
+		 <Activity8><![CDATA[<#PART PROP=PPROP52#>]]></Activity8>
+		 <Date_Activity8><![CDATA[<#PART PROP=PPROP53#>]]></Date_Activity8>
+		 <Remark_Activity8><![CDATA[<#PART PROP=PPROP54#>]]></Remark_Activity8>
+
+		 <CCBNumber><![CDATA[<#PART PROP=PPROP41#>]]></CCBNumber>
+		 <CCBDate><![CDATA[<#PART PROP=PPROP42#>]]></CCBDate>
+		 <CCBRemark><![CDATA[<#PART PROP=PPROP43#>]]></CCBRemark>
+		 <SentToCustomerInd><![CDATA[<#PART PROP=PPROP44#>]]></SentToCustomerInd>
+		 <SendingReference><![CDATA[<#PART PROP=PPROP45#>]]></SendingReference>
+		 <ReferenceLink><![CDATA[<#PART PROP=PPROP46#>]]></ReferenceLink>
+		 <KitRevision><![CDATA[<#PART PROP=PPROP47#>]]></KitRevision>
+		 <ChangeType><![CDATA[<#PART PROP=PPROP48#>]]></ChangeType>
+		 <ItemProp><![CDATA[<#PART PROP=PPROP49#>]]></ItemProp>
+
+
+
+		 <#DOCUMENTS_ATTACH tagname=Prop1Files prop=PPROP1#>
+		 <#DOCUMENTS_ATTACH tagname=Prop2Files prop=PPROP2#>
+		 <Documents>
+ 		 <#DOCUMENT_LOOP_BEGIN#>
+ 			<Document>
+			<DOC_ParentKey><![CDATA[<#PARENTKEY#>]]></DOC_ParentKey>
+			<DocumentIcon>IconTypes/<#DOCUMENTOBJECTTYPE#>.gif</DocumentIcon>
+
+			<DOCUMENTPATH><![CDATA[<#DOCUMENTPATH#>]]></DOCUMENTPATH>
+			<DOCUMENTNAME><![CDATA[<#DOCUMENTNAME#>]]></DOCUMENTNAME>
+			<DOCUMENTOBJECTTYPE><![CDATA[<#DOCUMENTOBJECTTYPE#>.gif]]></DOCUMENTOBJECTTYPE>
+			<DOCUMENTDESCRIPTION><![CDATA[<#DOCUMENTDESCRIPTION#>]]></DOCUMENTDESCRIPTION>
+			<DOCUMENTREVISION><#DOCUMENTREVISION#></DOCUMENTREVISION>
+			<DOCUMENTID><#DOCUMENTID#></DOCUMENTID>
+			<DOCUMENTCREATEDATE><#DOCUMENTCREATEDATE#></DOCUMENTCREATEDATE>
+			<DOCUMENTFILECREATEDATE><#DOCUMENTFILECREATEDATE#></DOCUMENTFILECREATEDATE>
+			<DOCUMENTAUTHOR><#DOCUMENTAUTHOR#></DOCUMENTAUTHOR>
+			<DOCUMENTMODIFIEDDATE><#DOCUMENTMODIFIEDATE#></DOCUMENTMODIFIEDDATE>
+			<DOCUMENTFILEMODIFIEDDATE><#DOCUMENTFILEMODIFIEDDATE#></DOCUMENTFILEMODIFIEDDATE>
+			<DOCUMENTMODIFIERNAME><#DOCUMENTMODIFIERNAME#></DOCUMENTMODIFIERNAME>
+			<DOCUMENTSTATUS><#DOCUMENTSTATUS#></DOCUMENTSTATUS>
+			<DOCUMENTSYSTTEMID><#DOCUMENTSYSTEMID#></DOCUMENTSYSTTEMID>
+			<DOCUMENTOBJECTTYPENAME><#DOCUMENTOBJECTTYPE#></DOCUMENTOBJECTTYPENAME>
+
+			<Doc_Group><#DOCUMENTPROP1#></Doc_Group>
+
+
+
+			</Document>
+		 <#DOCUMENT_LOOP_END#>
+		 </Documents>
+     </Item>
+</Items>

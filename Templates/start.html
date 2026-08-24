@@ -1,0 +1,191 @@
+
+<html>
+
+<head>
+<title><# CD_NAME #></title>
+<link REL="SHORTCUT ICON" HREF="Icon/linkware.ico">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+
+<meta name="Template" content="cd rom start page">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+
+<LINK REL="stylesheet" HREF="Styles/Styles-SteelBlue.css" TYPE="text/css" />
+
+<script language-"javascript">
+
+//Add By Royi
+var width=600;
+var height=600;
+window.resizeTo(width, height);
+window.moveTo((screen.width-width)/2, (screen.height-height)/2);
+
+//Add By Guy
+var _oLast;	
+	
+function glow(bOn, o, bOverride)
+	{
+		if (bOn)
+		{
+			setStyle(o, "002564", "A9BEE5", "#ffff00", 100, "progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#5F789A, EndColorStr=#213D61)");
+		}
+		else if (o != _oLast || bOverride)
+		{
+			setStyle(o, "8DA2C8", "273A7D", "", 60, null);
+		}
+	}
+	
+	
+	function setStyle(o, sHi, sLo, sText, iOpac, sGrad)
+	{
+		with (o.style)
+		{
+			borderTop = "1px solid #" + sHi;
+			borderLeft = "1px solid #" + sHi;
+			borderRight = "1px solid #" + sLo;
+			borderBottom = "1px solid #" + sLo;
+		}
+
+		o.runtimeStyle.filter = sGrad;
+
+	//	with (o.children[0].rows[0])
+	//	{
+	//		cells[1].runtimeStyle.color = sText;
+	//		cells[0].firstChild.style.filter = "Alpha(opacity=" + iOpac + ")";
+	//	}
+	}
+		
+		//Link to Parent1
+		if (typeof(ParentLinkWeb)!='undefined')	{
+			if ('<#WEBEDITOR#>'=='')	{
+				ParentLinkWeb.style.display='none';
+			}
+			else	{
+				ParentLinkOffline.style.display='none';
+			}
+		}
+
+
+</script>
+
+<style type="text/css">
+
+H1 {font-size: 20pt;color:red}
+
+</style>
+
+</head>
+
+<body>
+
+<p align="center" >&nbsp;</p>
+<div align="center"><center>
+
+<table border="0" ID="Table1">
+<TBODY>    <tr>
+        <td colspan=2><img src="images\Logo5.png"
+        hspace="0" align="absmiddle">&nbsp;&nbsp;&nbsp;
+       <font color=Black size =6><# CD_NAME #></font>
+
+</td>
+     <!--   <td><p align="center"><img src="images\iman_med_new.gif"
+       ></p>
+        </td>
+-->
+    </tr>
+</TBODY></table>
+</center></div>
+
+<p align="right" dir="LTR">&nbsp;</p>
+
+
+<div align="center">
+	<center>
+		<table dir="ltr" border="1" cellpadding="2" cellspacing="1" width="487" ID="Table4">
+			<div align="left"><font color=black>&nbsp;&nbsp;Packages on CD:</font><left>
+				<tr>
+					<td class="TableHeader">Package name</td>
+					<td class="TableHeader" width="23%">Package ID</td>
+				</tr>
+				<#CATALOG_LOOP_BEGIN#>
+				<tr>
+					<td align="left" dir="ltr" bgcolor="WhiteSmoke"><#CATALOG_DIRECTORY#><#CATALOG_NAME#></td>        
+					<td align="left" bgcolor="WhiteSmoke"><#CATALOG_MAKAT#></td>
+				</tr>
+				<#CATALOG_LOOP_END#>
+				<hr>
+		</table>
+	</center>
+</div>
+
+
+<TABLE class=ToolBar cellpadding="0" cellspacing="0" border="1" align="center" style="width:487" ID="Table3">
+<TR height="30">
+<td class="ToolBarGlow" onmouseover="glow(true,this);" onmouseout="glow(false,this);" nowrap="yes">
+<a class="ToolBarFont" href="offlinesearchengine/tc2go/linkwaresearch.htm" target="_self" title="Goto search engine">
+<img src="images/search2.ico" alt="New" border="0" align="absmiddle" width="16" height="16" /> Goto search engine </a>
+</td>
+
+<td class="ToolBarGlow" onmouseover="glow(true,this);" onmouseout="glow(false,this);" nowrap="yes">
+<a class="ToolBarFont" href="javascript:if (DownloadLinks.style.display=='') { DownloadLinks.style.display='NONE'} else {DownloadLinks.style.display='';}void(0);" target="_self" title="Free Downloads">
+<img src="images/downloads.ico" alt="Free Downloads" border="0" align="absmiddle" width="16" height="16" /> Free Downloads </a>
+</td>
+<td class="ToolBarGlow" onmouseover="glow(true,this);" onmouseout="glow(false,this);" nowrap="yes">
+<a class="ToolBarFont" href="Help/LinkWareSearchHelp.htm" target="_self" title="Import">
+<img src="images/help.ico" alt="Import" border="0" align="absmiddle" width="16" height="16" /> Help </a>
+</td>
+</TR></TABLE>
+
+
+
+<!-- ################## Downloads ############################                  -->
+<div align="center" id="DownloadLinks" name="DownloadLinks" style="display:none">
+	<center>
+		<table dir="ltr" border="1" cellpadding="2" cellspacing="1" width="487" ID="Table5">
+		<br><br>
+			<div align="left"><font color=black>&nbsp;&nbsp;Downloads:</font><left>
+				<tr>
+					<td class="TableHeader">Software Name</td>
+					<td class="TableHeader" width="23%">Link</td>
+				</tr>
+				
+				<tr>
+					<td align="left" dir="ltr" bgcolor="WhiteSmoke"><img align="absmiddle"  border="0" src="images/pdf.gif"/>&nbsp;Adobe Acrobat Reader</td>        
+					<td align="left" bgcolor="WhiteSmoke"><a target="_blank" href="http://www.adobe.com/products/acrobat/readstep2.html"><img align="absmiddle" width="16" border="0" src="images/download.ICO"/>&nbsp;Download Now</a></td>
+				</tr>
+				<tr>
+					<td align="left" dir="ltr" bgcolor="WhiteSmoke"><img align="absmiddle"  border="0" width="20" src="images/ugs.jpg"/>&nbsp;JT 2 GO (8.4 MB)</td>        
+					<td align="left" bgcolor="WhiteSmoke"><a target="_blank" href="http://www.jt2go.com/download/update/JT2Go.exe"><img align="absmiddle" width="16" border="0" src="images/download.ICO"/>&nbsp;Download Now</a></td>
+				</tr>
+				<hr>
+		</table>
+	</center>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p align="center">
+This CD was published on <# CD_DATE #>
+<br>
+</p>
+
+<div align="center"><img src=images\linkware.gif alt=Linkware  align="absmiddle"><font color=black>&nbsp;&nbsp;Powered by Linkware</font></center></div>
+
+<!--
+<p align="left"><img src="images/Search.gif"
+align="absmiddle" >&nbsp;&nbsp;<a href="http://pcx25/imantogo/default.aspx">Goto search engine </a> </p>
+
+<p align="left"><img src="images/help.GIF"
+align="absmiddle" >&nbsp;&nbsp;<a href="Help/LinkWareSearchHelp.htm">help</a></p>
+
+<p align="left"><img src="images/Setup1.gif"
+align="absmiddle" width=24>&nbsp;&nbsp;<a href="Help/LinkwareInstallation.htm">Install search engine </a> </p>
+
+-->
+<!--<p align="right"><a href="CopyLocal.bat">Copy CD localy <img
+src="images/paste.GIF" align="absmiddle" width="32" height="32"> </a></p> -->
+</body>
+</html>

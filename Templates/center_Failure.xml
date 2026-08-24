@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="center_Failure.xsl"?>
+<Items>
+	<IsWebEditor><#WEBEDITOR#></IsWebEditor>
+	<UserLogon><#UserLogon#></UserLogon>
+	<UserLogonDescription><![CDATA[<#UserLogonDescription#>]]></UserLogonDescription>	<CurrentDate><#TodayDate#></CurrentDate>
+	<ACLPERMISSIONSNAME><#ACLPermissionsName#></ACLPERMISSIONSNAME>
+	<#LWE-AccessLevel#>
+ 	<PKEYCATALOG><#PKEYCATALOG#></PKEYCATALOG>
+    <Item>
+		<ParentKey><![CDATA[<#PARENTKEY#>]]></ParentKey>
+
+  		 <Failure_Description><![CDATA[<#PART PROP=PHEBDESC#>]]></Failure_Description>
+		 <Failure_Status><![CDATA[<#PART PROP=PSTATUS#>]]></Failure_Status>
+		 <Failure_Status_Name><![CDATA[<#PART PROP=STATUSNAME#>]]></Failure_Status_Name>
+
+
+		 <ID><![CDATA[<#PART PROP=PKEY#>]]></ID>
+		 <PcreateDate><![CDATA[<#PART PROP=PCREATEDATE#>]]></PcreateDate>
+ 		 <PageHebDesc><![CDATA[<#PAGE_HEB_DESC#>]]></PageHebDesc>
+		 <OwningUser><![CDATA[<#OwningUser#>]]></OwningUser>
+		 <OwningUserName><![CDATA[<#OwningUserName#>]]></OwningUserName>
+		 <OwningUserNameDescription><![CDATA[<#OwningUserNameDescription#>]]></OwningUserNameDescription>
+		 <Prop1><![CDATA[<#PART PROP=PPROP1#>]]></Prop1>
+		 <Prop2><![CDATA[<#PART PROP=PPROP2#>]]></Prop2>
+		 <Prop3><![CDATA[<#PART PROP=PPROP3#>]]></Prop3>
+		 <Prop4><![CDATA[<#PART PROP=PPROP4#>]]></Prop4>
+		 <Prop5><![CDATA[<#PART PROP=PPROP5#>]]></Prop5>
+		 <Prop6><![CDATA[<#PART PROP=PPROP6#>]]></Prop6>
+		 <Prop7><![CDATA[<#PART PROP=PPROP7#>]]></Prop7>
+		 <Prop8><![CDATA[<#PART PROP=PPROP8#>]]></Prop8>
+		 <Prop9><![CDATA[<#PART PROP=PPROP9#>]]></Prop9>
+		 <Prop10><![CDATA[<#PART PROP=PPROP10#>]]></Prop10>
+		 <Prop11><![CDATA[<#PART PROP=PPROP11#>]]></Prop11>
+		 <Prop12><![CDATA[<#PART PROP=PPROP12#>]]></Prop12>
+		 <Prop13><![CDATA[<#PART PROP=PPROP13#>]]></Prop13>
+		 <Prop14><![CDATA[<#PART PROP=PPROP14#>]]></Prop14>
+		 <Prop15><![CDATA[<#PART PROP=PPROP15#>]]></Prop15>
+		 <Prop16><![CDATA[<#PART PROP=PPROP16#>]]></Prop16>
+		 <Prop17><![CDATA[<#PART PROP=PPROP17#>]]></Prop17>
+		 <Prop18><![CDATA[<#PART PROP=PPROP18#>]]></Prop18>
+		 <Prop19><![CDATA[<#PART PROP=PPROP19#>]]></Prop19>
+		 <Prop20><![CDATA[<#PART PROP=PPROP20#>]]></Prop20>
+		 <Prop21><![CDATA[<#PART PROP=PPROP21#>]]></Prop21>
+		 <Prop22><![CDATA[<#PART PROP=PPROP22#>]]></Prop22>
+		 <Prop23><![CDATA[<#PART PROP=PPROP23#>]]></Prop23>
+		 <Prop24><![CDATA[<#PART PROP=PPROP24#>]]></Prop24>
+		 <Prop25><![CDATA[<#PART PROP=PPROP25#>]]></Prop25>
+		 <Prop26><![CDATA[<#PART PROP=PPROP26#>]]></Prop26>
+		 <Prop27><![CDATA[<#PART PROP=PPROP27#>]]></Prop27>
+		 <Prop28><![CDATA[<#PART PROP=PPROP28#>]]></Prop28>
+		 <Prop29><![CDATA[<#PART PROP=PPROP29#>]]></Prop29>
+		 <Prop30><![CDATA[<#PART PROP=PPROP30#>]]></Prop30>
+		 <Prop31><![CDATA[<#PART PROP=PPROP31#>]]></Prop31>
+		 <Prop32><![CDATA[<#PART PROP=PPROP32#>]]></Prop32>
+		 <Prop33><![CDATA[<#PART PROP=PPROP33#>]]></Prop33>
+		 <Prop34><![CDATA[<#PART PROP=PPROP34#>]]></Prop34>
+		 <Prop35><![CDATA[<#PART PROP=PPROP35#>]]></Prop35>
+		 <Prop36><![CDATA[<#PART PROP=PPROP36#>]]></Prop36>
+		 <Prop37><![CDATA[<#PART PROP=PPROP37#>]]></Prop37>
+		 <Prop38><![CDATA[<#PART PROP=PPROP38#>]]></Prop38>
+		 <Prop39><![CDATA[<#PART PROP=PPROP39#>]]></Prop39>
+		 <Prop40><![CDATA[<#PART PROP=PPROP40#>]]></Prop40>
+		 <PPROP42><![CDATA[<#PART PROP=PPROP42#>]]></PPROP42>
+		 <PPROP43><![CDATA[<#PART PROP=PPROP43#>]]></PPROP43>
+		 <PPROP44><![CDATA[<#PART PROP=PPROP44#>]]></PPROP44>
+		 <PPROP45><![CDATA[<#PART PROP=PPROP45#>]]></PPROP45>
+		 <PPROP46><![CDATA[<#PART PROP=PPROP46#>]]></PPROP46>
+		 <PPROP47><![CDATA[<#PART PROP=PPROP47#>]]></PPROP47>
+		 <PPROP48><![CDATA[<#PART PROP=PPROP48#>]]></PPROP48>
+		 <PPROP49><![CDATA[<#PART PROP=PPROP49#>]]></PPROP49>
+		 <PPROP50><![CDATA[<#PART PROP=PPROP50#>]]></PPROP50>
+		 <PPROP51><![CDATA[<#PART PROP=PPROP51#>]]></PPROP51>
+		 <PPROP72><![CDATA[<#PART PROP=PPROP72#>]]></PPROP72>
+		 <PPROP73><![CDATA[<#PART PROP=PPROP73#>]]></PPROP73>
+		 <PPROP74><![CDATA[<#PART PROP=PPROP74#>]]></PPROP74>
+		 <PPROP75><![CDATA[<#PART PROP=PPROP75#>]]></PPROP75>
+		 <PPROP76><![CDATA[<#PART PROP=PPROP76#>]]></PPROP76>
+		 <PPROP77><![CDATA[<#PART PROP=PPROP77#>]]></PPROP77>
+		 <PPROP78><![CDATA[<#PART PROP=PPROP78#>]]></PPROP78>
+		 <PPROP79><![CDATA[<#PART PROP=PPROP79#>]]></PPROP79>
+		 <PPROP80><![CDATA[<#PART PROP=PPROP80#>]]></PPROP80>
+		 <PPROP81><![CDATA[<#PART PROP=PPROP81#>]]></PPROP81>
+		 <PPROP82><![CDATA[<#PART PROP=PPROP82#>]]></PPROP82>
+		 <PPROP83><![CDATA[<#PART PROP=PPROP83#>]]></PPROP83>
+		 <PPROP84><![CDATA[<#PART PROP=PPROP84#>]]></PPROP84>
+		 <RemarkDate1><![CDATA[<#PART PROP=PPROP52#>]]></RemarkDate1>
+		 <Remark1><![CDATA[<#PART PROP=PPROP53#>]]></Remark1>
+		 <RemarkDate2><![CDATA[<#PART PROP=PPROP54#>]]></RemarkDate2>
+		 <Remark2><![CDATA[<#PART PROP=PPROP55#>]]></Remark2>
+		 <RemarkDate3><![CDATA[<#PART PROP=PPROP56#>]]></RemarkDate3>
+		 <Remark3><![CDATA[<#PART PROP=PPROP57#>]]></Remark3>
+		 <RemarkDate4><![CDATA[<#PART PROP=PPROP58#>]]></RemarkDate4>
+		 <Remark4><![CDATA[<#PART PROP=PPROP59#>]]></Remark4>
+		 <RemarkDate5><![CDATA[<#PART PROP=PPROP60#>]]></RemarkDate5>
+		 <Remark5><![CDATA[<#PART PROP=PPROP61#>]]></Remark5>
+		 <RemarkDate6><![CDATA[<#PART PROP=PPROP62#>]]></RemarkDate6>
+		 <Remark6><![CDATA[<#PART PROP=PPROP63#>]]></Remark6>
+		 <ResponsibleGroup><![CDATA[<#PART PROP=PPROP64#>]]></ResponsibleGroup>
+		 <Permitted><![CDATA[<#PART PROP=PPROP65#>]]></Permitted>
+		 <StatusDate><![CDATA[<#PART PROP=PPROP66#>]]></StatusDate>
+		 <ClosingRemark><![CDATA[<#PART PROP=PPROP67#>]]></ClosingRemark>
+		 <ClosingbyOwnerName><![CDATA[<#PART PROP=PPROP68#>]]></ClosingbyOwnerName>
+		 <ClosingbySEName><![CDATA[<#PART PROP=PPROP69#>]]></ClosingbySEName>
+		 <ChangerStatusName><![CDATA[<#PART PROP=PPROP41#>]]></ChangerStatusName>
+
+
+		 <#DOCUMENTS_ATTACH tagname=Prop1Files prop=PPROP1#>
+		 <#DOCUMENTS_ATTACH tagname=Prop2Files prop=PPROP2#>
+		 <Documents>
+ 		 <#DOCUMENT_LOOP_BEGIN#>
+ 			<Document>
+				<DOC_ParentKey><![CDATA[<#PARENTKEY#>]]></DOC_ParentKey>
+				<DocumentName><#DOCUMENTNAME#></DocumentName>
+				<DocumentIcon>IconTypes/<#DOCUMENTOBJECTTYPE#>.gif</DocumentIcon>
+				<DocumentDescription><#DOCUMENTDESCRIPTION#></DocumentDescription>
+				<DocumentID><#DOCUMENTID#></DocumentID>
+				<DocumentLink><#DOCUMENTPATH#></DocumentLink>
+				<DOCUMENTSYSTTEMID><#DOCUMENTSYSTEMID#></DOCUMENTSYSTTEMID>
+			</Document>
+		 <#DOCUMENT_LOOP_END#>
+		 </Documents>
+     </Item>
+</Items>

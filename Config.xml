@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<!-- Changes in this section require restart of web server -->
+	<AppConfiguration>
+		<!-- ApplicationMode expects Access or Oracle as values -->
+		<ApplicationMode>Access</ApplicationMode>
+		<ConnectionString>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Inetpub\wwwroot\Mazlah\App_Data\OfflineCatalogs.mdb;Persist Security Info=False</ConnectionString>
+    		<!--<ConnectionString>SERVER=lwprod;UID=infodba;PWD=3KqUQHr8ASs=;</ConnectionString>-->
+		<!--<ConnectionString>SERVER=ERRXE;UID=taasws;PWD=taasws;</ConnectionString>-->
+		<!--<ConnectionString>SERVER=LWTS;UID=infodba;PWD=infodba;</ConnectionString>-->
+		<!-- Language For future use -->
+		<Language>English</Language>
+		<!-- a url to a page to be displayed in the central frame of the search page. Presseing on the Linkware icon on the top left cornet will bring back the this page after preforming a search -->
+		<SiteUrl>right.htm</SiteUrl>
+		<!--CatalogPath is a base path concatenated to the search results to link to the location of the catalog pages -->
+		<CatalogPath>/linkwareweb/catalogs/</CatalogPath>
+		
+		<!--TempDirectory - directory for files that uploaded.-->
+		<TempDirectory>c:\temp\</TempDirectory>
+		
+		<!--VolumeDirectory - directory of volume of linkware-->
+		<VolumeDirectory>c:\temp\royi\</VolumeDirectory>
+		
+		<!--MappedDrive - Mapped network drive- for use in documents upload-->
+		<MappedDrive>H:\</MappedDrive>
+		<MappedDriveUNC>\\lw1\EERVolume</MappedDriveUNC>
+		<WebSharingMappedDriveName>catalog</WebSharingMappedDriveName>
+		
+		<!--MappedWorkingDirectoryDrive - Mapped network drive- for use in documents checkout-->
+		<MappedWorkingDrive>R:\</MappedWorkingDrive>
+		<MappedWorkingDriveUNC>\\lw1\LinkwareDocuments</MappedWorkingDriveUNC>
+		
+			
+		<!--Path and filename of log file. example: c:\temp\lwlog.txt -->
+		<LogFile>c:\temp\LWLog.txt</LogFile>
+		
+		<!--New PKEY Prefix -->
+		<PkeyPrefix>LWWEa</PkeyPrefix>
+		
+		<!-- -->
+		<WorkMode></WorkMode>
+		
+		<!-- cache directory for view the file via the internet. -->
+		<CacheDirectory>c:\temp\cache\</CacheDirectory>
+		
+		<!-- When user edit object - are we need to check if the object is checkedout? True - yes. False - no-->
+		<CheckOutCheckOnEdit>False</CheckOutCheckOnEdit>
+		<MustCheckOnEdit>True</MustCheckOnEdit>
+		
+		<!-- Volume Directory: -->
+		<!-- ImageMapManage -->
+		<!-- Central = New model of volume.-->
+		<!-- PerCatalog = Old model of volume (each imagemap in catalog directory). -->
+		<!-- Linkware V3.6(VB) uses Central mode-->
+		<ImageMapManage>Central</ImageMapManage> 
+    
+		
+		<!-- GenralLink Key - This key is use for hide from index the items with pkeytype equal the value. -->
+		<GenralLinkToHide>43</GenralLinkToHide>
+		
+		<!-- PublishOfflineDirectory: directory where the files will be published. -->
+		<PublishOfflineDirectory>C:\Temp\WEPublish\</PublishOfflineDirectory>
+		<PublishCDDirectory>D:\LWCD</PublishCDDirectory>
+		<StatisticsDefaultMonthPriod>1</StatisticsDefaultMonthPriod>
+		<InstallaionPath>c:\inetpub\wwwroot\mazlah\</InstallaionPath>
+		<InstallationBaseURL>http://localhost/mazlah/</InstallationBaseURL>
+	</AppConfiguration>
+	<CatalogList>
+		<NumofRecordsPerPage>300</NumofRecordsPerPage>
+	</CatalogList>
+	<LWCalendar>
+		<LeftCornerColor>5d9eca</LeftCornerColor>
+		<LeftCornerColorText>359ee6</LeftCornerColorText>
+		<FooterBorder>000000</FooterBorder>
+		<FooterBackColor>5d9eca</FooterBackColor>
+		<DayBarColor>417497</DayBarColor>
+		<BackStyle>ececec</BackStyle>
+		<BackStyleAlternate>c8c8c8</BackStyleAlternate>
+		<BorderColor>000000</BorderColor>
+	</LWCalendar>
+	<defaultValues>
+		<!-- all default values for search. Values sent by a saved query (like the example of Recieve.htm ) are stronger then these values -->
+		<Status></Status>
+		<ObjectType>Item</ObjectType>
+	</defaultValues>
+	
+	<licenseCode>AGRsnXGSIzc=</licenseCode>
+	
+</Configuration>

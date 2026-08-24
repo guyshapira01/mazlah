@@ -1,0 +1,77 @@
+<html>
+	<base target="_parent" />
+	<head>
+		<title>Folder Properties</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	</head>
+	<LINK REL="stylesheet" HREF="Styles/Styles-Verint.css" TYPE="text/css" />
+	<SCRIPT LANGUAGE="JavaScript" SRC="WebEditor.js"></SCRIPT>
+	<script language="JavaScript">
+	function goToPart(pkey)	{
+		var innerPkey;
+		var orgPkey;
+		orgPkey=pkey;
+		tmpPkey=pkey;
+		innerPkey='inner_' + tmpPkey;
+		while (innerPkey != '')	{
+			obj = top.frames('Index').document.getElementById(innerPkey).style;
+			//alert('123' + top.frames('Index').document.getElementById(innerPkey).style.display + '123');
+			if (obj.display=='none')	{
+				top.frames('Index').Switch(innerPkey,pkey,'IconTypes/Close.gif','IconTypes/Open.gif');
+			}
+			if (typeof(top.frames('Index').document.all(innerPkey).length) == "undefined")
+                    innerPkey = top.frames('Index').document.all(innerPkey).parentElement.id;
+            else
+                    innerPkey = top.frames('Index').document.all(innerPkey)(0).parentElement.id;
+			pkey = innerPkey.substr(6);
+			//alert(tmpPkey);
+			//alert(pkey);
+		}
+		orgPkey='inner_' + orgPkey
+		if (typeof(top.frames('Index').document.all(orgPkey).length) == "undefined")
+			top.frames('Index').document.all(orgPkey).scrollIntoView(false);
+		else
+			top.frames('Index').document.all(orgPkey)(0).scrollIntoView(false);
+	}
+	</script>
+	<body leftmargin="0" topmargin="0" bgcolor="white" style="overflow:hidden;">
+		<TABLE class="ToolBarTable" border="0" cellPadding="0" cellSpacing="5" align="center" width="100%">
+			<tr align="center">
+				<td align="center" class="ToolBarFont" width="100%">
+					<b>Item Content</b>
+				</td>
+				<td width="1" align="right">
+					<img alt="Refresh" style="cursor:hand" onclick="JavaScript:document.location.reload();" src="Images/update.ico" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<TABLE width="100%" border="0" cellPadding="2" cellSpacing="0" bgcolor="white">
+						<tr class="ToolBarTableSubHeader">
+							<td></td>
+							<td>Type</td>
+							<td>Name</td>
+							<td>Created Date</td>
+							<td>Modified Date</td>
+						</tr>
+						<#PARTS_LOOP_BEGIN#>
+						<tr onmouseover="this.style.backgroundColor='#EFEFEB'" onmouseout="this.style.backgroundColor='white'">
+							<td class="ToolBarTableSubHeader" width="1">
+								<!--<INPUT type="checkbox" id="Checkbox1" NAME="<#PART PROP=PKEY#>"></INPUT>-->
+							</td>
+							<td>
+								<img class="ToolBarImage" src="IconTypes/<#PART PROP=ITEM_OBJECT_TYPE#>.gif"/>
+							</td>
+							<td>
+								&nbsp;<A HREF="JavaScript:top.frames('Header').refreshFramesWithUrl('<#PART PROP=PKEY#>');void(0);"><#PART PROP=PHEBDESC#></A>&nbsp;
+							</td>
+							<td>&nbsp;<#PART PROP=PCREATEDATE#>&nbsp;</td>
+							<td>&nbsp;<#PART PROP=PUPDATEDATE#>&nbsp;</td>
+						</tr>
+						<#PARTS_LOOP_END#> 
+					</TABLE>
+				</td>
+			</tr>
+		</TABLE>
+	</body>
+</html>

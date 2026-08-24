@@ -1,0 +1,25 @@
+TABLE.LW-toolbar
+{
+	border-color: #EEE8AA; 
+	border-style: groove; 
+	border-width: 5px;
+}
+.LW-toolbar
+{
+    FONT-SIZE: 0.68em;
+    COLOR: #003399;
+    FONT-FAMILY: verdana;
+    TEXT-DECORATION: none
+}
+.LW-separator
+{
+    FONT-SIZE: 10pt;
+    COLOR: #444444
+}
+.LW-font
+{
+    FONT-SIZE: 10px;
+    COLOR: #003399;
+    FONT-FAMILY: verdana;
+    TEXT-DECORATION: none
+}

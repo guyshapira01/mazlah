@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Please Wait</title>
+<script language="javascript" src="xp_progress.js">
+</script>
+<LINK REL="stylesheet" HREF="Styles/Styles-SteelBlue.css" TYPE="text/css" />		
+</head>
+<body onunload="return false;" onload="JavaScript:bIsNotFinish=false;window.setInterval('PutJunkText()',7000);">
+<script language=javascript>
+<!--
+	var bIsNotFinish = true;
+	var junkTextInt = 0;
+
+	function PutJunkText()	{
+		switch(junkTextInt)	{
+			case 0:
+				junkTextInt = 1;
+				JunkText.innerText = 'Building Tree....';
+				break;
+			case 1:
+				junkTextInt = 2;
+				JunkText.innerText = 'Publishing Tree....';
+				break;
+			case 2:
+				junkTextInt = 3;
+				JunkText.innerText = 'Writing offline pages....';
+				break;
+			case 3:
+				junkTextInt = 4;
+				JunkText.innerText = 'Creating CD....';
+				break;
+			case 4:
+				JunkText.innerText = 'Publishing Offline Files into CD....';
+				break;
+		}
+	}
+	
+//-->
+</script>
+
+<table border="0" width="300">
+	<tr>
+		<td>
+			<font style="FONT-SIZE:13px;COLOR:blue;"><b>Please Wait......</b></Font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<script>
+				var bar1= createBar(300,15,'white',1,'black','blue',85,7,3,"");
+			</script>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<font style="FONT-SIZE:13px;COLOR:blue;"><div id="JunkText"/></Font>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

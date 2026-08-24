@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>Go To Work Station</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+		<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+		<META content=FrontPage.Editor.Document name=ProgId>
+		<SCRIPT LANGUAGE="javascript" SRC="../Reports/ReportFunctions.js"></SCRIPT>
+
+	</HEAD>
+	<script LANGUAGE="JavaScript">
+		//change the window size and position
+		window.moveTo(50,100)
+		window.resizeTo(370,100)
+</script>
+	<SCRIPT LANGUAGE="JavaScript">
+		var GoToItemExist=0;
+		var GoToItemkey;
+		var GoToItemParentPkey;
+	</SCRIPT>
+	<BODY style="background-color:#7F97B9" onkeypress="JavaScript:CheckEnter();" onload="WS_NUMBER.focus()">
+		<TABLE cellSpacing=0 cellPadding=0 width="99%" border=1>
+		  <TBODY>
+				<TR>
+					<TD width="100%">
+						<input type="Button" id="GoToWSButton" name="GoToWSButton" value="Go To Work Station Mumber:" style="text-align:center;width:200px;height:26px;font-weight:bold;color:black;background-color:#F3F3F3;"
+							onClick="javascript:Link1='../generatereport.aspx?Catalog=129729a1&amp;Table=T_CAT_PART&amp;XSL=GoToItem.xsl&amp;PPROP3=' + WS_NUMBER.value + '&amp;PKEYTYPE=21&amp;PPUBLISH=1'
+														w=window.open(Link1,'GoToItemRep','width=750,height=700,top=2000,left=2000,resizable=yes,toolbar=no,scrollbars=yes');
+														GoToItem();"
+							onmouseover="JavaScript:this.style.backgroundColor='red'"
+							onmouseout="JavaScript:this.style.backgroundColor='#F3F3F3'"/>
+
+						<input type="text" name="WS_NUMBER" id="WS_NUMBER" style="width:120px" />
+					</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<script language="JavaScript">
+			function GoToItem()	{
+				//alert('1');
+				if(GoToItemExist==0)	{
+					funcCall  = 'GoToItem()';
+					setTimeout(funcCall,100);
+				}
+				else	{
+				//alert(GoToItemkey);
+				//alert(GoToItemParentPkey);
+					if (getParamFromUrl('CallFrom')=='')	{
+						// call from the Portal
+						w=window.open('../OnlineSearchRedirect.aspx?Pkey=' + GoToItemkey + '&amp;pparentkey=' + GoToItemParentPkey + '&amp;pkeycatalog=129729a1','Working_Station','location=no,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+						w.focus();
+					}
+					else	{
+						// Call from the Tree
+						window.opener.top.frames('Index').LinkSwitch(GoToItemkey,GoToItemParentPkey);
+						window.opener.focus();
+					}
+					GoToItemExist=0;
+					window.close();
+				}
+				//document.location.href='../OnlineSearchRedirect.aspx?Pkey=' + GoToItemkey + '&amp;pparentkey=' + GoToItemParentPkey + '&amp;pkeycatalog=129729a1';
+			}
+
+			function CheckEnter()	{
+				if (window.event.keyCode==13)	{
+					GoToWSButton.click();
+				}
+			}
+
+		</script>
+	</BODY>
+</HTML>

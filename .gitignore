@@ -1,0 +1,4 @@
+app_data/
+.vs/
+*.user
+*.suo

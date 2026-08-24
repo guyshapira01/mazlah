@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>Flight Report</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+		<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+		<META content=FrontPage.Editor.Document name=ProgId>
+		<SCRIPT LANGUAGE="javascript" SRC="../Reports/ReportFunctions.js"></SCRIPT>
+		<script language="JavaScript" src="Calendar.js"></SCRIPT>
+
+
+
+	</HEAD>
+	<script LANGUAGE="JavaScript">
+		//change the window size and position
+		window.moveTo(50,100)
+		window.resizeTo(500,400)
+</script>
+	<SCRIPT LANGUAGE="JavaScript">
+		var LOVField;
+		var LOVLink;
+	//	var GoToItemExist=0;
+	//	var GoToItemkey;
+	//	var GoToItemParentPkey;
+	</SCRIPT>
+<!--	<BODY style="background-color:#7F97B9" onkeypress="JavaScript:CheckEnter();" onload="FromDate1.focus()">
+-->
+	<BODY style="background-color:#7F97B9" onkeypress="JavaScript:CheckEnter();" onload="">
+		<TABLE cellSpacing=0 cellPadding=0 width="99%" border=1>
+		  <TBODY>
+				<TR>
+					<TD width="20%" nowrap="yes"><font style="FONT-SIZE:16px;FONT-WEIGHT:BOLD;color:black">Date - Btween&#160;</font></TD>
+					<TD nowrap="yes" colspan="2">
+						<input type="text" name="FromDate1" id="FromDate1" style="width:80px" disabled="true" />
+						&#160;<IMG id="FromDate1Cal" onclick="javascript:OpenCalendar('calendar_windowB','calendar.aspx?formname=FromDate1&amp;cur=' + FromDate1.value);" height="16" src="calendar.gif" width="16" name="FromDate1Cal" onMouseOver="this.style.cursor='hand';" onMouseOut="JavaScript:this.style.cursor='auto';"/>
+						&#160;and&#160;
+						<input type="text" name="ToDate1" id="ToDate1" style="width:80px" disabled="true"/>&#160;&#160;
+						&#160;<IMG id="ToDate1Cal" onclick="javascript:OpenCalendar('calendar_windowB','calendar.aspx?formname=ToDate1&amp;cur=' + ToDate1.value);" height="16" src="calendar.gif" width="16" name="ToDate1Cal" onMouseOver="this.style.cursor='hand';" onMouseOut="JavaScript:this.style.cursor='auto';"/>
+				<!--		(DD/MM/YYYY)
+				-->
+						<input type="hidden" name="FromDate" id="FromDate" style="width:80px" />
+						<input type="hidden" name="ToDate" id="ToDate" style="width:80px" />
+					</TD>
+				</TR>
+
+			<TR>
+					<TD width="20%"><font style="FONT-SIZE:16px;FONT-WEIGHT:BOLD;color:black"> Group Type</font></TD>
+					<TD width="80%" nowrap="yes">
+						<input type="radio" name="Group" id="Group" value="Test" />&#160;Test Group&#160;<br/>
+						<input type="radio" name="Group" id="Group" value="2MMC Line"  />&#160;Kayseri Group&#160;<br/>
+						<input type="radio" name="Group" id="Group" value="3"   checked="true" />&#160;All&#160;
+					</TD>
+				</TR>
+		<TR>
+						<TD><font style="FONT-SIZE:16px;FONT-WEIGHT:BOLD;color:black"> Report Type</font></TD>
+						<TD  nowrap="yes">
+						<input type="radio" name="Report" id="Report" value="1"  checked="true" />&#160;Order (TAT)&#160;<br/>
+						<input type="radio" name="Report" id="Report" value="2"  />&#160;Security&#160;<br/>
+						<input type="radio" name="Report" id="Report" value="3"  />&#160;Transportaion&#160;<br/>
+						<input type="radio" name="Report" id="Report" value="4"  />&#160;Flights&#160;<br/>
+						<input type="radio" name="Report" id="Report" value="19"  />&#160;Flights New&#160;<br/>
+						<input type="radio" name="Report" id="Report" value="7"  />&#160;Stay&#160;<br/>
+						<input type="radio" name="Report" id="Report" value="5"  />&#160;Travelers&#160;<br/>
+						<input type="radio" name="Report" id="Report" value="6"  />&#160;Person&#160;&#160;
+						<input type="text" name="UserName" id="UserName" style="width:100px" />
+								&#160;<IMG height="16" src="LOV.jpg" width="16" onMouseOver="this.style.cursor='hand';" onMouseOut="JavaScript:this.style.cursor='auto';"
+								onclick="javascript:
+																		LOVField='';
+																		LOVLink='';
+																		LOVField='UserName';
+																		buildUrlWithBackInNewWindow('../generatereport.aspx?Catalog=107779a1&amp;Table=T_CAT_PART&amp;XSL=LOV.xsl&amp;PKEYTYPE=44&amp;PPROP53=Yes','selectItem','resizable=no,fullscreen=no,width=400,height=500,toolbar=no,scrollbars=yes');
+																		"
+								/>
+
+
+					</TD>
+				</TR>
+
+			</TBODY>
+		</TABLE>
+		<br/>
+		<TABLE cellSpacing=0 cellPadding=0 width="99%" border=0>
+				<TR>
+					<TD width="100%" align="center">
+						<input type="Button" id="FlightButton" name="FlightButton" value="Generate Report" style="text-align:center;width:160px;height:26px;font-weight:bold;color:black;background-color:#F3F3F3;"
+						onClick="javascript:
+							if(FromDate1.value!='')
+									FromDate.value=FromDate1.value.substring(6,10) + '-' + FromDate1.value.substring(3,5) + '-' + FromDate1.value.substring(0,2);
+							if(ToDate1.value!='')
+								ToDate.value=ToDate1.value.substring(6,10) + '-' + ToDate1.value.substring(3,5) + '-' + ToDate1.value.substring(0,2);
+							var Group1='';
+							var DateRange_STAY='';
+							var TextRange_OUT='';
+							var ReportTitle=''
+							var RangeTitle='';
+							var PersonScope='';
+
+							if(FromDate.value != '' & ToDate.value != '')	{
+								TextRange_OUT='PPROP61\>=\'' + FromDate.value + '\'and%20PPROP61\<=\''  + ToDate.value+ '-Z\'';
+								DateRange_OUT='(TO_DATE(PPROP62,\'DD/MM/YYYY\')%20BETWEEN%20TO_DATE(\'' + FromDate.value + '\',\'YYYY-MM-DD\')%20AND%20TO_DATE(\'' + ToDate.value + '\',\'YYYY-MM-DD\'))';
+								DateRange_OUT_IN='(TO_DATE(PPROP62,\'DD/MM/YYYY\')%20BETWEEN%20TO_DATE(\'' + FromDate.value + '\',\'YYYY-MM-DD\')%20AND%20TO_DATE(\'' + ToDate.value + '\',\'YYYY-MM-DD\')%20or%20TO_DATE(PPROP85,\'DD/MM/YYYY\')%20BETWEEN%20TO_DATE(\'' + FromDate.value + '\',\'YYYY-MM-DD\')%20AND%20TO_DATE(\'' + ToDate.value + '\',\'YYYY-MM-DD\'))';
+								DateRange_STAY='(TO_DATE(PPROP62,\'DD/MM/YYYY\')%20BETWEEN%20TO_DATE(\'' + FromDate.value + '\',\'YYYY-MM-DD\')%20AND%20TO_DATE(\'' + ToDate.value + '\',\'YYYY-MM-DD\')%20or%20(TO_DATE(PPROP62,\'DD/MM/YYYY\')%20<=%20TO_DATE(\'' + FromDate.value + '\',\'YYYY-MM-DD\')%20and%20TO_DATE(PPROP82,\'DD/MM/YYYY\')%20>=%20TO_DATE(\'' + FromDate.value + '\',\'YYYY-MM-DD\')))';
+								RangeTitle='Between ' + FromDate.value + ' and ' + ToDate.value;
+							}
+							if(FromDate.value != '' & ToDate.value == '')	{
+								TextRange_OUT='PPROP61\>=\'' + FromDate.value + '\'';
+
+								DateRange_OUT='(TO_DATE(PPROP62,\'DD/MM/YYYY\')%20>=%20TO_DATE(\'' + FromDate.value + '\',\'YYYY-MM-DD\'))';
+								DateRange_OUT_IN='(TO_DATE(PPROP62,\'DD/MM/YYYY\')%20>=%20TO_DATE(\'' + FromDate.value + '\',\'YYYY-MM-DD\')%20or%20TO_DATE(PPROP85,\'DD/MM/YYYY\')%20>=%20TO_DATE(\'' + FromDate.value + '\',\'YYYY-MM-DD\'))';
+								DateRange_STAY='(TO_DATE(PPROP85,\'DD/MM/YYYY\')%20>=%20TO_DATE(\'' + FromDate.value + '\',\'YYYY-MM-DD\'))';
+
+								RangeTitle='From ' + FromDate.value;
+							}
+							if(FromDate.value == '' & ToDate.value != '')	{
+								TextRange_OUT='PPROP61\<=\''  + ToDate.value+ '-Z\'';
+
+								DateRange_OUT='(TO_DATE(PPROP62,\'DD/MM/YYYY\')%20<=%20TO_DATE(\'' + ToDate.value + '\',\'YYYY-MM-DD\'))';
+								DateRange_OUT_IN='(TO_DATE(PPROP62,\'DD/MM/YYYY\')%20<=%20TO_DATE(\'' + ToDate.value + '\',\'YYYY-MM-DD\')%20or%20TO_DATE(PPROP85,\'DD/MM/YYYY\')%20<=%20TO_DATE(\'' + ToDate.value + '\',\'YYYY-MM-DD\'))';
+								DateRange_STAY='(TO_DATE(PPROP85,\'DD/MM/YYYY\')%20<=%20TO_DATE(\'' + ToDate.value + '\',\'YYYY-MM-DD\'))';
+
+								RangeTitle='Until ' + ToDate.value;
+
+							}
+
+							if (UserName.value!='')
+								PersonScope='%20and%20PHEBDESC=\'' + UserName.value + '\'%20';
+
+							if (UserName.value!='' & CheckRadio(Report)!='7')
+								Report[7].checked=true;
+
+							//  *****************  TAT Report *****************
+
+							if (CheckRadio(Report)=='1')	{
+								if (TextRange_OUT != '')	{
+									if(CheckRadio(Group) !='3') 	{
+										Group1='%20and%20PPROP88=\'' + CheckRadio(Group) + '\'';
+										RangeTitle = RangeTitle + ' (' + CheckRadio(Group) + ')';
+									}
+									Link1='../generatereport.aspx?Title=' + RangeTitle + '&amp;Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightTATReport.xsl&amp;SQL=select%20*%20from%20t_cat_part%20where%20PKEYTYPE=53%20and%20' + TextRange_OUT + Group1 + '%20and%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63,TO_DATE(PPROP75,\'DD/MM/YYYY\'),PPROP76,PPROP51'
+								//	Link1='../generatereport.aspx?Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightTATReport.xsl&amp;SQL=select%20*%20from%20t_cat_part%20where%20PKEYTYPE=53%20and%20PPROP61\>=\'' + FromDate.value + '\'and%20PPROP61\<=\''  + ToDate.value+ '-Z\''+ Group1 + '%20and%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63,TO_DATE(PPROP75,\'DD/MM/YYYY\'),PPROP76,PPROP51'
+									w=window.open(Link1,'TATTravelers','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+									//window.close();
+									Group1='';
+									RangeTitle='';
+									TextRange_OUT='';
+								}
+							}
+
+							// ************   Transportation Report  *****************
+
+							if (CheckRadio(Report)=='3')	{
+								if(CheckRadio(Group) !='3') alert ('This Report is only for all Groups ')
+								else	{
+									Group[2].checked=true;
+									// This report should run with specific date range (from and to)
+									if (FromDate.value != '' & ToDate.value != '')	{
+										Link1='../generatereport.aspx?Title=' + RangeTitle + '&amp;Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightTransReport.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20t_cat_part.PKEY%20in%20(select%20PKEY%20from%20t_cat_part%20where%20PKEYTYPE=53%20and%20PPROP62%20is%20not%20NULL%20and%20PPROP85%20is%20not%20NULL%20and%20%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0))%20and%20' + DateRange_OUT_IN + '%20and%20t_cat_part.PKEY%20not%20in%20(select%20PKEY%20from%20t_cat_part%20where%20PPROP34=\'No\')%20order%20by%20PPROP33,PPROP45'
+											w=window.open(Link1,'TransTravelers','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+											//window.close();
+											Group1='';
+											RangeTitle='';
+											TextRange_OUT='';
+										}
+								}
+							}
+
+							// *****************   Security Report   ********************
+
+							if (CheckRadio(Report)=='2')	{
+								// This report should run with specific date range (from and to)
+								if(CheckRadio(Group) !='3') alert ('This Report is only for all Groups ')
+								else	{
+									Group[2].checked=true;
+									if (FromDate.value != '' & ToDate.value != '')	{
+									//	Link1='../generatereport.aspx?Range='+ ToDate.value + '-' + FromDate.value + '&amp;Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightSecReport.xsl&amp;SQL=select%20*%20from%20t_cat_part%20where%20PKEYTYPE=53%20and%20PPROP61\>=\'' + FromDate.value + '\'and%20PPROP61\<=\''  + ToDate.value+ '-Z\''+ '%20and%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP45'
+										Link1='../generatereport.aspx?Title=' + RangeTitle + '&amp;Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightSecReport.xsl&amp;SQL=select%20*%20from%20t_cat_part%20where%20PKEYTYPE=53%20and%20' + TextRange_OUT +  '%20and%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP45'
+											w=window.open(Link1,'SecurityTravelers','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+											//window.close();
+											Group1='';
+											RangeTitle='';
+											TextRange_OUT='';
+									}
+								}
+							}
+
+							// *****************   Flights Report   ********************
+
+
+							if (CheckRadio(Report)=='4')	{
+								if(CheckRadio(Group) !='3') 	{
+									Group1='%20and%20PPROP88=\'' + CheckRadio(Group) + '\'';
+									RangeTitle = RangeTitle + ' (' + CheckRadio(Group) + ')';
+								}
+								if (TextRange_OUT != '')	{
+									//Link1='../generatereport.aspx?Catalog=150542a1&amp;able=T_CAT_PART&amp;XSL=FlightReport.xsl&amp;PKEYTYPE=49&amp;PPROP61\>=\'' + FromDate.value + '\'and%20PPROP61\<=\''  + ToDate.value+ '-Z\''+ Group1 + '%20and%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63,TO_DATE(PPROP75,\'DD/MM/YYYY\'),PPROP76,PPROP51'
+
+									Link1='../generatereport.aspx?Title=' + RangeTitle + 'Catalog=150542a1&amp;COUNTER=true&amp;Mode=FullSQL&amp;XSL=FlightReport.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=49%20and%20' + TextRange_OUT + Group1 + '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP61,TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63,TO_DATE(PPROP75,\'DD/MM/YYYY\'),PPROP76,PPROP51'
+										w=window.open(Link1,'FlightReport','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+										//window.close();
+										Group1='';
+										RangeTitle='';
+										TextRange_OUT='';
+								}
+							}
+
+
+							// *****************   Flights New Report   ********************
+
+
+							if (CheckRadio(Report)=='19')	{
+								if(CheckRadio(Group) !='3') 	{
+									Group1='%20and%20PPROP88=\'' + CheckRadio(Group) + '\'';
+									RangeTitle = RangeTitle + ' (' + CheckRadio(Group) + ')';
+								}
+								if (TextRange_OUT != '')	{
+									//Link1='../generatereport.aspx?Catalog=150542a1&amp;able=T_CAT_PART&amp;XSL=FlightReport.xsl&amp;PKEYTYPE=49&amp;PPROP61\>=\'' + FromDate.value + '\'and%20PPROP61\<=\''  + ToDate.value+ '-Z\''+ Group1 + '%20and%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63,TO_DATE(PPROP75,\'DD/MM/YYYY\'),PPROP76,PPROP51'
+
+									Link1='../generatereport.aspx?Title=' + RangeTitle + 'Catalog=150542a1&amp;COUNTER=true&amp;Mode=FullSQL&amp;XSL=FlightReport-new.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20(PKEYTYPE=53%20or%20PKEYTYPE=49)and%20' + TextRange_OUT + Group1 + '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP61,TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63,TO_DATE(PPROP75,\'DD/MM/YYYY\'),PPROP76,PPROP51'
+										w=window.open(Link1,'FlightReport','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+										//window.close();
+										Group1='';
+										RangeTitle='';
+										TextRange_OUT='';
+								}
+							}
+
+							// *****************   Travelers  Report   ********************
+
+
+							if (CheckRadio(Report)=='5')	{
+								if(CheckRadio(Group) !='3') 	{
+									Group1='%20and%20PPROP88=\'' + CheckRadio(Group) + '\'';
+									RangeTitle = RangeTitle + ' (' + CheckRadio(Group) + ')';
+								}
+								if (TextRange_OUT != '')	{
+
+								//	Link1='../generatereport.aspx?Title=' + RangeTitle + 'Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightTravelerReport.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=53%20and%20' + TextRange_OUT + Group1 + '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63,TO_DATE(PPROP75,\'DD/MM/YYYY\'),PPROP76,PPROP45'
+									Link1='../generatereport.aspx?Title=' + RangeTitle + 'Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightTravelerReport.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=53%20and%20' + TextRange_OUT + Group1 + '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20PPROP61,PPROP45'
+										w=window.open(Link1,'Travelers','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+										//window.close();
+										Group1='';
+										RangeTitle='';
+										TextRange_OUT='';
+								}
+							}
+
+							// *****************   Person Report   ********************
+
+							if (CheckRadio(Report)=='6')	{
+								if(UserName.value != '')	{
+									if(CheckRadio(Group) !='3') alert ('This Report is only for all Groups ')
+									else	{
+										Group[2].checked=true;
+										RangeTitle=RangeTitle + ' for ' + UserName.value
+										if (FromDate.value != '' || ToDate.value != '')	{
+
+												Link1='../generatereport.aspx?Title=' + RangeTitle + 'Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightTravelerReport.xsl&amp;SQL=select%20t_cat_part.*%20,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=53%20and%20PHEBDESC=\'' + UserName.value + '\'%20and%20' + TextRange_OUT + '%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63,TO_DATE(PPROP75,\'DD/MM/YYYY\'),PPROP76'
+												w=window.open(Link1,'TransTravelers','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+										}
+										else	{
+												Link1='../generatereport.aspx?Title=' + RangeTitle + 'Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightTravelerReport.xsl&amp;SQL=select%20t_cat_part.*%20,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20PKEYTYPE=53%20and%20PHEBDESC=\'' + UserName.value + '\'%20and%20t_cat_part.pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0)%20order%20by%20TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63,TO_DATE(PPROP75,\'DD/MM/YYYY\'),PPROP76'
+												w=window.open(Link1,'Travelers','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+
+										}
+
+										Group1='';
+										RangeTitle='';
+										TextRange_OUT='';
+									}
+								}
+								else	{
+									alert ('Please choose a user. ')
+								}
+							}
+
+
+
+
+							// ************   Stay Report  *****************
+
+							if (CheckRadio(Report)=='7')	{
+								if(CheckRadio(Group) !='3') alert ('This Report is only for all Groups ')
+								else	{
+									Group[2].checked=true;
+									// This report should run with specific date range (from and to)
+									if (FromDate.value != '' & ToDate.value != '')	{
+									//	Link1='../generatereport.aspx?Title=' + RangeTitle + '&amp;Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightStayReport.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20PHEBDESC=\'ALBERT%20LEVY\'%20and%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20t_cat_part.PKEY%20in%20(select%20PKEY%20from%20t_cat_part%20where%20PKEYTYPE=53%20and%20PPROP62%20is%20not%20NULL%20and%20PPROP85%20is%20not%20NULL%20and%20%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0))%20and%20' + DateRange_STAY + '%20and%20t_cat_part.PKEY%20not%20in%20(select%20PKEY%20from%20t_cat_part%20where%20PPROP34=\'No\')%20order%20by%20PPROP45,TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63'
+									//	Link1='../generatereport.aspx?Title=' + RangeTitle + '&amp;Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightStayReport.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20t_cat_part.PKEY%20in%20(select%20PKEY%20from%20t_cat_part%20where%20PKEYTYPE=53%20and%20PPROP62%20is%20not%20NULL%20and%20PPROP85%20is%20not%20NULL%20and%20%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0))%20and%20' + DateRange_STAY + '%20and%20t_cat_part.PKEY%20not%20in%20(select%20PKEY%20from%20t_cat_part%20where%20PPROP34=\'No\')%20order%20by%20PPROP45,TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63'
+									// Remove PProp34 ...
+										Link1='../generatereport.aspx?Title=' + RangeTitle + '&amp;Catalog=150542a1&amp;Mode=FullSQL&amp;XSL=FlightStayReport.xsl&amp;SQL=select%20t_cat_part.*,t_cat_nodes.pparentkey%20from%20t_cat_part,t_cat_nodes%20where%20t_cat_part.pkey=t_cat_nodes.pkey%20and%20t_cat_part.PKEY%20in%20(select%20PKEY%20from%20t_cat_part%20where%20PKEYTYPE=53' + PersonScope + '%20and%20PPROP62%20is%20not%20NULL%20and%20PPROP85%20is%20not%20NULL%20and%20%20pkey%20in%20(select%20Pkey%20from%20t_cat_nodes%20where%20pglobalstatus=0))%20and%20' + DateRange_STAY + '%20order%20by%20PPROP16,PPROP45,TO_DATE(PPROP62,\'DD/MM/YYYY\'),PPROP63'
+											w=window.open(Link1,'TransTravelers','location=yes,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+											//window.close();
+											Group1='';
+											RangeTitle='';
+											TextRange_OUT='';
+										}
+								}
+							}
+
+							UserName.value='';
+							"
+										onmouseover="JavaScript:this.style.backgroundColor='red'"
+										onmouseout="JavaScript:this.style.backgroundColor='#F3F3F3'"/>
+
+					</TD>
+				</TR>
+		</TABLE>
+
+		<script language="JavaScript">
+		//	function GoToItem()	{
+		//		if(GoToItemExist==0)	{
+		//			funcCall  = 'GoToItem()';
+		//			setTimeout(funcCall,100);
+		//		}
+		//		else	{
+		//			if (getParamFromUrl('CallFrom')=='')	{
+		//				// call from the Tree
+		//				w=window.open('../OnlineSearchRedirect.aspx?Pkey=' + GoToItemkey + '&amp;pparentkey=' + GoToItemParentPkey + '&amp;pkeycatalog=129729a1','Working_Station','location=no,menubar=yes,toolbar=yes,status=yes,scrollbars=yes,resizable=yes,top=0,left=0,width=screen.width,height=screen.height');
+		//				w.focus();
+		//			}
+		//			else	{
+		//				window.opener.top.frames('Index').LinkSwitch(GoToItemkey,GoToItemParentPkey);
+		//				window.opener.focus();
+		//			}
+		//			GoToItemExist=0;
+		//			window.close();
+		//		}
+		//	}
+
+			function CheckEnter()	{
+				if (window.event.keyCode==13)	{
+					FlightButton.click();
+				}
+			}
+		function CheckRadio(RadioName)	{
+			for ( i=0; i<RadioName.length; i++)	{
+				if (RadioName[i].checked)
+					return (RadioName[i].value);
+			}
+			return (-1)
+			}
+
+		</script>
+	</BODY>
+</HTML>

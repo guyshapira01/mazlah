@@ -1,0 +1,79 @@
+<html>
+<base target="_parent" />
+<head>
+	<title>Mckit</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+<SCRIPT LANGUAGE="JavaScript" SRC="WebEditor.js"></SCRIPT>
+<script language="JavaScript" src="../Scripts/HeaderMenu/dhtmllib.js"></script>
+<script language="JavaScript" src="../Scripts/HeaderMenu/navbar.js"></script>
+
+<script language="JavaScript">
+
+
+var myNavBar1 = new NavBar(0);
+myNavBar1.setSizes(1, 4, 1);
+var dhtmlMenu;
+var dirc = 'ltr';
+var menuCount = 0;
+var fullWidth = 600;
+var orgWidth = 800;
+var menuWidth = 0;
+var sPrefix = '';
+
+//define menu items (first parameter of NavBarMenu specifies main category width, second specifies sub category width in pixels)
+//add more menus simply by adding more "blocks" of same code below
+
+<#CURRENT_LOOP_BEGIN#>
+menuCount = <#CURRENTLOOPCOUNT#>;
+menuWidth = ((orgWidth - menuCount*2) / menuCount);
+
+if ('<#PART PROP=PPROP25#>' == 'true')
+	sPrefix = '';//'http://lw1/lwe-tc2go/templates/';
+else
+	sPrefix= '';
+
+if ('<#PART PROP=PPROP10#>' == 'Hebrew') dirc = 'rtl'; else dirc = 'ltr';
+dhtmlMenu = new NavBarMenu(menuWidth, menuWidth);
+dhtmlMenu.addItem(new NavBarMenuItem("<#PART PROP=PHEBDESC#>", sPrefix + "Showtemplate.aspx?Template=<#TEMPLATENAME#>&Pkey=<#PKEY#>&Type=10&ParentKey=<#PARENTKEY#>&PkeyCatalog=<#PKEYCATALOG#>",dirc));
+<#PARTS_LOOP_BEGIN#>
+
+if ('<#PART PROP=PPROP25#>' == 'true')
+	sPrefix = '';//'http://lw1/lwe-tc2go/templates/';
+else
+	sPrefix= '';
+	
+if ('<#PART PROP=PPROP10#>' == 'Hebrew') dirc = 'rtl'; else dirc = 'ltr';
+dhtmlMenu.addItem(new NavBarMenuItem("<#PART PROP=PHEBDESC#>", sPrefix + "Showtemplate.aspx?Template=<#TEMPLATENAME#>&Pkey=<#PKEY#>&Type=10&ParentKey=<#PARENTKEY#>&PkeyCatalog=<#PKEYCATALOG#>",dirc));
+<#PARTS_LOOP_END#>
+myNavBar1.addMenu(dhtmlMenu);
+<#CURRENT_LOOP_END#>
+
+
+//set menu colors
+//myNavBar1.setColors("#000000", "#000000", "#C0C0C0", "#ffffff", "#666666", "#000000", "#cccccc", "#ffffff", "#000080")
+myNavBar1.setColors("White", "White", "#C0C0C0", "#ffffff", "#13537B", "Black", "#F1F1F1", "Black", "White");
+myNavBar1.setFonts("Arial", "Plain", "Bold", "10pt", "Arial", "Plain", "", "8pt");
+//uncomment below line to center the menu (valid values are "left", "center", and "right"
+myNavBar1.setAlign("center");
+
+function init() {
+
+  //myNavBar1.resize(fullWidth);
+  myNavBar1.create();
+  myNavBar1.setzIndex(2);
+  //UNCOMMENT BELOW LINE TO MOVE MENU DOWN 50 pixels
+  var imove = (screen.width - orgWidth)/2;
+  myNavBar1.moveTo(imove-10, 50);
+}
+
+</script>
+
+</head>
+
+<body bgcolor="#F5F5F5" onload="init()">
+
+
+</body>
+</html>
+

@@ -1,0 +1,187 @@
+﻿<html>
+
+<base target="_parent" />
+<head>
+<title>Catalog Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<LINK REL="stylesheet" HREF="LinkWare1.css" TYPE="text/css" />
+<LINK REL="stylesheet" HREF="ontop.css" TYPE="text/css" />
+<SCRIPT LANGUAGE="JavaScript" SRC="tooltip.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="mapzoom.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="specialfx.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="ontop.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="cookutil.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="panning.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="events.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="addSearchFocus.js"></SCRIPT>
+
+<input type="hidden" name="pic_name" value=<# PICTURE_NAME ORDINAL=1 ENCAPS=' #>></input>
+<input type="hidden" name="map_name" value=<# IMAGEMAP_NAME ORDINAL=1 ENCAPS=' #>></input>
+
+<body onLoad="WriteTable()" bgcolor="#E2E6F0">
+<SPAN id="globalAreaId" style="visibilty:hidden;"></SPAN>
+
+<div align="center" DIR=RTL>
+<# MAP ORDINAL=1 LABLE1="שם" LABLE2="מק"ט" LABLE3="הערה" #>
+<table align="center" width="95%">
+	<tr>
+		<td><# TEXT_1 #></td>
+		<td><# TEXT_2 #></td>
+		<td><# TEXT_3 #></td>
+	</tr>
+	<tr>
+		<td align="left"><# TEXT_4 #></td>
+		<td align="center"><# TEXT_5 #><IMG  name="SearchFocus" src="blankSearchFocus.gif" STYLE="position:absolute; top:0px ; left:0px; z-index : 100 visibilty : :hidden" onclick="javascript:hideSearchImage()" />
+		</td>
+		<td align="right"><# TEXT_6 #></td>
+	</tr>
+	<tr>
+		<td><# TEXT_7 #></td>
+		<td><# TEXT_8 #></td>
+		<td><# TEXT_9 #></td>
+	</tr>
+</table>
+</div>
+
+<!--<table dir="rtl" align="right" width=""95%"" border="0"><tr><td align="right"><b>נתונים עיקריים:</b></td></tr></table><br/>--><br/>
+<div id="PartListTable"  align="center"></div>
+
+<xml id="PartList">
+	<Items>
+		<#PARTS_LOOP_BEGIN#>
+		<Item><!--
+			 <ID><#PART_DATA PROP_NUM=25#></ID>
+			 <Amount><#PART_DATA PROP_NUM=4#></Amount>
+			 <PartName><![CDATA[<#PART_DATA PROP_NUM=2#>]]></PartName>
+			 <ManufacturerCode><#PART PROP=VENDOR_CODE#></ManufacturerCode>
+			 <ManufacturerNum><#PART PROP=VENDOR_NUMBER#></ManufacturerNum>
+			 <CatalogNum><#PART PROP=ITEM_ID#></CatalogNum>
+			 <PartNum><#PART_DATA PROP_NUM=0#></PartNum>
+			 <PPROP1><#PART PROP=VENDOR_NUMBER#></PPROP1>
+			 <PPROP2><#PART PROP=VENDOR_CODE#></PPROP2>
+			 <PPROP3><#PART_DATA PROP_NUM=9#></PPROP3>
+			 <PPROP4><#PART_DATA PROP_NUM=10#></PPROP4>
+			 <PPROP5><#PART_DATA PROP_NUM=11#></PPROP5>
+			 <PPROP6><#PART_DATA PROP_NUM=12#></PPROP6>
+			 <PPROP7><#PART_DATA PROP_NUM=13#></PPROP7>
+			 <PPROP8><#PART_DATA PROP_NUM=14#></PPROP8>
+			 <PPROP9><#PART_DATA PROP_NUM=15#></PPROP9>
+			 <PPROP10><#PART_DATA PROP_NUM=16#></PPROP10>
+			 -->
+			 <ID><#PART_DATA PROP_NUM=25#></ID>
+			 <Amount><#PART_DATA PROP_NUM=4#></Amount>
+			 <PartName><![CDATA[<#PART_DATA PROP_NUM=2#>]]></PartName>
+			 <ManufacturerCode><#PART_DATA PROP_NUM=6#></ManufacturerCode>
+			 <ManufacturerNum><#PART_DATA PROP_NUM=5#></ManufacturerNum>
+			 <CatalogNum><#PART PROP=ITEM_ID#></CatalogNum>
+			 <PartNum><#PART_DATA PROP_NUM=0#></PartNum>
+			 <PPROP1><#PART_DATA PROP_NUM=7#></PPROP1>
+			 <PPROP2><#PART_DATA PROP_NUM=8#></PPROP2>
+			 <PPROP3><#PART_DATA PROP_NUM=9#></PPROP3>
+			 <PPROP4><#PART_DATA PROP_NUM=10#></PPROP4>
+			 <PPROP5><#PART_DATA PROP_NUM=11#></PPROP5>
+			 <PPROP6><#PART_DATA PROP_NUM=12#></PPROP6>
+			 <PPROP7><#PART_DATA PROP_NUM=13#></PPROP7>
+			 <PPROP8><#PART_DATA PROP_NUM=14#></PPROP8>
+			 <PPROP9><#PART_DATA PROP_NUM=15#></PPROP9>
+			 <PPROP10><#PART_DATA PROP_NUM=16#></PPROP10>
+		 </Item>
+		<#PARTS_LOOP_END#>
+	</Items>
+</xml>
+<!--<table datasrc="#PartList">
+<thead>
+	<td>Name</td>
+</thead>
+<tr>
+	<td><div datafld="PartName"></div></td>
+</tr>
+</table>-->
+<script language="VBScript">
+
+	Function WriteTable()
+		dim xmlObj
+		dim xmltxt
+		dim oItem
+		dim oTemp
+		dim bIsFirstChild
+		dim sTableContent
+		sTableContent = ""
+		bFirstChild=True
+
+		Set xmlObj=CreateObject("Microsoft.XMLDOM")
+		xmlObj.async=False
+		xmltxt = Replace(PartList.innerHTML,"&nbsp;","&#160;")
+		xmlObj.loadXML(xmltxt)
+		Set root = xmlObj.documentElement
+		
+		For Each oItem In root.selectNodes("//Items/Item")
+			If oItem.selectSingleNode("PartName").text="כותרת" Then
+				sTableContent = "<table dir=""rtl"" align=""center"" width=""95%"" border=""1"" cellspacing=""0"" cellpadding=""0""><tr bgcolor=""#6588CF"">"
+				sTableContent = sTableContent & "<td align=""center""><font style=""COLOR:WHITE;FONT-SIZE:15px;FONT-FAMIlY:arial""><b>מספר קטלוגי לצה""ל</b></font></td><td align=""center""><font style=""COLOR:WHITE;FONT-SIZE:15px;FONT-FAMIlY:arial""><b>תאור</b></font></td>"
+				For I=1 To 10
+
+					If  Not root.selectSingleNode("//Items/Item[PartName='כותרת']").selectSingleNode("PPROP" & I).firstChild Is Nothing Then
+						If asc(root.selectSingleNode("//Items/Item[PartName='כותרת']").selectSingleNode("PPROP" & I).text) <> 160 Then
+							sTableContent = sTableContent & "<td dir=""rtl"" align=""center""><font style=""COLOR:WHITE;FONT-SIZE:15px;FONT-FAMIlY:arial""><b>" & oItem.selectSingleNode("PPROP" & I).text & "</b></font></td>"
+						End If
+					End If
+				Next
+				sTableContent = sTableContent & "</tr>"
+				bFirstChild = False
+			End If
+		Next
+		
+		if sTableContent="" then
+			sTableContent = "<table dir=""rtl"" align=""center"" width=""95%"" border=""1"" cellspacing=""0"" cellpadding=""0""><tr bgcolor=""#6588CF"">"
+				sTableContent = sTableContent & "<td align=""center""><font style=""COLOR:WHITE;FONT-SIZE:15px;FONT-FAMIlY:arial""><b>מספר קטלוגי לצה""ל</b></font></td>"
+				sTableContent = sTableContent & "<td align=""center""><font style=""COLOR:WHITE;FONT-SIZE:15px;FONT-FAMIlY:arial""><b>תאור הפריט</b></font></td>"
+				sTableContent = sTableContent & "<td align=""center""><font style=""COLOR:WHITE;FONT-SIZE:15px;FONT-FAMIlY:arial""><b>מספר יצרן</b></font></td>"
+				sTableContent = sTableContent & "<td align=""center""><font style=""COLOR:WHITE;FONT-SIZE:15px;FONT-FAMIlY:arial""><b>קוד יצרן</b></font></td>"
+				sTableContent = sTableContent & "</tr>"
+		end if
+		
+		
+		For Each oItem In root.selectNodes("//Items/Item")
+			If oItem.selectSingleNode("PartName").text<>"כותרת" Then
+				sTableContent = sTableContent & "<tr bgcolor=""#E2E6F0"">"
+				sTableContent = sTableContent & "<td dir=""rtl"" align=""center""><font style=""COLOR:black;FONT-SIZE:15px;FONT-FAMIlY:arial""><b>" & oItem.selectSingleNode("CatalogNum").text & "</b></font></td><td dir=""rtl"" align=""right"" style=""padding-right:5px;""><font style=""COLOR:black;FONT-SIZE:15px;FONT-FAMIlY:arial""><b>" & oItem.selectSingleNode("PartName").text & "</b></font></td>"
+				For I=1 To 10
+					
+					if 1=0 then
+						If  Not root.selectSingleNode("//Items/Item[PartName='כותרת']").selectSingleNode("PPROP" & I).firstChild Is Nothing Then
+							If asc(root.selectSingleNode("//Items/Item[PartName='כותרת']").selectSingleNode("PPROP" & I).text) <> 160 Then
+								sTableContent = sTableContent & "<td dir=""rtl"" align=""center""><font style=""COLOR:black;FONT-SIZE:14px;FONT-FAMIlY:arial""><b>" & oItem.selectSingleNode("PPROP" & I).text & "</b></font></td>"
+							End If
+						End If
+					end if
+					sTableContent = sTableContent & "<td dir=""rtl"" align=""center""><font style=""COLOR:black;FONT-SIZE:14px;FONT-FAMIlY:arial""><b>" & oItem.selectSingleNode("PPROP" & I).text & "</b></font></td>"
+				Next
+				sTableContent = sTableContent & "</tr>"
+			End If
+		Next
+
+		sTableContent = sTableContent & "</table>"
+		
+		PartListTable.innerHTML = sTableContent
+
+		Set root = Nothing
+		Set xmlObj = Nothing
+
+	End Function
+
+</script>
+
+<DIV ID="tipwindow" CLASS="TipHelp" STYLE="Top:100; Left:200; display=none; Z-INDEX:200;">
+ToolTip text goes in here. Zac (-:</DIV>
+
+<script language="JavaScript">
+	fnZoom(window.map_name.value, window.pic_name.value, getCookie('_zoom_ratio'));
+	fnSetSearchFocus();
+	window.onresize = changeSize ;
+</script>
+
+</body>
+</html>

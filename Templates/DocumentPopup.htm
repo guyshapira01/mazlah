@@ -1,0 +1,123 @@
+<HTML>
+<LINK href="Style.css" rel="stylesheet" type="text/css" />
+<HEAD>
+	<TITLE></TITLE>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255" />
+	<LINK REL="stylesheet" HREF="LinkWare1.css" TYPE="text/css" />
+</HEAD>
+<BODY class="BodyCatalog" dir="ltr" onLoad="JavaScript:GetValues();window.focus();">
+<SCRIPT LANGUAGE=javascript>
+<!--
+
+	var PageLocation = document.location.href
+
+	function getValue(valueName)	{
+		var firstChr = PageLocation.indexOf(valueName);
+		//alert(firstChr);
+		if (firstChr == -1)	{
+			return("");
+		}
+		var lastChr = PageLocation.indexOf("&",firstChr);
+		if (lastChr == -1)	{
+			lastChr = PageLocation.indexOf("%26",firstChr);
+			if (lastChr == -1)	{
+				lastChr=PageLocation.length;
+			}
+		}
+		//alert(lastChr);
+		//alert(firstChr+(valueName.length)+1);
+		//alert(lastChr-(firstChr+(valueName.length)+1));
+		var re = /%22/gi;
+		var re1 = /%20/gi;
+		var re2 = /%20D/gi;
+		return(PageLocation.substring(firstChr+(valueName.length)+1,lastChr).replace(re,"\"").replace(re1," ").replace(re2,"/"));
+	}
+
+	function GetValues()	{
+
+		FilePath.innerHTML = "<a target=\"_blank\" href=\"" + getValue("FilePath") + "\">" + getValue("FileName") + "</a>";
+		FilePathText.innerText = getValue("FilePath");
+		FileName.innerText = getValue("FileName");
+		document.title = getValue("FileName");
+		FileDescription.innerText = getValue("FileDescription");
+		FileID.innerText = getValue("FileID");
+		FileRevision.innerText = getValue("FileRevision");
+		ObjectType.innerHTML = getValue("objType");
+		SystemID.innerText = getValue("SystemID");
+		FileStatus.innerText = getValue("Status");
+		FileModifiedDate.innerText = getValue("ModifiedDate");
+		ModifierName.innerText = getValue("ModifiedName");
+		FileCreateDate.innerText = getValue("CreateDate");
+	}
+
+//-->
+</SCRIPT>
+
+<table border="0" align="center">
+	<tr>
+		<td align=center>
+			<span id="FilePath"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br>
+				<TABLE border="1" cellPadding="5" cellSpacing="0" align="center" bordercolor="black" dir="ltr">
+					<TR>
+						<TD style="background-color:Tan" align="center"><font style="FONT-SIZE:12px;COLOR:black"><b>Property</b></font></TD>
+						<TD style="background-color:Tan" align="center"><font style="FONT-SIZE:12px;COLOR:black"><b>Value</b></font></TD>
+				   </TR>
+					<TR>
+						<TD style="background-color:PaleGoldenrod;" class="bigtext_E" align="right"><b>Name</b></TD>
+						<TD style="background-color:PaleGoldenrod;" class="tabletext" align="left">&nbsp;<span id="FileName"/>&nbsp;</TD>
+				   </TR>
+				   <TR>
+						<TD style="background-color:LightGoldenrodYellow;" class="bigtext_E" align="right"><b>Description</b></TD>
+						<TD style="background-color:LightGoldenrodYellow;" class="tabletext" align="left">&nbsp;<span id="FileDescription"/>&nbsp;</TD>
+				   </TR>
+				   <TR>
+				   		<TD style="background-color:PaleGoldenrod;" class="bigtext_E" align="right"><b>Created Date</b></TD>
+				   		<TD style="background-color:PaleGoldenrod;" class="tabletext" align="left">&nbsp;<span id="FileCreateDate"/>&nbsp;</TD>
+				   </TR>
+				   <TR>
+				   		<TD style="background-color:LightGoldenrodYellow;" class="bigtext_E" align="right"><b>Author</b></TD>
+				   		<TD style="background-color:LightGoldenrodYellow;" class="tabletext" align="left">&nbsp;<span id="FileAuthor"/>&nbsp;</TD>
+				   	</TR>
+				   	<TR>
+				   		<TD style="background-color:PaleGoldenrod;" class="bigtext_E" align="right"><b>Revision</b></TD>
+				   		<TD style="background-color:PaleGoldenrod;" class="tabletext" align="left">&nbsp;<span id="FileRevision"/>&nbsp;</TD>
+				    </TR>
+				    <TR>
+				    	<TD style="background-color:LightGoldenrodYellow;" class="bigtext_E" align="right"><b>Modified Date</b></TD>
+				    	<TD style="background-color:LightGoldenrodYellow;" class="tabletext" align="left">&nbsp;<span id="FileModifiedDate"/>&nbsp;</TD>
+				    </TR>
+				    <TR>
+				    	<TD style="background-color:PaleGoldenrod;" class="bigtext_E" align="right"><b>Modifier Name</b></TD>
+				    	<TD style="background-color:PaleGoldenrod;" class="tabletext" align="left">&nbsp;<span id="ModifierName"/>&nbsp;</TD>
+				    </TR>
+				    <TR>
+				    	<TD style="background-color:LightGoldenrodYellow;" class="bigtext_E" align="right"><b>Status</b></TD>
+				    	<TD style="background-color:LightGoldenrodYellow;" class="tabletext" align="left">&nbsp;<span id="FileStatus"/>&nbsp;</TD>
+				    </TR>
+				    <TR>
+				    	<TD style="background-color:PaleGoldenrod;" class="bigtext_E" align="right"><b>Path</b></TD>
+				    	<TD style="background-color:PaleGoldenrod;" class="tabletext" align="left">&nbsp;<span id="FilePathText"/>&nbsp;</TD>
+				    </TR>
+				    <TR>
+				    	<TD style="background-color:LightGoldenrodYellow;" class="bigtext_E" align="right"><b>ID</b></TD>
+				    	<TD style="background-color:LightGoldenrodYellow;" class="tabletext" align="left">&nbsp;<span id="FileID"/>&nbsp;</TD>
+				    </TR>
+				    <TR>
+				    	<TD style="background-color:PaleGoldenrod;" class="bigtext_E" align="right"><b>SYSTEM ID</b></TD>
+				    	<TD style="background-color:PaleGoldenrod;" class="tabletext" align="left">&nbsp;<span id="SystemID"/>&nbsp;</TD>
+				    </TR>
+				    <TR>
+				    	<TD style="background-color:LightGoldenrodYellow;" class="bigtext_E" align="right"><b>Object Type</b></TD>
+				    	<TD style="background-color:LightGoldenrodYellow;" class="tabletext" align="left">&nbsp;<span id="ObjectType"/>&nbsp;</TD>
+				    </TR>
+			</TABLE>
+		</td>
+	</tr>
+</table>
+</BODY>
+</HTML>

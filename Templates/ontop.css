@@ -1,0 +1,32 @@
+
+<!-- drag and move style sheet -->
+.drag{position:relative;cursor:hand}
+#scontentmain{
+position:absolute;
+width:170px;
+}
+#scontentbar{
+border:2px solid blue;
+cursor:hand;
+position:absolute;
+background-color:blue;
+height:30;
+width:100%;
+top:0;
+}
+#scontentsub{
+position:absolute;
+width:100%;
+top:30;
+background-color:#90e2ff;
+border:2px solid blue;
+padding:1px;
+}
+
+#percent{
+ackground-color:green;-->
+color:yellow;
+font-size:120%; 
+font-weight:bold
+font-align: center;
+}

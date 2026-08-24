@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="right_elec.xsl"?>
+<Items>
+    <#PARTS_LOOP_BEGIN#>
+    <Item>
+		 <ID><#PART PROP=PKEY#></ID>
+		 <Amount><#PART PROP=PQTY#></Amount>
+		 <PartName><![CDATA[<#PART PROP=PHEBDESC#>]]></PartName>
+		 <ManufacturerCode><#PART PROP=VENDOR_CODE#></ManufacturerCode>
+		 <ManufacturerNum><#PART PROP=VENDOR_NUMBER#></ManufacturerNum>
+		 <CatalogNum><#PART PROP=ITEM_ID#></CatalogNum>
+		 <PartNum><#PART PROP=PBALOONNUMBER#></PartNum>
+     
+     </Item>
+    <#PARTS_LOOP_END#>
+</Items>
