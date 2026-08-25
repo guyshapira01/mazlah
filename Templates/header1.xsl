@@ -273,53 +273,87 @@ html, body {
 						var viewportWidth = mapFrame.document.documentElement.clientWidth ||
 											mapFrame.document.body.clientWidth;
 						if (originalWidth &gt; 0 &amp;&amp; viewportWidth &gt; 0) {
-							ratio = (viewportWidth - 20) / originalWidth;
-						}
-					}
-				} catch (e) {}
-			}
-
-			return HeaderZoomNew(ratio || 1);
+		ratio = (viewportWidth - 20) / originalWidth;
+		}
+		}
+		} catch (e) {}
 		}
 
-		function HeaderSaveZoom() {
-		alert();
-			var mapFrame = getPartsMapFrameForZoom();
-			if (!mapFrame) return false;
+		return HeaderZoomNew(ratio || 1);
+		}
 
-			if (typeof mapFrame.SetZoomSize === 'function') {
-				mapFrame.SetZoomSize.call(mapFrame, '');
-			}
+		function HeaderSaveZoom()
+		{
+		    try
+		    {
+		        var el = document.getElementById('percent');
 
-			return false;
+		        if (!el)
+		        return false;
+
+		        // למשל "70%"
+		        var txt = el.innerText || el.textContent;
+
+		        var percent = parseFloat(txt);
+
+		        if (isNaN(percent) || percent &lt;= 0)
+		return false;
+
+		// 70% => 0.7
+		var ratio = percent / 100;
+
+		document.cookie =
+		"_zoom_ratio=" + ratio +
+		"; path=/; expires=Fri, 31 Dec 2099 23:59:59 GMT";
+
+		alert("Zoom saved: " + ratio);
+
+		return false;
+		}
+		catch(e)
+		{
+		alert("Save zoom error: " + e.message);
+		return false;
+		}
 		}
 
 		// Show current zoom value when Header loads.
-		window.addEventListener('load', function() {
+		window.addEventListener('load', function()
+		{
+		setTimeout(function()
+		{
+		var mapFrame = getPartsMapFrameForZoom();
 
-			var mapFrame = getPartsMapFrameForZoom();
-			if (!mapFrame)
-				return;
+		if (!mapFrame)
+		return;
 
-			try {
+		try
+		{
+		var ratio = parseFloat(getZoomCookie());
 
-				var cookieValue = getCookie('_zoom_ratio');
+		if (!isNaN(ratio) &amp;&amp; ratio &gt; 0)
+		{
+		// מעדכן את הכיתוב
+		updateHeaderZoomPercent(ratio);
 
-				alert("cookie = " + cookieValue);
+		// מעדכן בפועל את התמונה
+		if (typeof mapFrame.fnZoomNew === 'function')
+		{
+		mapFrame.fnZoomNew.call(mapFrame, ratio);
+		}
+		}
+		else
+		{
+		updateHeaderZoomPercent(1);
+		}
+		}
+		catch(e)
+		{
+		console.log("Restore zoom error:", e);
+		updateHeaderZoomPercent(1);
+		}
 
-				var ratio = parseFloat(cookieValue);
-
-				if (!isNaN(ratio) &amp;&amp; ratio &gt; 0) {
-					updateHeaderZoomPercent(ratio);
-				}
-				else {
-					updateHeaderZoomPercent(1);
-				}
-			}
-			catch (e) {
-				alert("ERROR: " + e.message);
-				updateHeaderZoomPercent(1);
-			}
+		}, 500);
 		});
 	</SCRIPT>
 

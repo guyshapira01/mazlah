@@ -238,8 +238,10 @@ html, body, .BodyIndex {
 				var catalogNumber;
 				var LinesPerCol;
 
+				var temp = document.getElementsByName('temp')[0];
 				temp.value = -1;
-				LinesPerCol = 20;
+
+				LinesPerCol = 400;
 				catalogNumber = ']]><xsl:value-of select="//TreeIndex/CatalogKey"/><![CDATA[';
 	  	    ]]>
 			</script>
@@ -251,7 +253,7 @@ html, body, .BodyIndex {
 				var catalogNumber;
 				var LinesPerCol;
 
-				temp.value = -1;
+				document.getElementsByName('temp')[0].value = -1;
 				LinesPerCol = 20;
 				siteLocation = document.location.href;
 				siteLocation = siteLocation.toUpperCase()
@@ -353,8 +355,9 @@ function preloadImages() {
 	<xsl:choose>
 		<xsl:when test="Level = 1">
 			<script language="javascript">
-				temp.value = (temp.value*1) + 1
-				if ( ((temp.value*1)/LinesPerCol) == Math.round((temp.value*1)/LinesPerCol) ) {
+				var tempInput = document.getElementsByName('temp')[0];
+				tempInput.value = (tempInput.value*1) + 1
+				if ( ((tempInput.value*1)/LinesPerCol) == Math.round((tempInput.value*1)/LinesPerCol) ) {
 					insertTD();				
 				}
 			</script>

@@ -310,7 +310,9 @@ var cvi_map = {
 	defaultMapid : '',
 	defaultDelayed : false,
 	add: function(image, options) {
-		
+		if (!image) {
+			return;
+		}
 		var map, mapname = image.useMap.split("#");
 		if(mapname[1]!=''&&mapname[1].length>=1) {map = document.getElementsByName(mapname[1])[0];}
 		if(image.tagName.toUpperCase() == "IMG" && map) {
